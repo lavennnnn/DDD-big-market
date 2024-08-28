@@ -1,3 +1,4 @@
+/*
 package cn.hush.infrastructure.redis;
 
 import org.redisson.api.*;
@@ -6,10 +7,12 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.time.Duration;
 
+*/
 /**
  * Redis 服务 - Redisson
  * @author Fuzhengwei bugstack.cn @小傅哥
- */
+ *//*
+
 @Service("redissonService")
 public class RedissonService implements IRedisService {
 
@@ -147,3 +150,4 @@ public class RedissonService implements IRedisService {
 
 
 }
+*/
