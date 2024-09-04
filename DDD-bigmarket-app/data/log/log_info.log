@@ -1,39 +1,83 @@
-24-08-29.01:46:40.111 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 9076 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.01:46:40.113 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.01:46:41.353 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.01:46:41.359 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.01:46:41.398 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 17 ms. Found 0 Redis repository interfaces.
-24-08-29.01:46:42.403 [main            ] WARN  GenericWebApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'strategyArmory': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'cn.hush.domain.strategy.repository.IStrategyRepository' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@javax.annotation.Resource(shareable=true, lookup=, name=, description=, authenticationType=CONTAINER, type=class java.lang.Object, mappedName=)}
-24-08-29.01:46:42.420 [main            ] INFO  ConditionEvaluationReportLoggingListener - 
-
-Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-24-08-29.01:46:42.448 [main            ] ERROR LoggingFailureAnalysisReporter - 
-
-***************************
-APPLICATION FAILED TO START
-***************************
-
-Description:
-
-A component required a bean of type 'cn.hush.domain.strategy.repository.IStrategyRepository' that could not be found.
-
-
-Action:
-
-Consider defining a bean of type 'cn.hush.domain.strategy.repository.IStrategyRepository' in your configuration.
-
-24-08-29.01:46:42.450 [main            ] ERROR TestContextManager     - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@587e5365] to prepare test instance [cn.hush.test.domain.StrategyArmoryTest@3ac3f6f]
-java.lang.IllegalStateException: Failed to load ApplicationContext
-	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:98)
-	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:124)
-	at org.springframework.test.context.web.ServletTestExecutionListener.setUpRequestContextIfNecessary(ServletTestExecutionListener.java:190)
-	at org.springframework.test.context.web.ServletTestExecutionListener.prepareTestInstance(ServletTestExecutionListener.java:132)
-	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:248)
-	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:227)
-	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:289)
+24-09-05.02:48:21.541 [main            ] INFO  StrategyArmoryDispatchTest - Starting StrategyArmoryDispatchTest using Java 1.8.0_412 on Trickle with PID 20824 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
+24-09-05.02:48:21.543 [main            ] INFO  StrategyArmoryDispatchTest - The following 1 profile is active: "dev"
+24-09-05.02:48:22.740 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+24-09-05.02:48:22.745 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+24-09-05.02:48:22.784 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 16 ms. Found 0 Redis repository interfaces.
+24-09-05.02:48:27.283 [main            ] INFO  Version                - Redisson 3.23.4
+24-09-05.02:48:30.579 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
+24-09-05.02:48:30.597 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
+24-09-05.02:48:32.574 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+24-09-05.02:48:32.645 [main            ] INFO  StrategyArmoryDispatchTest - Started StrategyArmoryDispatchTest in 11.699 seconds (JVM running for 12.79)
+24-09-05.02:48:33.114 [main            ] INFO  HikariDataSource       - HikariPool-1 - Starting...
+24-09-05.02:48:34.415 [main            ] ERROR HikariPool             - HikariPool-1 - Exception during pool initialization.
+java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:836)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:456)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:246)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:364)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:476)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112)
+	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:159)
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:117)
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:80)
+	at org.mybatis.spring.transaction.SpringManagedTransaction.openConnection(SpringManagedTransaction.java:80)
+	at org.mybatis.spring.transaction.SpringManagedTransaction.getConnection(SpringManagedTransaction.java:67)
+	at org.apache.ibatis.executor.BaseExecutor.getConnection(BaseExecutor.java:337)
+	at org.apache.ibatis.executor.SimpleExecutor.prepareStatement(SimpleExecutor.java:86)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:62)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:325)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:89)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427)
+	at com.sun.proxy.$Proxy90.selectList(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:224)
+	at org.apache.ibatis.binding.MapperMethod.executeForMany(MapperMethod.java:147)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:80)
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:152)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:85)
+	at com.sun.proxy.$Proxy92.queryStrategyAwardListByStrategyId(Unknown Source)
+	at cn.hush.infrastructure.persistent.repository.StrategyRepository.queryStrategyAwardList(StrategyRepository.java:52)
+	at cn.hush.infrastructure.persistent.repository.StrategyRepository$$FastClassBySpringCGLIB$$33bcb00c.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708)
+	at cn.hush.infrastructure.persistent.repository.StrategyRepository$$EnhancerBySpringCGLIB$$735370a1.queryStrategyAwardList(<generated>)
+	at cn.hush.domain.strategy.service.armory.StrategyArmoryDispatch.assembleLotteryStrategy(StrategyArmoryDispatch.java:36)
+	at cn.hush.test.domain.StrategyArmoryDispatchTest.test_strategyArmory(StrategyArmoryDispatchTest.java:37)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
 	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:291)
-	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:246)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.RunBefores.invokeMethod(RunBefores.java:33)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:24)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestMethodCallbacks.evaluate(RunBeforeTestMethodCallbacks.java:75)
+	at org.springframework.test.context.junit4.statements.RunAfterTestMethodCallbacks.evaluate(RunAfterTestMethodCallbacks.java:86)
+	at org.springframework.test.context.junit4.statements.SpringRepeat.evaluate(SpringRepeat.java:84)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:251)
 	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
 	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
 	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
@@ -52,914 +96,160 @@ java.lang.IllegalStateException: Failed to load ApplicationContext
 	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35)
 	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:232)
 	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:55)
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'strategyArmory': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'cn.hush.domain.strategy.repository.IStrategyRepository' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@javax.annotation.Resource(shareable=true, lookup=, name=, description=, authenticationType=CONTAINER, type=class java.lang.Object, mappedName=)}
-	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessProperties(CommonAnnotationBeanPostProcessor.java:332)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1431)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:619)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955)
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:920)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731)
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
-	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:136)
-	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:141)
-	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:90)
-	... 27 common frames omitted
-Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'cn.hush.domain.strategy.repository.IStrategyRepository' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@javax.annotation.Resource(shareable=true, lookup=, name=, description=, authenticationType=CONTAINER, type=class java.lang.Object, mappedName=)}
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:1801)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1357)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
-	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.autowireResource(CommonAnnotationBeanPostProcessor.java:544)
-	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.getResource(CommonAnnotationBeanPostProcessor.java:520)
-	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$ResourceElement.getResourceToInject(CommonAnnotationBeanPostProcessor.java:673)
-	at org.springframework.beans.factory.annotation.InjectionMetadata$InjectedElement.inject(InjectionMetadata.java:228)
-	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119)
-	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessProperties(CommonAnnotationBeanPostProcessor.java:329)
-	... 43 common frames omitted
-24-08-29.01:47:49.831 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 11924 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.01:47:49.832 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.01:47:50.931 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.01:47:50.935 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.01:47:50.980 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 15 ms. Found 0 Redis repository interfaces.
-24-08-29.01:47:56.210 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.01:47:59.569 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.01:47:59.588 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.01:48:02.117 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.01:48:02.201 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 12.875 seconds (JVM running for 14.013)
-24-08-29.01:48:02.786 [redisson-netty-2-2] ERROR CommandDecoder         - Unable to decode data. channel: [id: 0xcf2331f9, L:/127.0.0.1:52127 - R:127.0.0.1/127.0.0.1:6379], reply: ReplayingDecoderByteBuf(ridx=159, widx=159), command: (GET), promise: java.util.concurrent.CompletableFuture@42eb8eb4[Not completed, 1 dependents], params: [big_market_strategy_award_key_100002]
-com.esotericsoftware.kryo.KryoException: Unable to find class: cn.hush.domain.strategy.model.entity.StrategyAwardEntity
-	at com.esotericsoftware.kryo.util.DefaultClassResolver.readName(DefaultClassResolver.java:182)
-	at com.esotericsoftware.kryo.util.DefaultClassResolver.readClass(DefaultClassResolver.java:151)
-	at com.esotericsoftware.kryo.Kryo.readClass(Kryo.java:758)
-	at com.esotericsoftware.kryo.serializers.CollectionSerializer.read(CollectionSerializer.java:222)
-	at com.esotericsoftware.kryo.serializers.CollectionSerializer.read(CollectionSerializer.java:44)
-	at com.esotericsoftware.kryo.Kryo.readClassAndObject(Kryo.java:880)
-	at org.redisson.codec.Kryo5Codec$4.decode(Kryo5Codec.java:144)
-	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:394)
-	at org.redisson.client.handler.CommandDecoder.decodeCommand(CommandDecoder.java:205)
-	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:144)
-	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:120)
-	at io.netty.handler.codec.ByteToMessageDecoder.decodeRemovalReentryProtection(ByteToMessageDecoder.java:529)
-	at io.netty.handler.codec.ReplayingDecoder.callDecode(ReplayingDecoder.java:366)
-	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:290)
-	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:444)
-	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
-	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412)
-	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
-	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:440)
-	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
-	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
-	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:166)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
-	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
-	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
-	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
-	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
-	at java.lang.Thread.run(Thread.java:750)
-Caused by: java.lang.ClassNotFoundException: cn.hush.domain.strategy.model.entity.StrategyAwardEntity
-	at java.net.URLClassLoader.findClass(URLClassLoader.java:387)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:418)
-	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:352)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:351)
-	at java.lang.Class.forName0(Native Method)
-	at java.lang.Class.forName(Class.java:348)
-	at com.esotericsoftware.kryo.util.DefaultClassResolver.readName(DefaultClassResolver.java:176)
-	... 29 common frames omitted
-24-08-29.01:48:02.794 [redisson-netty-2-2] ERROR ErrorsLoggingHandler   - Exception occured. Channel: [id: 0xcf2331f9, L:/127.0.0.1:52127 - R:127.0.0.1/127.0.0.1:6379]
-io.netty.handler.codec.DecoderException: com.esotericsoftware.kryo.KryoException: Unable to find class: cn.hush.domain.strategy.model.entity.StrategyAwardEntity
-	at io.netty.handler.codec.ReplayingDecoder.callDecode(ReplayingDecoder.java:421)
-	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:290)
-	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:444)
-	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
-	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412)
-	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
-	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:440)
-	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
-	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
-	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:166)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
-	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
-	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
-	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
-	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
-	at java.lang.Thread.run(Thread.java:750)
-Caused by: com.esotericsoftware.kryo.KryoException: Unable to find class: cn.hush.domain.strategy.model.entity.StrategyAwardEntity
-	at com.esotericsoftware.kryo.util.DefaultClassResolver.readName(DefaultClassResolver.java:182)
-	at com.esotericsoftware.kryo.util.DefaultClassResolver.readClass(DefaultClassResolver.java:151)
-	at com.esotericsoftware.kryo.Kryo.readClass(Kryo.java:758)
-	at com.esotericsoftware.kryo.serializers.CollectionSerializer.read(CollectionSerializer.java:222)
-	at com.esotericsoftware.kryo.serializers.CollectionSerializer.read(CollectionSerializer.java:44)
-	at com.esotericsoftware.kryo.Kryo.readClassAndObject(Kryo.java:880)
-	at org.redisson.codec.Kryo5Codec$4.decode(Kryo5Codec.java:144)
-	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:394)
-	at org.redisson.client.handler.CommandDecoder.decodeCommand(CommandDecoder.java:205)
-	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:144)
-	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:120)
-	at io.netty.handler.codec.ByteToMessageDecoder.decodeRemovalReentryProtection(ByteToMessageDecoder.java:529)
-	at io.netty.handler.codec.ReplayingDecoder.callDecode(ReplayingDecoder.java:366)
-	... 17 common frames omitted
-Caused by: java.lang.ClassNotFoundException: cn.hush.domain.strategy.model.entity.StrategyAwardEntity
-	at java.net.URLClassLoader.findClass(URLClassLoader.java:387)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:418)
-	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:352)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:351)
-	at java.lang.Class.forName0(Native Method)
-	at java.lang.Class.forName(Class.java:348)
-	at com.esotericsoftware.kryo.util.DefaultClassResolver.readName(DefaultClassResolver.java:176)
-	... 29 common frames omitted
-24-08-29.01:49:03.631 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 21644 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.01:49:03.633 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.01:49:05.067 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.01:49:05.078 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.01:49:05.166 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 22 ms. Found 0 Redis repository interfaces.
-24-08-29.01:49:10.116 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.01:49:13.417 [redisson-netty-2-5] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.01:49:13.433 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.01:49:15.505 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.01:49:15.745 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 12.643 seconds (JVM running for 13.8)
-24-08-29.01:49:16.265 [redisson-netty-2-2] ERROR CommandDecoder         - Unable to decode data. channel: [id: 0xcd922318, L:/127.0.0.1:52239 - R:127.0.0.1/127.0.0.1:6379], reply: ReplayingDecoderByteBuf(ridx=159, widx=159), command: (GET), promise: java.util.concurrent.CompletableFuture@3b29be0f[Not completed, 1 dependents], params: [big_market_strategy_award_key_100002]
-com.esotericsoftware.kryo.KryoException: Unable to find class: cn.hush.domain.strategy.model.entity.StrategyAwardEntity
-	at com.esotericsoftware.kryo.util.DefaultClassResolver.readName(DefaultClassResolver.java:182)
-	at com.esotericsoftware.kryo.util.DefaultClassResolver.readClass(DefaultClassResolver.java:151)
-	at com.esotericsoftware.kryo.Kryo.readClass(Kryo.java:758)
-	at com.esotericsoftware.kryo.serializers.CollectionSerializer.read(CollectionSerializer.java:222)
-	at com.esotericsoftware.kryo.serializers.CollectionSerializer.read(CollectionSerializer.java:44)
-	at com.esotericsoftware.kryo.Kryo.readClassAndObject(Kryo.java:880)
-	at org.redisson.codec.Kryo5Codec$4.decode(Kryo5Codec.java:144)
-	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:394)
-	at org.redisson.client.handler.CommandDecoder.decodeCommand(CommandDecoder.java:205)
-	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:144)
-	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:120)
-	at io.netty.handler.codec.ByteToMessageDecoder.decodeRemovalReentryProtection(ByteToMessageDecoder.java:529)
-	at io.netty.handler.codec.ReplayingDecoder.callDecode(ReplayingDecoder.java:366)
-	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:290)
-	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:444)
-	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
-	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412)
-	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
-	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:440)
-	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
-	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
-	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:166)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
-	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
-	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
-	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
-	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
-	at java.lang.Thread.run(Thread.java:750)
-Caused by: java.lang.ClassNotFoundException: cn.hush.domain.strategy.model.entity.StrategyAwardEntity
-	at java.net.URLClassLoader.findClass(URLClassLoader.java:387)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:418)
-	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:352)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:351)
-	at java.lang.Class.forName0(Native Method)
-	at java.lang.Class.forName(Class.java:348)
-	at com.esotericsoftware.kryo.util.DefaultClassResolver.readName(DefaultClassResolver.java:176)
-	... 29 common frames omitted
-24-08-29.01:49:16.273 [redisson-netty-2-2] ERROR ErrorsLoggingHandler   - Exception occured. Channel: [id: 0xcd922318, L:/127.0.0.1:52239 - R:127.0.0.1/127.0.0.1:6379]
-io.netty.handler.codec.DecoderException: com.esotericsoftware.kryo.KryoException: Unable to find class: cn.hush.domain.strategy.model.entity.StrategyAwardEntity
-	at io.netty.handler.codec.ReplayingDecoder.callDecode(ReplayingDecoder.java:421)
-	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:290)
-	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:444)
-	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
-	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412)
-	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
-	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:440)
-	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
-	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
-	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:166)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
-	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
-	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
-	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
-	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
-	at java.lang.Thread.run(Thread.java:750)
-Caused by: com.esotericsoftware.kryo.KryoException: Unable to find class: cn.hush.domain.strategy.model.entity.StrategyAwardEntity
-	at com.esotericsoftware.kryo.util.DefaultClassResolver.readName(DefaultClassResolver.java:182)
-	at com.esotericsoftware.kryo.util.DefaultClassResolver.readClass(DefaultClassResolver.java:151)
-	at com.esotericsoftware.kryo.Kryo.readClass(Kryo.java:758)
-	at com.esotericsoftware.kryo.serializers.CollectionSerializer.read(CollectionSerializer.java:222)
-	at com.esotericsoftware.kryo.serializers.CollectionSerializer.read(CollectionSerializer.java:44)
-	at com.esotericsoftware.kryo.Kryo.readClassAndObject(Kryo.java:880)
-	at org.redisson.codec.Kryo5Codec$4.decode(Kryo5Codec.java:144)
-	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:394)
-	at org.redisson.client.handler.CommandDecoder.decodeCommand(CommandDecoder.java:205)
-	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:144)
-	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:120)
-	at io.netty.handler.codec.ByteToMessageDecoder.decodeRemovalReentryProtection(ByteToMessageDecoder.java:529)
-	at io.netty.handler.codec.ReplayingDecoder.callDecode(ReplayingDecoder.java:366)
-	... 17 common frames omitted
-Caused by: java.lang.ClassNotFoundException: cn.hush.domain.strategy.model.entity.StrategyAwardEntity
-	at java.net.URLClassLoader.findClass(URLClassLoader.java:387)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:418)
-	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:352)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:351)
-	at java.lang.Class.forName0(Native Method)
-	at java.lang.Class.forName(Class.java:348)
-	at com.esotericsoftware.kryo.util.DefaultClassResolver.readName(DefaultClassResolver.java:176)
-	... 29 common frames omitted
-24-08-29.01:54:06.579 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 20632 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.01:54:06.581 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.01:54:08.035 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.01:54:08.041 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.01:54:08.086 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 17 ms. Found 0 Redis repository interfaces.
-24-08-29.01:54:13.233 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.01:54:16.432 [redisson-netty-2-5] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.01:54:16.452 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.01:55:30.120 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.01:55:30.270 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 84.37 seconds (JVM running for 86.06)
-24-08-29.01:55:38.552 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 5044 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.01:55:38.553 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.01:55:39.788 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.01:55:39.792 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.01:55:39.832 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 17 ms. Found 0 Redis repository interfaces.
-24-08-29.01:55:44.918 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.01:55:48.354 [redisson-netty-2-5] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.01:55:48.374 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.01:55:52.010 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.01:55:52.085 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 14.061 seconds (JVM running for 15.039)
-24-08-29.01:55:52.659 [redisson-netty-2-2] ERROR CommandDecoder         - Unable to decode data. channel: [id: 0x07fa59f6, L:/127.0.0.1:52736 - R:127.0.0.1/127.0.0.1:6379], reply: ReplayingDecoderByteBuf(ridx=159, widx=159), command: (GET), promise: java.util.concurrent.CompletableFuture@44179615[Not completed, 1 dependents], params: [big_market_strategy_award_key_100002]
-com.esotericsoftware.kryo.KryoException: Unable to find class: cn.hush.domain.strategy.model.entity.StrategyAwardEntity
-	at com.esotericsoftware.kryo.util.DefaultClassResolver.readName(DefaultClassResolver.java:182)
-	at com.esotericsoftware.kryo.util.DefaultClassResolver.readClass(DefaultClassResolver.java:151)
-	at com.esotericsoftware.kryo.Kryo.readClass(Kryo.java:758)
-	at com.esotericsoftware.kryo.serializers.CollectionSerializer.read(CollectionSerializer.java:222)
-	at com.esotericsoftware.kryo.serializers.CollectionSerializer.read(CollectionSerializer.java:44)
-	at com.esotericsoftware.kryo.Kryo.readClassAndObject(Kryo.java:880)
-	at org.redisson.codec.Kryo5Codec$4.decode(Kryo5Codec.java:144)
-	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:394)
-	at org.redisson.client.handler.CommandDecoder.decodeCommand(CommandDecoder.java:205)
-	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:144)
-	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:120)
-	at io.netty.handler.codec.ByteToMessageDecoder.decodeRemovalReentryProtection(ByteToMessageDecoder.java:529)
-	at io.netty.handler.codec.ReplayingDecoder.callDecode(ReplayingDecoder.java:366)
-	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:290)
-	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:444)
-	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
-	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412)
-	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
-	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:440)
-	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
-	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
-	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:166)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
-	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
-	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
-	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
-	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
-	at java.lang.Thread.run(Thread.java:750)
-Caused by: java.lang.ClassNotFoundException: cn.hush.domain.strategy.model.entity.StrategyAwardEntity
-	at java.net.URLClassLoader.findClass(URLClassLoader.java:387)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:418)
-	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:352)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:351)
-	at java.lang.Class.forName0(Native Method)
-	at java.lang.Class.forName(Class.java:348)
-	at com.esotericsoftware.kryo.util.DefaultClassResolver.readName(DefaultClassResolver.java:176)
-	... 29 common frames omitted
-24-08-29.01:55:52.667 [redisson-netty-2-2] ERROR ErrorsLoggingHandler   - Exception occured. Channel: [id: 0x07fa59f6, L:/127.0.0.1:52736 - R:127.0.0.1/127.0.0.1:6379]
-io.netty.handler.codec.DecoderException: com.esotericsoftware.kryo.KryoException: Unable to find class: cn.hush.domain.strategy.model.entity.StrategyAwardEntity
-	at io.netty.handler.codec.ReplayingDecoder.callDecode(ReplayingDecoder.java:421)
-	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:290)
-	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:444)
-	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
-	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412)
-	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
-	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:440)
-	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
-	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
-	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:166)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
-	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
-	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
-	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
-	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
-	at java.lang.Thread.run(Thread.java:750)
-Caused by: com.esotericsoftware.kryo.KryoException: Unable to find class: cn.hush.domain.strategy.model.entity.StrategyAwardEntity
-	at com.esotericsoftware.kryo.util.DefaultClassResolver.readName(DefaultClassResolver.java:182)
-	at com.esotericsoftware.kryo.util.DefaultClassResolver.readClass(DefaultClassResolver.java:151)
-	at com.esotericsoftware.kryo.Kryo.readClass(Kryo.java:758)
-	at com.esotericsoftware.kryo.serializers.CollectionSerializer.read(CollectionSerializer.java:222)
-	at com.esotericsoftware.kryo.serializers.CollectionSerializer.read(CollectionSerializer.java:44)
-	at com.esotericsoftware.kryo.Kryo.readClassAndObject(Kryo.java:880)
-	at org.redisson.codec.Kryo5Codec$4.decode(Kryo5Codec.java:144)
-	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:394)
-	at org.redisson.client.handler.CommandDecoder.decodeCommand(CommandDecoder.java:205)
-	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:144)
-	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:120)
-	at io.netty.handler.codec.ByteToMessageDecoder.decodeRemovalReentryProtection(ByteToMessageDecoder.java:529)
-	at io.netty.handler.codec.ReplayingDecoder.callDecode(ReplayingDecoder.java:366)
-	... 17 common frames omitted
-Caused by: java.lang.ClassNotFoundException: cn.hush.domain.strategy.model.entity.StrategyAwardEntity
-	at java.net.URLClassLoader.findClass(URLClassLoader.java:387)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:418)
-	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:352)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:351)
-	at java.lang.Class.forName0(Native Method)
-	at java.lang.Class.forName(Class.java:348)
-	at com.esotericsoftware.kryo.util.DefaultClassResolver.readName(DefaultClassResolver.java:176)
-	... 29 common frames omitted
-24-08-29.02:02:37.094 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 12216 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.02:02:37.095 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.02:02:38.454 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.02:02:38.457 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.02:02:38.498 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 18 ms. Found 0 Redis repository interfaces.
-24-08-29.02:02:43.591 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.02:02:46.973 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:02:47.020 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:02:49.221 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.02:02:49.300 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 12.828 seconds (JVM running for 13.906)
-24-08-29.02:02:50.070 [redisson-netty-2-2] ERROR CommandDecoder         - Unable to decode data. channel: [id: 0x5ab3e391, L:/127.0.0.1:53179 - R:127.0.0.1/127.0.0.1:6379], reply: ReplayingDecoderByteBuf(ridx=159, widx=159), command: (GET), promise: java.util.concurrent.CompletableFuture@33a85859[Not completed, 1 dependents], params: [big_market_strategy_award_key_100002]
-com.esotericsoftware.kryo.KryoException: Unable to find class: cn.hush.domain.strategy.model.entity.StrategyAwardEntity
-	at com.esotericsoftware.kryo.util.DefaultClassResolver.readName(DefaultClassResolver.java:182)
-	at com.esotericsoftware.kryo.util.DefaultClassResolver.readClass(DefaultClassResolver.java:151)
-	at com.esotericsoftware.kryo.Kryo.readClass(Kryo.java:758)
-	at com.esotericsoftware.kryo.serializers.CollectionSerializer.read(CollectionSerializer.java:222)
-	at com.esotericsoftware.kryo.serializers.CollectionSerializer.read(CollectionSerializer.java:44)
-	at com.esotericsoftware.kryo.Kryo.readClassAndObject(Kryo.java:880)
-	at org.redisson.codec.Kryo5Codec$4.decode(Kryo5Codec.java:144)
-	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:394)
-	at org.redisson.client.handler.CommandDecoder.decodeCommand(CommandDecoder.java:205)
-	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:144)
-	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:120)
-	at io.netty.handler.codec.ByteToMessageDecoder.decodeRemovalReentryProtection(ByteToMessageDecoder.java:529)
-	at io.netty.handler.codec.ReplayingDecoder.callDecode(ReplayingDecoder.java:366)
-	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:290)
-	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:444)
-	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
-	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412)
-	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
-	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:440)
-	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
-	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
-	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:166)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
-	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
-	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
-	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
-	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
-	at java.lang.Thread.run(Thread.java:750)
-Caused by: java.lang.ClassNotFoundException: cn.hush.domain.strategy.model.entity.StrategyAwardEntity
-	at java.net.URLClassLoader.findClass(URLClassLoader.java:387)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:418)
-	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:352)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:351)
-	at java.lang.Class.forName0(Native Method)
-	at java.lang.Class.forName(Class.java:348)
-	at com.esotericsoftware.kryo.util.DefaultClassResolver.readName(DefaultClassResolver.java:176)
-	... 29 common frames omitted
-24-08-29.02:02:50.081 [redisson-netty-2-2] ERROR ErrorsLoggingHandler   - Exception occured. Channel: [id: 0x5ab3e391, L:/127.0.0.1:53179 - R:127.0.0.1/127.0.0.1:6379]
-io.netty.handler.codec.DecoderException: com.esotericsoftware.kryo.KryoException: Unable to find class: cn.hush.domain.strategy.model.entity.StrategyAwardEntity
-	at io.netty.handler.codec.ReplayingDecoder.callDecode(ReplayingDecoder.java:421)
-	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:290)
-	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:444)
-	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
-	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412)
-	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
-	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:440)
-	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
-	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
-	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:166)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
-	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
-	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
-	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
-	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
-	at java.lang.Thread.run(Thread.java:750)
-Caused by: com.esotericsoftware.kryo.KryoException: Unable to find class: cn.hush.domain.strategy.model.entity.StrategyAwardEntity
-	at com.esotericsoftware.kryo.util.DefaultClassResolver.readName(DefaultClassResolver.java:182)
-	at com.esotericsoftware.kryo.util.DefaultClassResolver.readClass(DefaultClassResolver.java:151)
-	at com.esotericsoftware.kryo.Kryo.readClass(Kryo.java:758)
-	at com.esotericsoftware.kryo.serializers.CollectionSerializer.read(CollectionSerializer.java:222)
-	at com.esotericsoftware.kryo.serializers.CollectionSerializer.read(CollectionSerializer.java:44)
-	at com.esotericsoftware.kryo.Kryo.readClassAndObject(Kryo.java:880)
-	at org.redisson.codec.Kryo5Codec$4.decode(Kryo5Codec.java:144)
-	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:394)
-	at org.redisson.client.handler.CommandDecoder.decodeCommand(CommandDecoder.java:205)
-	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:144)
-	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:120)
-	at io.netty.handler.codec.ByteToMessageDecoder.decodeRemovalReentryProtection(ByteToMessageDecoder.java:529)
-	at io.netty.handler.codec.ReplayingDecoder.callDecode(ReplayingDecoder.java:366)
-	... 17 common frames omitted
-Caused by: java.lang.ClassNotFoundException: cn.hush.domain.strategy.model.entity.StrategyAwardEntity
-	at java.net.URLClassLoader.findClass(URLClassLoader.java:387)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:418)
-	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:352)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:351)
-	at java.lang.Class.forName0(Native Method)
-	at java.lang.Class.forName(Class.java:348)
-	at com.esotericsoftware.kryo.util.DefaultClassResolver.readName(DefaultClassResolver.java:176)
-	... 29 common frames omitted
-24-08-29.02:07:03.516 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 21672 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.02:07:03.519 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.02:07:05.224 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.02:07:05.229 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.02:07:05.263 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 13 ms. Found 0 Redis repository interfaces.
-24-08-29.02:07:09.979 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.02:07:13.646 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:07:13.662 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:07:15.788 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.02:07:15.876 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 12.981 seconds (JVM running for 13.979)
-24-08-29.02:08:23.554 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 4024 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.02:08:23.555 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.02:08:25.071 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.02:08:25.078 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.02:08:25.125 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 20 ms. Found 0 Redis repository interfaces.
-24-08-29.02:08:30.536 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.02:08:33.967 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:08:33.997 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:08:36.438 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.02:08:36.523 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 13.536 seconds (JVM running for 14.651)
-24-08-29.02:19:04.868 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 11060 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.02:19:04.870 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.02:19:06.102 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.02:19:06.107 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.02:19:06.160 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 20 ms. Found 0 Redis repository interfaces.
-24-08-29.02:19:12.945 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.02:19:13.834 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 11956 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.02:19:13.836 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.02:19:15.531 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.02:19:15.542 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.02:19:15.595 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 23 ms. Found 0 Redis repository interfaces.
-24-08-29.02:19:19.345 [redisson-netty-2-5] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:19:19.381 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:19:23.704 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.02:19:23.842 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 19.571 seconds (JVM running for 20.981)
-24-08-29.02:19:24.040 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.02:19:29.951 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 22412 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.02:19:29.953 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.02:19:30.814 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:19:30.865 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:19:33.098 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.02:19:33.176 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.02:19:33.368 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 42 ms. Found 0 Redis repository interfaces.
-24-08-29.02:19:46.455 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.02:19:52.747 [redisson-netty-2-5] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:19:52.769 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:20:42.270 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.02:20:42.663 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 73.661 seconds (JVM running for 75.918)
-24-08-29.02:20:42.730 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.02:20:42.956 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 90.458 seconds (JVM running for 92.626)
-24-08-29.02:20:48.469 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 20040 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.02:20:48.471 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.02:20:49.949 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.02:20:49.958 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.02:20:50.027 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 27 ms. Found 0 Redis repository interfaces.
-24-08-29.02:20:55.335 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.02:20:58.701 [redisson-netty-2-5] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:20:58.719 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:29:23.376 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.02:29:23.661 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 515.843 seconds (JVM running for 517.393)
-24-08-29.02:29:23.803 [redisson-netty-2-12] ERROR ErrorsLoggingHandler   - Exception occured. Channel: [id: 0x16d7a847, L:/127.0.0.1:54281 - R:127.0.0.1/127.0.0.1:6379]
-java.io.IOException: 远程主机强迫关闭了一个现有的连接。
-	at sun.nio.ch.SocketDispatcher.read0(Native Method)
-	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43)
-	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
-	at sun.nio.ch.IOUtil.read(IOUtil.java:192)
-	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:379)
-	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:256)
-	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132)
-	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:357)
-	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
-	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
-	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
-	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
-	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
-	at java.lang.Thread.run(Thread.java:750)
-24-08-29.02:29:39.288 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 22420 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.02:29:39.290 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.02:29:40.582 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.02:29:40.588 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.02:29:40.642 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 21 ms. Found 0 Redis repository interfaces.
-24-08-29.02:29:45.830 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.02:29:49.818 [redisson-netty-2-5] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:29:49.839 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:30:38.178 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.02:30:38.350 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 59.656 seconds (JVM running for 61.03)
-24-08-29.02:30:42.407 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 20504 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.02:30:42.408 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.02:30:43.579 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.02:30:43.583 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.02:30:43.634 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 20 ms. Found 0 Redis repository interfaces.
-24-08-29.02:30:48.959 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.02:30:52.300 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:30:52.321 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:30:55.010 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.02:30:55.120 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 13.335 seconds (JVM running for 14.669)
-24-08-29.02:35:48.429 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 21468 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.02:35:48.432 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.02:35:49.878 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.02:35:49.884 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.02:35:49.931 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 16 ms. Found 0 Redis repository interfaces.
-24-08-29.02:35:55.310 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.02:35:58.852 [redisson-netty-2-5] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:35:58.871 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:36:02.229 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.02:36:02.351 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 14.526 seconds (JVM running for 15.84)
-24-08-29.02:36:39.778 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 2908 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.02:36:39.779 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.02:36:41.115 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.02:36:41.122 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.02:36:41.166 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 16 ms. Found 0 Redis repository interfaces.
-24-08-29.02:36:46.118 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.02:36:49.353 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:36:49.372 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:36:51.804 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.02:36:51.916 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 12.751 seconds (JVM running for 14.078)
-24-08-29.02:40:33.375 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 15904 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.02:40:33.377 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.02:40:34.726 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.02:40:34.732 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.02:40:34.779 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 17 ms. Found 0 Redis repository interfaces.
-24-08-29.02:40:39.957 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.02:40:43.113 [redisson-netty-2-5] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:40:43.145 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:41:25.433 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.02:41:25.582 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 52.832 seconds (JVM running for 54.176)
-24-08-29.02:41:29.195 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 3880 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.02:41:29.196 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.02:41:30.353 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.02:41:30.358 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.02:41:30.403 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 22 ms. Found 0 Redis repository interfaces.
-24-08-29.02:41:35.448 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.02:41:38.621 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:41:38.640 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:41:41.473 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.02:41:41.691 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 13.055 seconds (JVM running for 14.232)
-24-08-29.02:42:36.030 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 19508 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.02:42:36.032 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.02:42:37.345 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.02:42:37.350 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.02:42:37.399 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 19 ms. Found 0 Redis repository interfaces.
-24-08-29.02:42:42.470 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.02:42:46.566 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:42:46.600 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:42:50.483 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.02:42:50.608 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 15.237 seconds (JVM running for 16.52)
-24-08-29.02:45:02.826 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 19592 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.02:45:02.829 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.02:45:04.123 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.02:45:04.127 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.02:45:04.174 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 19 ms. Found 0 Redis repository interfaces.
-24-08-29.02:45:09.306 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.02:45:12.392 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:45:12.409 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:45:14.653 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.02:45:14.736 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 12.514 seconds (JVM running for 13.897)
-24-08-29.02:46:03.616 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 11820 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.02:46:03.617 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.02:46:04.712 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.02:46:04.716 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.02:46:04.754 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 17 ms. Found 0 Redis repository interfaces.
-24-08-29.02:46:09.756 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.02:46:13.023 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:46:13.054 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:46:16.103 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.02:46:16.208 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 13.196 seconds (JVM running for 14.443)
-24-08-29.02:46:56.641 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 11944 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.02:46:56.642 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.02:46:57.684 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.02:46:57.688 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.02:46:57.715 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 13 ms. Found 0 Redis repository interfaces.
-24-08-29.02:47:02.216 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.02:47:05.562 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:47:05.578 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:47:07.599 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.02:47:07.676 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 11.537 seconds (JVM running for 12.583)
-24-08-29.02:49:23.486 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 8524 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.02:49:23.487 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.02:49:24.554 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.02:49:24.557 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.02:49:24.589 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 15 ms. Found 0 Redis repository interfaces.
-24-08-29.02:49:29.487 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.02:49:32.871 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:49:32.888 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:49:34.886 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.02:49:34.946 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 11.964 seconds (JVM running for 13.031)
-24-08-29.02:49:45.585 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 16348 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.02:49:45.586 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.02:49:46.775 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.02:49:46.780 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.02:49:46.838 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 21 ms. Found 0 Redis repository interfaces.
-24-08-29.02:49:51.881 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.02:49:55.204 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:49:55.225 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:49:57.999 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.02:49:58.102 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 13.11 seconds (JVM running for 14.4)
-24-08-29.02:51:32.067 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 13056 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.02:51:32.070 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.02:51:33.288 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.02:51:33.292 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.02:51:33.329 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 14 ms. Found 0 Redis repository interfaces.
-24-08-29.02:51:38.327 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.02:51:41.480 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:51:41.512 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:51:43.946 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.02:51:44.401 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 12.92 seconds (JVM running for 14.159)
-24-08-29.02:52:05.251 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 10428 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.02:52:05.254 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.02:52:06.287 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.02:52:06.291 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.02:52:06.327 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 15 ms. Found 0 Redis repository interfaces.
-24-08-29.02:52:11.170 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.02:52:14.543 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:52:14.576 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.02:52:16.805 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.02:52:16.931 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 12.239 seconds (JVM running for 13.453)
-24-08-29.03:00:16.794 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 4864 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.03:00:16.796 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.03:00:18.161 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.03:00:18.167 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.03:00:18.213 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 20 ms. Found 0 Redis repository interfaces.
-24-08-29.03:00:23.304 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.03:00:26.853 [redisson-netty-2-5] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.03:00:26.869 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.03:00:29.182 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.03:00:29.288 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 13.092 seconds (JVM running for 14.35)
-24-08-29.03:09:22.123 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 7828 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.03:09:22.125 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.03:09:23.457 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.03:09:23.465 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.03:09:23.516 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 21 ms. Found 0 Redis repository interfaces.
-24-08-29.03:09:28.660 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.03:09:32.101 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.03:09:32.119 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.03:09:34.706 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.03:09:34.823 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 13.36 seconds (JVM running for 14.789)
-24-08-29.03:09:40.555 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 5116 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.03:09:40.556 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.03:09:41.714 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.03:09:41.716 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.03:09:41.747 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 14 ms. Found 0 Redis repository interfaces.
-24-08-29.03:09:46.848 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.03:09:50.268 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.03:09:50.284 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.03:09:52.488 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.03:09:52.573 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 12.534 seconds (JVM running for 13.584)
-24-08-29.03:11:33.315 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 19260 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.03:11:33.317 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.03:11:34.725 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.03:11:34.730 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.03:11:34.779 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 22 ms. Found 0 Redis repository interfaces.
-24-08-29.03:11:40.437 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.03:11:44.230 [redisson-netty-2-5] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.03:11:44.252 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.03:11:46.474 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.03:11:46.560 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 13.852 seconds (JVM running for 15.1)
-24-08-29.03:12:35.736 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 12788 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.03:12:35.737 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.03:12:36.815 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.03:12:36.819 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.03:12:36.855 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 12 ms. Found 0 Redis repository interfaces.
-24-08-29.03:12:41.398 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.03:12:44.404 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.03:12:44.421 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.03:12:46.255 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.03:12:46.324 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 11.071 seconds (JVM running for 12.037)
-24-08-29.03:13:13.420 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 5948 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.03:13:13.421 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.03:13:14.436 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.03:13:14.440 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.03:13:14.471 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 13 ms. Found 0 Redis repository interfaces.
-24-08-29.03:13:19.106 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.03:13:22.173 [redisson-netty-2-5] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.03:13:22.191 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.03:13:24.339 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.03:13:24.415 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 11.454 seconds (JVM running for 12.335)
-24-08-29.03:13:25.136 [main            ] INFO  HikariDataSource       - HikariPool-1 - Starting...
-24-08-29.03:13:25.746 [main            ] INFO  HikariDataSource       - HikariPool-1 - Start completed.
-24-08-29.03:13:26.004 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown initiated...
-24-08-29.03:13:26.020 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown completed.
-24-08-29.03:13:35.958 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 20776 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.03:13:35.960 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.03:13:36.965 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.03:13:36.968 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.03:13:37.004 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 13 ms. Found 0 Redis repository interfaces.
-24-08-29.03:13:42.097 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.03:13:45.147 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.03:13:45.164 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.03:13:47.025 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.03:13:47.096 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 11.632 seconds (JVM running for 12.571)
-24-08-29.03:18:12.785 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 12300 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.03:18:12.786 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.03:18:14.000 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.03:18:14.005 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.03:18:14.040 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 15 ms. Found 0 Redis repository interfaces.
-24-08-29.03:18:18.636 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.03:18:21.823 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.03:18:21.845 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.03:18:23.993 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.03:18:24.069 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 11.839 seconds (JVM running for 13.043)
-24-08-29.03:24:08.889 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 16404 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.03:24:08.890 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.03:24:09.989 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.03:24:09.997 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.03:24:10.054 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 27 ms. Found 0 Redis repository interfaces.
-24-08-29.03:24:15.128 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.03:24:18.255 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.03:24:18.269 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.03:24:20.095 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.03:24:20.159 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 11.764 seconds (JVM running for 12.732)
-24-08-29.03:24:43.869 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 1380 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.03:24:43.870 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.03:24:44.831 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.03:24:44.835 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.03:24:44.875 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 21 ms. Found 0 Redis repository interfaces.
-24-08-29.03:24:49.429 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.03:24:52.633 [redisson-netty-2-5] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.03:24:52.651 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.03:24:54.647 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.03:24:54.728 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 11.301 seconds (JVM running for 12.308)
-24-08-29.03:24:55.200 [main            ] INFO  HikariDataSource       - HikariPool-1 - Starting...
-24-08-29.03:24:55.414 [main            ] INFO  HikariDataSource       - HikariPool-1 - Start completed.
-24-08-29.03:24:55.557 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown initiated...
-24-08-29.03:24:55.565 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown completed.
-24-08-29.03:25:01.971 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 21472 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.03:25:01.972 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.03:25:03.071 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.03:25:03.075 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.03:25:03.108 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 14 ms. Found 0 Redis repository interfaces.
-24-08-29.03:25:07.678 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.03:25:10.692 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.03:25:10.716 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.03:25:12.644 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.03:25:12.728 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 11.227 seconds (JVM running for 12.22)
-24-08-29.22:26:50.423 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 16720 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.22:26:50.424 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.22:26:51.809 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.22:26:51.818 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.22:26:51.891 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 35 ms. Found 0 Redis repository interfaces.
-24-08-29.22:26:57.842 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.22:27:01.535 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.22:27:01.568 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.22:27:03.557 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.22:27:03.646 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 13.877 seconds (JVM running for 15.477)
-24-08-29.22:27:04.118 [main            ] INFO  HikariDataSource       - HikariPool-1 - Starting...
-24-08-29.22:27:04.412 [main            ] INFO  HikariDataSource       - HikariPool-1 - Start completed.
-24-08-29.22:27:04.685 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown initiated...
-24-08-29.22:27:04.705 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown completed.
-24-08-29.22:27:15.570 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 23504 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.22:27:15.571 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.22:27:16.722 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.22:27:16.726 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.22:27:16.753 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 12 ms. Found 0 Redis repository interfaces.
-24-08-29.22:27:21.677 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.22:27:24.935 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.22:27:24.954 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.22:27:26.885 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.22:27:26.949 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 11.971 seconds (JVM running for 13.09)
-24-08-29.22:27:48.708 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 18500 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.22:27:48.710 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.22:27:50.606 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.22:27:50.612 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.22:27:50.663 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 21 ms. Found 0 Redis repository interfaces.
-24-08-29.22:27:56.966 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.22:28:00.156 [redisson-netty-2-5] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.22:28:00.180 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.22:28:03.639 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.22:28:03.753 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 15.686 seconds (JVM running for 17.538)
-24-08-29.22:29:09.859 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 19892 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.22:29:09.860 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.22:29:11.153 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.22:29:11.158 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.22:29:11.203 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 18 ms. Found 0 Redis repository interfaces.
-24-08-29.22:29:16.392 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.22:29:19.804 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.22:29:19.822 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.22:29:22.202 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.22:29:22.297 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 13.162 seconds (JVM running for 14.701)
-24-08-29.22:30:32.932 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 4940 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.22:30:32.934 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.22:30:34.090 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.22:30:34.094 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.22:30:34.138 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 21 ms. Found 0 Redis repository interfaces.
-24-08-29.22:30:39.122 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.22:30:42.173 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.22:30:42.196 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.22:30:44.950 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.22:30:45.038 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 12.788 seconds (JVM running for 14.229)
-24-08-29.22:33:15.739 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 14124 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.22:33:15.741 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.22:33:17.613 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.22:33:17.619 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.22:33:17.684 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 22 ms. Found 0 Redis repository interfaces.
-24-08-29.22:33:24.203 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.22:33:24.696 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 14552 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.22:33:24.699 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.22:33:26.505 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.22:33:26.511 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.22:33:26.569 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 25 ms. Found 0 Redis repository interfaces.
-24-08-29.22:33:30.769 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.22:33:30.799 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.22:33:34.358 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.22:33:34.468 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 19.377 seconds (JVM running for 20.868)
-24-08-29.22:33:35.153 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.22:33:39.249 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.22:33:39.269 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.22:33:41.640 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.22:33:41.740 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 18.21 seconds (JVM running for 20.519)
-24-08-29.22:33:50.190 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 5096 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.22:33:50.192 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.22:33:51.373 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.22:33:51.379 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.22:33:51.421 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 19 ms. Found 0 Redis repository interfaces.
-24-08-29.22:33:56.597 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.22:33:59.652 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.22:33:59.693 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.22:34:02.264 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.22:34:02.382 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 12.813 seconds (JVM running for 14.376)
-24-08-29.22:50:48.277 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 22644 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.22:50:48.279 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.22:50:49.724 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.22:50:49.729 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.22:50:49.772 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 19 ms. Found 0 Redis repository interfaces.
-24-08-29.22:50:54.263 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.22:50:57.345 [redisson-netty-2-5] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.22:50:57.363 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.22:50:59.377 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.22:50:59.455 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 11.694 seconds (JVM running for 12.71)
-24-08-29.22:51:33.633 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 18888 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.22:51:33.635 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.22:51:35.064 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.22:51:35.070 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.22:51:35.119 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 23 ms. Found 0 Redis repository interfaces.
-24-08-29.22:51:40.204 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.22:51:43.122 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.22:51:43.140 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.22:51:45.477 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.22:51:45.575 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 12.55 seconds (JVM running for 13.934)
-24-08-29.23:11:10.737 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 20764 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.23:11:10.738 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.23:11:12.018 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.23:11:12.021 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.23:11:12.065 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 16 ms. Found 0 Redis repository interfaces.
-24-08-29.23:11:16.724 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.23:11:19.817 [redisson-netty-2-5] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.23:11:19.842 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.23:11:22.441 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.23:11:22.536 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 12.404 seconds (JVM running for 13.878)
-24-08-29.23:15:49.534 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 22372 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.23:15:49.536 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.23:15:50.819 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.23:15:50.824 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.23:15:50.869 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 18 ms. Found 0 Redis repository interfaces.
-24-08-29.23:15:56.209 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.23:15:59.340 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.23:15:59.362 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.23:16:01.820 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.23:16:01.924 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 12.958 seconds (JVM running for 14.433)
-24-08-29.23:17:17.484 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 4988 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.23:17:17.486 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.23:17:18.791 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.23:17:18.797 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.23:17:18.835 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 16 ms. Found 0 Redis repository interfaces.
-24-08-29.23:17:23.645 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.23:17:26.761 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.23:17:26.781 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.23:17:29.159 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.23:17:29.256 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 12.368 seconds (JVM running for 13.673)
-24-08-29.23:34:03.475 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 22976 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.23:34:03.476 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.23:34:04.863 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.23:34:04.873 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.23:34:04.998 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 33 ms. Found 0 Redis repository interfaces.
-24-08-29.23:34:09.699 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.23:34:13.014 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.23:34:13.033 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.23:34:15.341 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.23:34:15.438 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 12.738 seconds (JVM running for 14.362)
-24-08-29.23:34:29.426 [main            ] INFO  StrategyArmoryTest     - Starting StrategyArmoryTest using Java 1.8.0_412 on Trickle with PID 4888 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
-24-08-29.23:34:29.427 [main            ] INFO  StrategyArmoryTest     - The following 1 profile is active: "dev"
-24-08-29.23:34:30.687 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-24-08-29.23:34:30.692 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-24-08-29.23:34:30.733 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 18 ms. Found 0 Redis repository interfaces.
-24-08-29.23:34:35.768 [main            ] INFO  Version                - Redisson 3.23.4
-24-08-29.23:34:39.237 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.23:34:39.259 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-24-08-29.23:34:41.615 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-24-08-29.23:34:41.709 [main            ] INFO  StrategyArmoryTest     - Started StrategyArmoryTest in 12.957 seconds (JVM running for 14.566)
+24-09-05.02:50:07.816 [main            ] INFO  StrategyArmoryDispatchTest - Starting StrategyArmoryDispatchTest using Java 1.8.0_412 on Trickle with PID 20224 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
+24-09-05.02:50:07.819 [main            ] INFO  StrategyArmoryDispatchTest - The following 1 profile is active: "dev"
+24-09-05.02:50:09.512 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+24-09-05.02:50:09.517 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+24-09-05.02:50:09.569 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 24 ms. Found 0 Redis repository interfaces.
+24-09-05.02:50:14.679 [main            ] INFO  Version                - Redisson 3.23.4
+24-09-05.02:50:18.268 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
+24-09-05.02:50:18.287 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
+24-09-05.02:50:20.451 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+24-09-05.02:50:20.533 [main            ] INFO  StrategyArmoryDispatchTest - Started StrategyArmoryDispatchTest in 13.34 seconds (JVM running for 14.581)
+24-09-05.02:50:21.224 [main            ] INFO  HikariDataSource       - HikariPool-1 - Starting...
+24-09-05.02:50:21.510 [main            ] INFO  HikariDataSource       - HikariPool-1 - Start completed.
+24-09-05.02:50:21.996 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown initiated...
+24-09-05.02:50:22.013 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown completed.
+24-09-05.02:51:41.352 [main            ] INFO  StrategyArmoryDispatchTest - Starting StrategyArmoryDispatchTest using Java 1.8.0_412 on Trickle with PID 16236 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
+24-09-05.02:51:41.353 [main            ] INFO  StrategyArmoryDispatchTest - The following 1 profile is active: "dev"
+24-09-05.02:51:42.642 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+24-09-05.02:51:42.650 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+24-09-05.02:51:42.754 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 43 ms. Found 0 Redis repository interfaces.
+24-09-05.02:51:48.613 [main            ] INFO  Version                - Redisson 3.23.4
+24-09-05.02:51:51.848 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
+24-09-05.02:51:51.866 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
+24-09-05.02:51:54.883 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+24-09-05.02:51:55.005 [main            ] INFO  StrategyArmoryDispatchTest - Started StrategyArmoryDispatchTest in 14.312 seconds (JVM running for 16.171)
+24-09-05.02:52:19.980 [main            ] INFO  HikariDataSource       - HikariPool-1 - Starting...
+24-09-05.02:52:20.193 [main            ] INFO  HikariDataSource       - HikariPool-1 - Start completed.
+24-09-05.02:53:31.614 [HikariPool-1 housekeeper] WARN  HikariPool             - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=47s183ms524µs600ns).
+24-09-05.02:53:40.377 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown initiated...
+24-09-05.02:53:40.397 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown completed.
+24-09-05.02:54:55.605 [main            ] INFO  StrategyArmoryDispatchTest - Starting StrategyArmoryDispatchTest using Java 1.8.0_412 on Trickle with PID 3732 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
+24-09-05.02:54:55.606 [main            ] INFO  StrategyArmoryDispatchTest - The following 1 profile is active: "dev"
+24-09-05.02:54:56.671 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+24-09-05.02:54:56.676 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+24-09-05.02:54:56.714 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 17 ms. Found 0 Redis repository interfaces.
+24-09-05.02:55:01.318 [main            ] INFO  Version                - Redisson 3.23.4
+24-09-05.02:55:04.486 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
+24-09-05.02:55:04.502 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
+24-09-05.02:55:06.454 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+24-09-05.02:55:06.527 [main            ] INFO  StrategyArmoryDispatchTest - Started StrategyArmoryDispatchTest in 11.437 seconds (JVM running for 12.453)
+24-09-05.02:55:07.262 [main            ] INFO  HikariDataSource       - HikariPool-1 - Starting...
+24-09-05.02:55:07.477 [main            ] INFO  HikariDataSource       - HikariPool-1 - Start completed.
+24-09-05.02:55:07.562 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown initiated...
+24-09-05.02:55:07.570 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown completed.
+24-09-05.02:57:44.138 [main            ] INFO  StrategyArmoryDispatchTest - Starting StrategyArmoryDispatchTest using Java 1.8.0_412 on Trickle with PID 17424 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
+24-09-05.02:57:44.139 [main            ] INFO  StrategyArmoryDispatchTest - The following 1 profile is active: "dev"
+24-09-05.02:57:45.230 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+24-09-05.02:57:45.236 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+24-09-05.02:57:45.282 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 20 ms. Found 0 Redis repository interfaces.
+24-09-05.02:57:50.371 [main            ] INFO  Version                - Redisson 3.23.4
+24-09-05.02:57:54.179 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
+24-09-05.02:57:54.197 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
+24-09-05.02:57:56.729 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+24-09-05.02:57:56.793 [main            ] INFO  StrategyArmoryDispatchTest - Started StrategyArmoryDispatchTest in 13.185 seconds (JVM running for 14.11)
+24-09-05.02:58:51.126 [main            ] INFO  StrategyArmoryDispatchTest - Starting StrategyArmoryDispatchTest using Java 1.8.0_412 on Trickle with PID 23228 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
+24-09-05.02:58:51.127 [main            ] INFO  StrategyArmoryDispatchTest - The following 1 profile is active: "dev"
+24-09-05.02:58:52.206 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+24-09-05.02:58:52.210 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+24-09-05.02:58:52.250 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 19 ms. Found 0 Redis repository interfaces.
+24-09-05.02:58:57.206 [main            ] INFO  Version                - Redisson 3.23.4
+24-09-05.02:59:00.445 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
+24-09-05.02:59:00.462 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
+24-09-05.02:59:02.628 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+24-09-05.02:59:02.709 [main            ] INFO  StrategyArmoryDispatchTest - Started StrategyArmoryDispatchTest in 12.048 seconds (JVM running for 12.878)
+24-09-05.03:00:01.425 [main            ] INFO  StrategyArmoryDispatchTest - Starting StrategyArmoryDispatchTest using Java 1.8.0_412 on Trickle with PID 16064 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
+24-09-05.03:00:01.427 [main            ] INFO  StrategyArmoryDispatchTest - The following 1 profile is active: "dev"
+24-09-05.03:00:02.751 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+24-09-05.03:00:02.759 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+24-09-05.03:00:02.817 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 21 ms. Found 0 Redis repository interfaces.
+24-09-05.03:00:08.248 [main            ] INFO  Version                - Redisson 3.23.4
+24-09-05.03:00:11.399 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
+24-09-05.03:00:11.420 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
+24-09-05.03:00:13.822 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+24-09-05.03:00:13.910 [main            ] INFO  StrategyArmoryDispatchTest - Started StrategyArmoryDispatchTest in 13.126 seconds (JVM running for 14.676)
+24-09-05.03:18:25.850 [main            ] INFO  StrategyArmoryDispatchTest - Starting StrategyArmoryDispatchTest using Java 1.8.0_412 on Trickle with PID 21884 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
+24-09-05.03:18:25.851 [main            ] INFO  StrategyArmoryDispatchTest - The following 1 profile is active: "dev"
+24-09-05.03:18:27.130 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+24-09-05.03:18:27.142 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+24-09-05.03:18:27.187 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 17 ms. Found 0 Redis repository interfaces.
+24-09-05.03:18:31.951 [main            ] INFO  Version                - Redisson 3.23.4
+24-09-05.03:18:35.520 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
+24-09-05.03:18:35.536 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
+24-09-05.03:18:38.183 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+24-09-05.03:18:38.259 [main            ] INFO  StrategyArmoryDispatchTest - Started StrategyArmoryDispatchTest in 13.026 seconds (JVM running for 13.936)
+24-09-05.03:28:03.236 [main            ] INFO  StrategyArmoryDispatchTest - Starting StrategyArmoryDispatchTest using Java 1.8.0_412 on Trickle with PID 5252 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
+24-09-05.03:28:03.237 [main            ] INFO  StrategyArmoryDispatchTest - The following 1 profile is active: "dev"
+24-09-05.03:28:04.364 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+24-09-05.03:28:04.368 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+24-09-05.03:28:04.406 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 17 ms. Found 0 Redis repository interfaces.
+24-09-05.03:28:08.768 [main            ] INFO  Version                - Redisson 3.23.4
+24-09-05.03:28:11.897 [redisson-netty-2-5] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
+24-09-05.03:28:11.914 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
+24-09-05.03:28:13.880 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+24-09-05.03:28:13.946 [main            ] INFO  StrategyArmoryDispatchTest - Started StrategyArmoryDispatchTest in 11.222 seconds (JVM running for 12.121)
+24-09-05.03:44:40.351 [main            ] INFO  StrategyArmoryDispatchTest - Starting StrategyArmoryDispatchTest using Java 1.8.0_412 on Trickle with PID 23896 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
+24-09-05.03:44:40.352 [main            ] INFO  StrategyArmoryDispatchTest - The following 1 profile is active: "dev"
+24-09-05.03:44:41.516 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+24-09-05.03:44:41.520 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+24-09-05.03:44:41.561 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 18 ms. Found 0 Redis repository interfaces.
+24-09-05.03:44:46.187 [main            ] INFO  Version                - Redisson 3.23.4
+24-09-05.03:44:49.474 [redisson-netty-2-5] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
+24-09-05.03:44:49.493 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
+24-09-05.03:44:51.397 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+24-09-05.03:44:51.469 [main            ] INFO  StrategyArmoryDispatchTest - Started StrategyArmoryDispatchTest in 11.624 seconds (JVM running for 12.56)
+24-09-05.03:44:51.937 [main            ] INFO  HikariDataSource       - HikariPool-1 - Starting...
+24-09-05.03:44:52.152 [main            ] INFO  HikariDataSource       - HikariPool-1 - Start completed.
+24-09-05.03:44:52.832 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown initiated...
+24-09-05.03:44:52.847 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown completed.
+24-09-05.03:46:32.861 [main            ] INFO  StrategyArmoryDispatchTest - Starting StrategyArmoryDispatchTest using Java 1.8.0_412 on Trickle with PID 17952 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
+24-09-05.03:46:32.862 [main            ] INFO  StrategyArmoryDispatchTest - The following 1 profile is active: "dev"
+24-09-05.03:46:34.198 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+24-09-05.03:46:34.204 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+24-09-05.03:46:34.246 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 19 ms. Found 0 Redis repository interfaces.
+24-09-05.03:46:40.113 [main            ] INFO  Version                - Redisson 3.23.4
+24-09-05.03:46:43.740 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
+24-09-05.03:46:43.778 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
+24-09-05.03:46:46.732 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+24-09-05.03:46:46.824 [main            ] INFO  StrategyArmoryDispatchTest - Started StrategyArmoryDispatchTest in 14.581 seconds (JVM running for 16.285)
+24-09-05.03:46:47.613 [main            ] INFO  HikariDataSource       - HikariPool-1 - Starting...
+24-09-05.03:46:47.821 [main            ] INFO  HikariDataSource       - HikariPool-1 - Start completed.
+24-09-05.03:49:01.378 [HikariPool-1 housekeeper] WARN  HikariPool             - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m43s556ms930µs100ns).
+24-09-05.03:51:55.522 [HikariPool-1 housekeeper] WARN  HikariPool             - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m54s144ms907µs100ns).
+24-09-05.03:51:55.767 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown initiated...
+24-09-05.03:51:55.793 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown completed.
+24-09-05.03:52:02.538 [main            ] INFO  StrategyArmoryDispatchTest - Starting StrategyArmoryDispatchTest using Java 1.8.0_412 on Trickle with PID 21828 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
+24-09-05.03:52:02.539 [main            ] INFO  StrategyArmoryDispatchTest - The following 1 profile is active: "dev"
+24-09-05.03:52:03.637 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+24-09-05.03:52:03.641 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+24-09-05.03:52:03.681 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 17 ms. Found 0 Redis repository interfaces.
+24-09-05.03:52:08.127 [main            ] INFO  Version                - Redisson 3.23.4
+24-09-05.03:52:11.250 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
+24-09-05.03:52:11.267 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
+24-09-05.03:52:13.570 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+24-09-05.03:52:13.651 [main            ] INFO  StrategyArmoryDispatchTest - Started StrategyArmoryDispatchTest in 11.637 seconds (JVM running for 12.606)
+24-09-05.03:52:14.568 [main            ] INFO  HikariDataSource       - HikariPool-1 - Starting...
+24-09-05.03:52:14.774 [main            ] INFO  HikariDataSource       - HikariPool-1 - Start completed.
+24-09-05.03:52:15.079 [main            ] INFO  StrategyArmoryDispatchTest - 测试结果：true
+24-09-05.03:52:15.084 [main            ] INFO  StrategyArmoryDispatchTest - 测试结果：101 - 奖品ID值
+24-09-05.03:52:15.147 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown initiated...
+24-09-05.03:52:15.187 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown completed.
+24-09-05.03:53:06.316 [main            ] INFO  StrategyArmoryDispatchTest - Starting StrategyArmoryDispatchTest using Java 1.8.0_412 on Trickle with PID 19812 (started by Administrator in D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-app)
+24-09-05.03:53:06.317 [main            ] INFO  StrategyArmoryDispatchTest - The following 1 profile is active: "dev"
+24-09-05.03:53:07.553 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+24-09-05.03:53:07.557 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+24-09-05.03:53:07.594 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 16 ms. Found 0 Redis repository interfaces.
+24-09-05.03:53:12.050 [main            ] INFO  Version                - Redisson 3.23.4
+24-09-05.03:53:15.202 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
+24-09-05.03:53:15.219 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
+24-09-05.03:53:17.351 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+24-09-05.03:53:17.416 [main            ] INFO  StrategyArmoryDispatchTest - Started StrategyArmoryDispatchTest in 11.664 seconds (JVM running for 12.567)
+24-09-05.03:53:18.219 [main            ] INFO  HikariDataSource       - HikariPool-1 - Starting...
+24-09-05.03:53:18.395 [main            ] INFO  HikariDataSource       - HikariPool-1 - Start completed.
+24-09-05.03:53:18.474 [main            ] INFO  StrategyArmoryDispatchTest - 测试结果：true
+24-09-05.03:53:18.477 [main            ] INFO  StrategyArmoryDispatchTest - 测试结果：102 - 4000 策略配置
+24-09-05.03:53:18.480 [main            ] INFO  StrategyArmoryDispatchTest - 测试结果：106 - 5000 策略配置
+24-09-05.03:53:18.482 [main            ] INFO  StrategyArmoryDispatchTest - 测试结果：102 - 6000 策略配置
+24-09-05.03:53:18.521 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown initiated...
+24-09-05.03:53:18.531 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown completed.

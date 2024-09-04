@@ -1,10 +1,13 @@
 package cn.hush.domain.strategy.repository;
 
 import cn.hush.domain.strategy.model.entity.StrategyAwardEntity;
+import cn.hush.domain.strategy.model.entity.StrategyEntity;
+import cn.hush.domain.strategy.model.entity.StrategyRuleEntity;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Hush
@@ -15,9 +18,15 @@ public interface IStrategyRepository {
 
     List<StrategyAwardEntity> queryStrategyAwardList(Long strategyId);
 
-    void storeStrategyAwardSearchRateTables(Long strategyId, BigDecimal rateRange, HashMap<Integer, Integer> shuffledStrategyAwardSearchRateTables);
+    void storeStrategyAwardSearchRateTables(String key, Integer rateRange, Map<Integer, Integer> shuffledStrategyAwardSearchRateTables);
 
-    BigDecimal getRateRange(Long strategyId);
+    int getRateRange(Long strategyId);
 
-    Integer getStrategyAwardAssemble(Long strategyId, int rateKey);
+    int getRateRange(String key);
+
+    Integer getStrategyAwardAssemble(String key, Integer rateKey);
+
+    StrategyEntity queryStrategyEntityByStrategyId(Long strategyId);
+
+    StrategyRuleEntity queryStrategyRule(Long strategyId, String ruleModel);
 }

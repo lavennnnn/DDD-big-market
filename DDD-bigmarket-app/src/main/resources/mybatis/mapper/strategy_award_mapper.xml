@@ -22,6 +22,7 @@
         from big_market.strategy_award
         limit 10
     </select>
+
     <select id="queryStrategyAwardListByStrategyId" resultMap="dataMap">
         select strategy_id, award_id, award_count, award_count_surplus, award_rate
         from big_market.strategy_award
