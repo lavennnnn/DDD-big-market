@@ -100,7 +100,6 @@ public class  StrategyArmoryDispatch implements IStrategyArmory, IStrategyDispat
         }
 
         //7. 存储到redis
-        //todo
         repository.storeStrategyAwardSearchRateTables(key, shuffledStrategyAwardSearchRateTables.size(), shuffledStrategyAwardSearchRateTables);
 
     }

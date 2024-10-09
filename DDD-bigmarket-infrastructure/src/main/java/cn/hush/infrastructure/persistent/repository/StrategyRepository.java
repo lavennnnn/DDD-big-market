@@ -81,7 +81,6 @@ public class StrategyRepository implements IStrategyRepository {
      */
     @Override
     public int getRateRange(Long strategyId) {
-        //todo [ null pointer exception ]
         return getRateRange(String.valueOf(strategyId));
     }
 
@@ -133,4 +132,24 @@ public class StrategyRepository implements IStrategyRepository {
                 .build();
 
     }
+
+    @Override
+    public String queryStrategyRuleValue(Long strategyId, Integer awardId, String ruleModel) {
+        StrategyRulePO strategyRule = new StrategyRulePO();
+        strategyRule.setStrategyId(strategyId);
+        strategyRule.setAwardId(awardId);
+        strategyRule.setRuleModel(ruleModel);
+        return strategyRuleDao.queryStrategyRuleValue(strategyRule);
+
+    }
 }
+
+
+
+
+
+
+
+
+
+
