@@ -3,6 +3,7 @@ package cn.hush.infrastructure.persistent.repository;
 import cn.hush.domain.strategy.model.entity.StrategyAwardEntity;
 import cn.hush.domain.strategy.model.entity.StrategyEntity;
 import cn.hush.domain.strategy.model.entity.StrategyRuleEntity;
+import cn.hush.domain.strategy.model.vo.StrategyAwardRuleModelVO;
 import cn.hush.domain.strategy.repository.IStrategyRepository;
 import cn.hush.infrastructure.persistent.dao.IStrategyAwardDao;
 import cn.hush.infrastructure.persistent.dao.IStrategyDao;
@@ -142,6 +143,18 @@ public class StrategyRepository implements IStrategyRepository {
         return strategyRuleDao.queryStrategyRuleValue(strategyRule);
 
     }
+
+    @Override
+    public StrategyAwardRuleModelVO queryStrategyAwardRuleModelVO(Long strategyId, Integer awardId) {
+        StrategyAwardPO strategyAwardPO = new StrategyAwardPO();
+        strategyAwardPO.setStrategyId(strategyId);
+        strategyAwardPO.setAwardId(awardId);
+        String ruleModel = strategyAwardDao.queryStrategyRuleModelValue(strategyAwardPO);
+        return StrategyAwardRuleModelVO.builder().ruleModels(ruleModel).build();
+    }
+
+
+
 }
 
 

@@ -26,6 +26,14 @@
     <select id="queryStrategyAwardListByStrategyId" resultMap="dataMap">
         select strategy_id, award_id, award_count, award_count_surplus, award_rate
         from big_market.strategy_award
-        where strategy_id = #{strategy_id}
+        where strategy_id = #{strategyId}
     </select>
+
+    <select id="queryStrategyRuleModelValue" resultType="java.lang.String"  parameterType="cn.hush.infrastructure.persistent.po.StrategyAwardPO" >
+        select rule_models
+        from big_market.strategy_award
+        where strategy_id = #{strategyId}
+        and award_id = #{awardId}
+    </select>
+
 </mapper>
