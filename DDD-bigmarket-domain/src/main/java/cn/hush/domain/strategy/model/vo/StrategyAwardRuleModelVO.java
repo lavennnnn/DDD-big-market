@@ -1,6 +1,6 @@
 package cn.hush.domain.strategy.model.vo;
 
-import cn.hush.domain.strategy.service.rule.factory.DefaultLogicFactory;
+import cn.hush.domain.strategy.service.rule.filter.factory.DefaultLogicFactory;
 import cn.hush.types.common.Constants;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

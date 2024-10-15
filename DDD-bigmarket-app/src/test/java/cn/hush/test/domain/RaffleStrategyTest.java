@@ -4,8 +4,8 @@ import cn.hush.domain.strategy.model.entity.RaffleAwardEntity;
 import cn.hush.domain.strategy.model.entity.RaffleFactorEntity;
 import cn.hush.domain.strategy.service.IRaffleStrategy;
 import cn.hush.domain.strategy.service.armory.IStrategyArmory;
-import cn.hush.domain.strategy.service.rule.impl.RuleLockLogicFilter;
-import cn.hush.domain.strategy.service.rule.impl.RuleWeightLogicFilter;
+import cn.hush.domain.strategy.service.rule.chain.impl.RuleWeightLogicChain;
+import cn.hush.domain.strategy.service.rule.filter.impl.RuleLockLogicFilter;
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
@@ -19,7 +19,7 @@ import javax.annotation.Resource;
 
 /**
  * @author Hush
- * @description
+ * @description 奖策略测试
  * @create 2024-10-10 上午2:28
  */
 @Slf4j
@@ -34,7 +34,7 @@ public class RaffleStrategyTest {
     private IRaffleStrategy raffleStrategy;
 
     @Resource
-    private RuleWeightLogicFilter ruleWeightLogicFilter;
+    private RuleWeightLogicChain ruleWeightLogicChain;
 
     @Resource
     private RuleLockLogicFilter ruleLockLogicFilter;
@@ -47,7 +47,7 @@ public class RaffleStrategyTest {
         log.info("测试结果：{}", strategyArmory.assembleLotteryStrategy(100003L));
 
         // 通过反射 mock 规则中的值
-        ReflectionTestUtils.setField(ruleWeightLogicFilter, "userScore", 40500L);
+        ReflectionTestUtils.setField(ruleWeightLogicChain, "userScore", 40500L);
         ReflectionTestUtils.setField(ruleLockLogicFilter, "userRaffleCount", 0L);
 
     }

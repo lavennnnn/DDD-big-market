@@ -1,4 +1,4 @@
-package cn.hush.domain.strategy.service.rule;
+package cn.hush.domain.strategy.service.rule.filter;
 
 import cn.hush.domain.strategy.model.entity.RuleActionEntity;
 import cn.hush.domain.strategy.model.entity.RuleMatterEntity;

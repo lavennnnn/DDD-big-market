@@ -1,8 +1,8 @@
-package cn.hush.domain.strategy.service.rule.factory;
+package cn.hush.domain.strategy.service.rule.filter.factory;
 
 import cn.hush.domain.strategy.model.entity.RuleActionEntity;
 import cn.hush.domain.strategy.service.annotation.LogicStrategy;
-import cn.hush.domain.strategy.service.rule.ILogicFilter;
+import cn.hush.domain.strategy.service.rule.filter.ILogicFilter;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.core.annotation.AnnotationUtils;
