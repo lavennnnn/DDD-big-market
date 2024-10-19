@@ -3,6 +3,7 @@ package cn.hush.domain.strategy.repository;
 import cn.hush.domain.strategy.model.entity.StrategyAwardEntity;
 import cn.hush.domain.strategy.model.entity.StrategyEntity;
 import cn.hush.domain.strategy.model.entity.StrategyRuleEntity;
+import cn.hush.domain.strategy.model.vo.RuleTreeVO;
 import cn.hush.domain.strategy.model.vo.StrategyAwardRuleModelVO;
 
 import java.math.BigDecimal;
@@ -36,6 +37,8 @@ public interface IStrategyRepository {
     String queryStrategyRuleValue(Long strategyId, String ruleModel);
 
     StrategyAwardRuleModelVO queryStrategyAwardRuleModelVO(Long strategyId, Integer awardId);
+
+    RuleTreeVO queryRuleTreeVOByTreeId(String treeLock);
 }
 
 

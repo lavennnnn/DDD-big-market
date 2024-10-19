@@ -3,6 +3,7 @@ package cn.hush.domain.strategy.service.rule.chain.impl;
 import cn.hush.domain.strategy.repository.IStrategyRepository;
 import cn.hush.domain.strategy.service.armory.IStrategyDispatch;
 import cn.hush.domain.strategy.service.rule.chain.AbstractLogicChain;
+import cn.hush.domain.strategy.service.rule.chain.factory.DefaultChainFactory;
 import cn.hush.types.common.Constants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -29,7 +30,7 @@ public class RuleWeightLogicChain extends AbstractLogicChain {
     public Long userScore = 0L;
 
     @Override
-    public Integer logic(String userId, Long strategyId) {
+    public DefaultChainFactory.StrategyAwardVO logic(String userId, Long strategyId) {
         log.info("抽奖责任链-权重开始 userId: {} strategyId: {} ruleModel: {}", userId, strategyId, ruleModel());
 
         String ruleValue = repository.queryStrategyRuleValue(strategyId, ruleModel());
@@ -67,7 +68,10 @@ public class RuleWeightLogicChain extends AbstractLogicChain {
         if (null != nextValue) {
             Integer awardId = strategyDispatch.getRandomAwardId(strategyId, analyticalValueGroup.get(nextValue));
             log.info("抽奖责任链-权重接管 userId: {} strategyId: {} ruleModel: {} awardId: {}", userId, strategyId, ruleModel(), awardId);
-            return awardId;
+            return DefaultChainFactory.StrategyAwardVO.builder()
+                    .awardId(awardId)
+                    .logicModel(ruleModel())
+                    .build();
         }
 
         // 5. 过滤其他责任链
@@ -78,7 +82,7 @@ public class RuleWeightLogicChain extends AbstractLogicChain {
 
     @Override
     protected String ruleModel() {
-        return "rule_weight";
+        return DefaultChainFactory.LogicModel.RULE_WEIGHT.getCode();
     }
 
     //把权重类型放到map中，便于获取

@@ -43,7 +43,7 @@ public class DefaultTreeFactory {
         //接管或放行
         private RuleLogicCheckTypeVO ruleLogicCheckType;
         //供决策树工厂使用的数据
-        private StrategyAwardData strategyAwardData;
+        private StrategyAwardVO strategyAwardVO;
     }
 
     /**
@@ -53,7 +53,7 @@ public class DefaultTreeFactory {
     @Builder
     @AllArgsConstructor
     @NoArgsConstructor
-    public static class StrategyAwardData {
+    public static class StrategyAwardVO {
         /** 抽奖奖品ID - 内部流转使用 */
         private Integer awardId;
         /** 抽奖奖品规则 */
