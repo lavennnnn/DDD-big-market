@@ -3,7 +3,6 @@ package cn.hush.domain.strategy.service.rule.chain.impl;
 import cn.hush.domain.strategy.repository.IStrategyRepository;
 import cn.hush.domain.strategy.service.rule.chain.AbstractLogicChain;
 import cn.hush.domain.strategy.service.rule.chain.factory.DefaultChainFactory;
-import cn.hush.domain.strategy.service.rule.filter.factory.DefaultLogicFactory;
 import cn.hush.types.common.Constants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -51,6 +50,6 @@ public class BlackListLogicChain extends AbstractLogicChain {
 
     @Override
     protected String ruleModel() {
-        return DefaultLogicFactory.LogicModel.RULE_BLACKLIST.getCode();
+        return DefaultChainFactory.LogicModel.RULE_BLACKLIST.getCode();
     }
 }
