@@ -5,6 +5,7 @@ import cn.hush.domain.strategy.model.entity.StrategyEntity;
 import cn.hush.domain.strategy.model.entity.StrategyRuleEntity;
 import cn.hush.domain.strategy.model.vo.RuleTreeVO;
 import cn.hush.domain.strategy.model.vo.StrategyAwardRuleModelVO;
+import cn.hush.domain.strategy.model.vo.StrategyAwardStockKeyVO;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
@@ -39,6 +40,21 @@ public interface IStrategyRepository {
     StrategyAwardRuleModelVO queryStrategyAwardRuleModelVO(Long strategyId, Integer awardId);
 
     RuleTreeVO queryRuleTreeVOByTreeId(String treeLock);
+
+    /**
+     * 缓存奖品库存
+     * @param cacheKey key
+     * @param awardCount 库存值
+     */
+    void cacheStrategyAwardCount(String cacheKey, Integer awardCount);
+
+    Boolean subtractAwardStock(String cacheKey);
+
+    void awardStockConsumeSendQueue(StrategyAwardStockKeyVO strategyAwardStockKeyVO);
+
+    StrategyAwardStockKeyVO takeQueueValue();
+
+    void updateStrategyAwardStock(Long strategyId, Integer awardId);
 }
 
 

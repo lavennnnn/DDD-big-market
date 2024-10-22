@@ -2,6 +2,7 @@ package cn.hush.domain.strategy.service.raffle;
 
 import cn.hush.domain.strategy.model.vo.RuleTreeVO;
 import cn.hush.domain.strategy.model.vo.StrategyAwardRuleModelVO;
+import cn.hush.domain.strategy.model.vo.StrategyAwardStockKeyVO;
 import cn.hush.domain.strategy.repository.IStrategyRepository;
 import cn.hush.domain.strategy.service.AbstractRaffleStrategy;
 import cn.hush.domain.strategy.service.armory.IStrategyDispatch;
@@ -49,6 +50,15 @@ public class DefaultRaffleStrategy extends AbstractRaffleStrategy {
     }
 
 
+    @Override
+    public StrategyAwardStockKeyVO takeQueueValue() throws InterruptedException {
+        return repository.takeQueueValue();
+    }
+
+    @Override
+    public void updateStrategyAwardStock(Long strategyId, Integer awardId) {
+        repository.updateStrategyAwardStock(strategyId, awardId);
+    }
 }
 
 
