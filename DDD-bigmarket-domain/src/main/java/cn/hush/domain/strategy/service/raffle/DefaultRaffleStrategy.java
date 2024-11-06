@@ -1,10 +1,13 @@
 package cn.hush.domain.strategy.service.raffle;
 
+import cn.hush.domain.strategy.model.entity.StrategyAwardEntity;
 import cn.hush.domain.strategy.model.vo.RuleTreeVO;
 import cn.hush.domain.strategy.model.vo.StrategyAwardRuleModelVO;
 import cn.hush.domain.strategy.model.vo.StrategyAwardStockKeyVO;
 import cn.hush.domain.strategy.repository.IStrategyRepository;
 import cn.hush.domain.strategy.service.AbstractRaffleStrategy;
+import cn.hush.domain.strategy.service.IRaffleAward;
+import cn.hush.domain.strategy.service.IRaffleStock;
 import cn.hush.domain.strategy.service.armory.IStrategyDispatch;
 import cn.hush.domain.strategy.service.rule.chain.ILogicChain;
 import cn.hush.domain.strategy.service.rule.chain.factory.DefaultChainFactory;
@@ -12,6 +15,9 @@ import cn.hush.domain.strategy.service.rule.tree.factory.DefaultTreeFactory;
 import cn.hush.domain.strategy.service.rule.tree.factory.engine.IDecisionTreeEngine;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import java.util.Collections;
+import java.util.List;
 
 
 /**
@@ -21,7 +27,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @Slf4j
-public class DefaultRaffleStrategy extends AbstractRaffleStrategy {
+public class DefaultRaffleStrategy extends AbstractRaffleStrategy implements IRaffleAward, IRaffleStock {
 
     public DefaultRaffleStrategy(IStrategyRepository repository, IStrategyDispatch strategyDispatch, DefaultChainFactory defaultChainFactory, DefaultTreeFactory defaultTreeFactory) {
         super(repository, strategyDispatch, defaultChainFactory, defaultTreeFactory);
@@ -59,6 +65,12 @@ public class DefaultRaffleStrategy extends AbstractRaffleStrategy {
     public void updateStrategyAwardStock(Long strategyId, Integer awardId) {
         repository.updateStrategyAwardStock(strategyId, awardId);
     }
+
+    @Override
+    public List<StrategyAwardEntity> queryRaffleStrategyAwardList(Long strategyId) {
+        return repository.queryStrategyAwardList(strategyId);
+    }
+
 }
 
 

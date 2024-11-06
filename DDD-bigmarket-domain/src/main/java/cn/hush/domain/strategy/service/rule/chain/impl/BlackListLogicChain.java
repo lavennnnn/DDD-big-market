@@ -15,7 +15,7 @@ import javax.annotation.Resource;
  * @create 2024-10-14 下午8:23
  */
 @Slf4j
-@Component("rule_blackList")
+@Component("rule_blacklist")
 public class BlackListLogicChain extends AbstractLogicChain {
 
     @Resource
