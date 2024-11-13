@@ -12,6 +12,6 @@ ENV TZ=PRC
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # 添加应用
-ADD target/${artifactId}-app.jar /${artifactId}-app.jar
+ADD target/DDD-bigmarket-app.jar /DDD-bigmarket-app.jar
 
-ENTRYPOINT ["sh","-c","java -jar $JAVA_OPTS /${artifactId}-app.jar $PARAMS"]
+ENTRYPOINT ["sh","-c","java -jar $JAVA_OPTS /DDD-bigmarket-app.jar $PARAMS"]
