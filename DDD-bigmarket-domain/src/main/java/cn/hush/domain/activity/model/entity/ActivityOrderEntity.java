@@ -1,21 +1,22 @@
-package cn.hush.infrastructure.persistent.po;
-
+package cn.hush.domain.activity.model.entity;
+import cn.hush.domain.activity.model.vo.OrderStateVO;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 /**
  * @author Hush
- * @description 抽奖活动单 持久化对象
- * @create 2024-11-14 上午3:06
+ * @description 活动参与实体对象
+ * @create 2024-11-16 上午4:03
  */
 @Data
-public class RaffleActivityOrderPO {
-
-    /**
-     * 自增ID
-     */
-    private Long id;
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class ActivityOrderEntity {
 
     /**
      * 用户ID
@@ -62,20 +63,10 @@ public class RaffleActivityOrderPO {
      */
     private Integer monthCount;
 
-
     /**
      * 订单状态
      */
-    private String state;
+    private OrderStateVO state;
 
-    /**
-     * 创建时间
-     */
-    private Date createTime;
-
-    /**
-     * 更新时间
-     */
-    private Date updateTime;
 
 }

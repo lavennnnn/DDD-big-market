@@ -1,4 +1,4 @@
-package cn.hush.test.domain;
+package cn.hush.test.domain.strategy;
 
 import cn.hush.domain.strategy.model.vo.*;
 import cn.hush.domain.strategy.service.rule.tree.factory.DefaultTreeFactory;

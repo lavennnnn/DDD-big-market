@@ -1,4 +1,4 @@
-package cn.hush.test.domain;
+package cn.hush.test.domain.strategy;
 
 import cn.hush.domain.strategy.model.entity.RaffleAwardEntity;
 import cn.hush.domain.strategy.model.entity.RaffleFactorEntity;

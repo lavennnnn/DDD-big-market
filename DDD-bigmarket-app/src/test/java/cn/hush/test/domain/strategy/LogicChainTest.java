@@ -1,10 +1,9 @@
-package cn.hush.test.domain;
+package cn.hush.test.domain.strategy;
 
 import cn.hush.domain.strategy.service.armory.IStrategyArmory;
 import cn.hush.domain.strategy.service.rule.chain.ILogicChain;
 import cn.hush.domain.strategy.service.rule.chain.factory.DefaultChainFactory;
 import cn.hush.domain.strategy.service.rule.chain.impl.RuleWeightLogicChain;
-import cn.hush.domain.strategy.service.rule.tree.factory.DefaultTreeFactory;
 import com.alibaba.fastjson2.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;

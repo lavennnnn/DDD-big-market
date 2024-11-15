@@ -1,9 +1,8 @@
-package cn.hush.test.domain;
+package cn.hush.test.domain.strategy;
 
 import cn.hush.domain.strategy.service.armory.IStrategyArmory;
 import cn.hush.domain.strategy.service.armory.IStrategyDispatch;
 import cn.hush.infrastructure.redis.IRedisService;
-import cn.hush.types.common.Constants;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;
