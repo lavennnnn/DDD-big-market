@@ -1,6 +1,7 @@
 package cn.hush.infrastructure.persistent.dao;
 import cn.bugstack.middleware.db.router.annotation.DBRouter;
 import cn.bugstack.middleware.db.router.annotation.DBRouterStrategy;
+import cn.hush.infrastructure.persistent.po.RaffleActivityAccountPO;
 import cn.hush.infrastructure.persistent.po.RaffleActivityOrderPO;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -16,5 +17,9 @@ import java.util.List;
 
 public interface IRaffleActivityAccountDao {
 
+
+    int updateAccountQuota(RaffleActivityAccountPO raffleActivityAccount);
+
+    void insert(RaffleActivityAccountPO raffleActivityAccount);
 
 }

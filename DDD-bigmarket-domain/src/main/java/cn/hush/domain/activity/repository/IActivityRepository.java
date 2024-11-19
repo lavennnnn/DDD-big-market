@@ -1,5 +1,6 @@
 package cn.hush.domain.activity.repository;
 
+import cn.hush.domain.activity.model.aggregate.CreateOrderAggregate;
 import cn.hush.domain.activity.model.entity.ActivityCountEntity;
 import cn.hush.domain.activity.model.entity.ActivityEntity;
 import cn.hush.domain.activity.model.entity.ActivitySkuEntity;
@@ -18,4 +19,5 @@ public interface IActivityRepository {
     ActivityCountEntity queryRaffleActivityCountByActivityCountId(Long activityCountId);
 
 
+    void doSaveOrder(CreateOrderAggregate createOrderAggregate);
 }
