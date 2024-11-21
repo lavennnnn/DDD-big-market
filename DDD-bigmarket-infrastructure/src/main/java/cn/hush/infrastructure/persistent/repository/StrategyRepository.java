@@ -7,7 +7,7 @@ import cn.hush.domain.strategy.model.vo.*;
 import cn.hush.domain.strategy.repository.IStrategyRepository;
 import cn.hush.infrastructure.persistent.dao.*;
 import cn.hush.infrastructure.persistent.po.*;
-import cn.hush.infrastructure.redis.IRedisService;
+import cn.hush.infrastructure.persistent.redis.IRedisService;
 import cn.hush.types.common.Constants;
 import cn.hush.types.exception.AppException;
 import lombok.extern.slf4j.Slf4j;

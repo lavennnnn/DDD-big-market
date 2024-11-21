@@ -105,6 +105,20 @@ redis:
       keep-alive: true
       password: vanssupremezack1
 
+# spring配置：rabbitmq
+spring:
+  rabbitmq:
+    addresses: 127.0.0.1
+    port: 5672
+    username: hush
+    password: hush
+    listener:
+      simple:
+        prefetch: 1 # 每次投递n个消息，消费完再投递n个
+    topic:
+      activity_sku_stock_zero: activity_sku_stock_zero
+    virtual-host: /hush
+
 # Dubbo
 #dubbo:
 #  application:

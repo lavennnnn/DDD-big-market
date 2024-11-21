@@ -3,7 +3,7 @@ package cn.hush.infrastructure.persistent.dao;
 import cn.hush.infrastructure.persistent.po.RaffleActivitySkuPO;
 import org.apache.ibatis.annotations.Mapper;
 
-import javax.annotation.ManagedBean;
+
 
 /**
  * @author Hush
@@ -15,4 +15,7 @@ public interface IRaffleActivitySkuDao {
 
     RaffleActivitySkuPO queryActivitySku(Long sku);
 
+    void updateActivitySkuStock(Long sku);
+
+    void clearActivitySkuStock(Long sku);
 }

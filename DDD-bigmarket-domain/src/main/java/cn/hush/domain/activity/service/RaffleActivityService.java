@@ -2,6 +2,7 @@ package cn.hush.domain.activity.service;
 
 import cn.hush.domain.activity.model.aggregate.CreateOrderAggregate;
 import cn.hush.domain.activity.model.entity.*;
+import cn.hush.domain.activity.model.vo.ActivitySkuStockKeyVO;
 import cn.hush.domain.activity.model.vo.OrderStateVO;
 import cn.hush.domain.activity.repository.IActivityRepository;
 import cn.hush.domain.activity.service.rule.factory.DefaultActivityChainFactory;
@@ -16,7 +17,7 @@ import java.util.Date;
  * @create 2024-11-16 上午3:50
  */
 @Service
-public class RaffleActivityService extends AbstractRaffleActivity{
+public class RaffleActivityService extends AbstractRaffleActivity implements ISkuStock{
 
 
     public RaffleActivityService(IActivityRepository activityRepository, DefaultActivityChainFactory activityChainFactory) {
@@ -59,4 +60,23 @@ public class RaffleActivityService extends AbstractRaffleActivity{
     }
 
 
+    @Override
+    public ActivitySkuStockKeyVO takeQueueValue() throws InterruptedException {
+        return activityRepository.takeQueueValue();
+    }
+
+    @Override
+    public void clearQueueValue() {
+        activityRepository.clearQueueValue();
+    }
+
+    @Override
+    public void updateActivitySkuStock(Long sku) {
+        activityRepository.updateActivitySkuStock(sku);
+    }
+
+    @Override
+    public void clearActivitySkuStock(Long sku) {
+        activityRepository.clearActivitySkuStock(sku);
+    }
 }

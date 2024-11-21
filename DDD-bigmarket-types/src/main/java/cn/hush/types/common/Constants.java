@@ -1,8 +1,6 @@
 package cn.hush.types.common;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+
 
 public class Constants {
 
@@ -23,6 +21,8 @@ public class Constants {
         public static String ACTIVITY_COUNT_KEY = "activity_count_key_";
         public static String ACTIVITY_SKU_KEY = "activity_sku_key_";
         public static String ACTIVITY_KEY = "activity_key_";
+        public static String ACTIVITY_SKU_STOCK_COUNT_KEY = "activity_sku_stock_count_key_";
+        public static String ACTIVITY_SKU_COUNT_QUERY_KEY = "activity_sku_count_query_key_";
 
     }
 
