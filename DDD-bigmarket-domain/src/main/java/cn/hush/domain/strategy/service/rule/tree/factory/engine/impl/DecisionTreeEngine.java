@@ -4,9 +4,9 @@ import cn.hush.domain.strategy.model.vo.RuleLogicCheckTypeVO;
 import cn.hush.domain.strategy.model.vo.RuleTreeNodeLineVO;
 import cn.hush.domain.strategy.model.vo.RuleTreeNodeVO;
 import cn.hush.domain.strategy.model.vo.RuleTreeVO;
-import cn.hush.domain.strategy.service.rule.tree.ILogicTreeNode;
 import cn.hush.domain.strategy.service.rule.tree.factory.DefaultTreeFactory;
 import cn.hush.domain.strategy.service.rule.tree.factory.engine.IDecisionTreeEngine;
+import cn.hush.domain.strategy.service.rule.tree.ILogicTreeNode;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;

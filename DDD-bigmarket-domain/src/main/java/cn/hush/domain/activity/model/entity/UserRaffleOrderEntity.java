@@ -1,5 +1,6 @@
-package cn.hush.infrastructure.persistent.po;
+package cn.hush.domain.activity.model.entity;
 
+import cn.hush.domain.activity.model.vo.UserRaffleOrderStateVO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,17 +10,15 @@ import java.util.Date;
 
 /**
  * @author Hush
- * @description 用户抽奖订单表
- * @create 2024-11-23 下午1:57
+ * @description
+ * @create 2024-11-26 下午6:48
  */
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserRaffleOrderPO {
+public class UserRaffleOrderEntity {
 
-    /** 自增ID */
-    private String id;
     /** 用户ID */
     private String userId;
     /** 活动ID */
@@ -33,10 +32,6 @@ public class UserRaffleOrderPO {
     /** 下单时间 */
     private Date orderTime;
     /** 订单状态；create-创建、used-已使用、cancel-已作废 */
-    private String orderState;
-    /** 创建时间 */
-    private Date createTime;
-
-    private Date updateTime;
+    private UserRaffleOrderStateVO orderState;
 
 }

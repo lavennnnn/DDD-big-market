@@ -2,14 +2,13 @@ package cn.hush.domain.strategy.service.rule.tree.factory;
 
 import cn.hush.domain.strategy.model.vo.RuleLogicCheckTypeVO;
 import cn.hush.domain.strategy.model.vo.RuleTreeVO;
-import cn.hush.domain.strategy.service.rule.tree.ILogicTreeNode;
 import cn.hush.domain.strategy.service.rule.tree.factory.engine.IDecisionTreeEngine;
+import cn.hush.domain.strategy.service.rule.tree.ILogicTreeNode;
 import cn.hush.domain.strategy.service.rule.tree.factory.engine.impl.DecisionTreeEngine;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;

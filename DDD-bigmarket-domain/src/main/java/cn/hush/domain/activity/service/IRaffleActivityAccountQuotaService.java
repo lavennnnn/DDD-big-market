@@ -1,7 +1,5 @@
 package cn.hush.domain.activity.service;
 
-import cn.hush.domain.activity.model.entity.ActivityOrderEntity;
-import cn.hush.domain.activity.model.entity.ActivityShopCartEntity;
 import cn.hush.domain.activity.model.entity.SkuRechargeEntity;
 
 /**
@@ -9,7 +7,7 @@ import cn.hush.domain.activity.model.entity.SkuRechargeEntity;
  * @description 抽奖活动订单接口
  * @create 2024-11-16 上午3:50
  */
-public interface IRaffleOrder {
+public interface IRaffleActivityAccountQuotaService {
 
     /**
      * 创建 sku 账户充值订单，给用户增加抽奖次数
@@ -20,7 +18,7 @@ public interface IRaffleOrder {
      * @param skuRechargeEntity 活动商品充值实体对象
      * @return 活动ID
      */
-    String createSkuRechargeOrder(SkuRechargeEntity skuRechargeEntity);
+    String createOrder(SkuRechargeEntity skuRechargeEntity);
 
 
 }

@@ -1,11 +1,10 @@
-package cn.hush.domain.activity.service;
+package cn.hush.domain.activity.service.quota;
 
 import cn.hush.domain.activity.model.entity.ActivityCountEntity;
 import cn.hush.domain.activity.model.entity.ActivityEntity;
 import cn.hush.domain.activity.model.entity.ActivitySkuEntity;
 import cn.hush.domain.activity.repository.IActivityRepository;
-import cn.hush.domain.activity.service.rule.factory.DefaultActivityChainFactory;
-import org.omg.CORBA.PUBLIC_MEMBER;
+import cn.hush.domain.activity.service.quota.rule.factory.DefaultActivityChainFactory;
 
 /**
  * @author Hush
@@ -13,13 +12,13 @@ import org.omg.CORBA.PUBLIC_MEMBER;
  * @create 2024-11-20 上午1:06
  */
 
-public class RaffleActivitySupport {
+public class RaffleActivityAccountQuotaSupport {
 
     protected DefaultActivityChainFactory defaultActivityChainFactory;
 
     protected IActivityRepository activityRepository;
 
-    public RaffleActivitySupport(IActivityRepository activityRepository, DefaultActivityChainFactory defaultactivityChainFactory) {
+    public RaffleActivityAccountQuotaSupport(IActivityRepository activityRepository, DefaultActivityChainFactory defaultactivityChainFactory) {
         this.activityRepository = activityRepository;
         this.defaultActivityChainFactory= defaultactivityChainFactory;
     }

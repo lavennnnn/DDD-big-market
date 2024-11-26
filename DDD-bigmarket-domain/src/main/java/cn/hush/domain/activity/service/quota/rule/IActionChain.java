@@ -1,4 +1,4 @@
-package cn.hush.domain.activity.service.rule;
+package cn.hush.domain.activity.service.quota.rule;
 
 import cn.hush.domain.activity.model.entity.ActivityCountEntity;
 import cn.hush.domain.activity.model.entity.ActivityEntity;

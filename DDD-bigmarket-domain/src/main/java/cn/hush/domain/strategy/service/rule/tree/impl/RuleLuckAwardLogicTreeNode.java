@@ -1,8 +1,8 @@
 package cn.hush.domain.strategy.service.rule.tree.impl;
 
 import cn.hush.domain.strategy.model.vo.RuleLogicCheckTypeVO;
-import cn.hush.domain.strategy.service.rule.tree.ILogicTreeNode;
 import cn.hush.domain.strategy.service.rule.tree.factory.DefaultTreeFactory;
+import cn.hush.domain.strategy.service.rule.tree.ILogicTreeNode;
 import cn.hush.types.common.Constants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

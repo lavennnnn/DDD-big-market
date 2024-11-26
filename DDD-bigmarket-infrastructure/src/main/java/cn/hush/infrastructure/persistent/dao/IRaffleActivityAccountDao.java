@@ -16,10 +16,18 @@ import java.util.List;
 @Mapper
 
 public interface IRaffleActivityAccountDao {
-
+    //这里的其他方法不添加 @DBRouter ，因为在实现的事务手动进行了路由处理
 
     int updateAccountQuota(RaffleActivityAccountPO raffleActivityAccount);
 
     void insert(RaffleActivityAccountPO raffleActivityAccount);
 
+    @DBRouter
+    RaffleActivityAccountPO queryActivityAccountByUserId(RaffleActivityAccountPO raffleActivityAccountReq);
+
+    int updateActivityAccountSubtractionQuota(RaffleActivityAccountPO raffleActivityAccount);
+
+    void updateActivityAccountMonthSurplusImageQuota(RaffleActivityAccountPO raffleActivityAccount);
+
+    void updateActivityAccountDaySurplusImageQuota(RaffleActivityAccountPO raffleActivityAccount);
 }

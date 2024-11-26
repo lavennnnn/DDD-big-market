@@ -1,8 +1,4 @@
-package cn.hush.domain.activity.service.rule;
-
-import cn.hush.domain.activity.model.entity.ActivityCountEntity;
-import cn.hush.domain.activity.model.entity.ActivityEntity;
-import cn.hush.domain.activity.model.entity.ActivitySkuEntity;
+package cn.hush.domain.activity.service.quota.rule;
 
 /**
  * @author Hush

@@ -8,7 +8,7 @@ import cn.hush.domain.activity.model.vo.ActivitySkuStockKeyVO;
  * @create 2024-11-21 下午6:48
  */
 
-public interface ISkuStock {
+public interface IRaffleActivitySkuStockService {
 
     /**
      * 获取活动sku库存消耗队列

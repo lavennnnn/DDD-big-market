@@ -1,13 +1,12 @@
-package cn.hush.domain.activity.service.rule.impl;
+package cn.hush.domain.activity.service.quota.rule.impl;
 
 import cn.hush.domain.activity.model.entity.ActivityCountEntity;
 import cn.hush.domain.activity.model.entity.ActivityEntity;
 import cn.hush.domain.activity.model.entity.ActivitySkuEntity;
 import cn.hush.domain.activity.model.vo.ActivityStateVO;
-import cn.hush.domain.activity.service.rule.AbstractActionChain;
+import cn.hush.domain.activity.service.quota.rule.AbstractActionChain;
 import cn.hush.types.enums.ResponseCode;
 import cn.hush.types.exception.AppException;
-import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
