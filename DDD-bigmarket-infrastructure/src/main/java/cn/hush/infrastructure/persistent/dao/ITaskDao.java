@@ -1,6 +1,10 @@
 package cn.hush.infrastructure.persistent.dao;
+import cn.bugstack.middleware.db.router.annotation.DBRouter;
 import cn.hush.infrastructure.persistent.po.RaffleActivityAccountPO;
+import cn.hush.infrastructure.persistent.po.TaskPO;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * @author Hush
@@ -9,10 +13,14 @@ import org.apache.ibatis.annotations.Mapper;
  */
 
 @Mapper
-
 public interface ITaskDao {
 
+    void insert(TaskPO task);
 
+    @DBRouter
+    void updateTaskSendMessageCompleted(TaskPO task);
+    @DBRouter
+    void updateTaskSendMessageFail(TaskPO task);
 
-
+    List<TaskPO> queryNoSendMessageTaskList();
 }

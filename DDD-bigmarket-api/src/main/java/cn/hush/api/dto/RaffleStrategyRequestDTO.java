@@ -8,7 +8,7 @@ import lombok.Data;
  * @create 2024-11-06 下午5:36
  */
 @Data
-public class RaffleRequestDTO {
+public class RaffleStrategyRequestDTO {
 
     // 抽奖策略ID
     private Long strategyId;

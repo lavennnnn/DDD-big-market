@@ -1,5 +1,7 @@
 package cn.hush.infrastructure.persistent.dao;
+import cn.bugstack.middleware.db.router.annotation.DBRouterStrategy;
 import cn.hush.infrastructure.persistent.po.RaffleActivityAccountPO;
+import cn.hush.infrastructure.persistent.po.UserAwardRecordPO;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -9,10 +11,9 @@ import org.apache.ibatis.annotations.Mapper;
  */
 
 @Mapper
-
+@DBRouterStrategy(splitTable = true)
 public interface IUserAwardRecordDao {
 
 
-
-
+    void insert(UserAwardRecordPO userAwardRecord);
 }

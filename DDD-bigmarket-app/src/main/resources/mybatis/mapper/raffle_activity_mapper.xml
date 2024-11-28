@@ -22,5 +22,17 @@
         where activity_id = #{activityId}
     </select>
 
+    <select id="queryStrategyIdByActivityId" parameterType="java.lang.Long" resultType="java.lang.Long">
+        select strategy_id
+            from big_market.raffle_activity
+        where activity_id = #{activityId}
+    </select>
+
+    <select id="queryActivityIdByStrategyId" parameterType="java.lang.Long" resultType="java.lang.Long" >
+        select activity_id
+        from big_market.raffle_activity
+        where strategy_id = #{strategyId}
+    </select>
+
 
 </mapper>

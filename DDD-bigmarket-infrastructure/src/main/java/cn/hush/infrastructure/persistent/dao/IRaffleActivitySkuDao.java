@@ -3,6 +3,7 @@ package cn.hush.infrastructure.persistent.dao;
 import cn.hush.infrastructure.persistent.po.RaffleActivitySkuPO;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
 
 
 /**
@@ -18,4 +19,6 @@ public interface IRaffleActivitySkuDao {
     void updateActivitySkuStock(Long sku);
 
     void clearActivitySkuStock(Long sku);
+
+    List<RaffleActivitySkuPO> queryActivitySkuListByActivityId(Long activityId);
 }

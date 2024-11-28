@@ -18,4 +18,7 @@ public interface IRaffleActivityDao {
 
     RaffleActivityPO queryRaffleActivityByActivityId(Long activityId);
 
+    Long queryStrategyIdByActivityId(Long activityId);
+
+    Long queryActivityIdByStrategyId(Long strategyId);
 }

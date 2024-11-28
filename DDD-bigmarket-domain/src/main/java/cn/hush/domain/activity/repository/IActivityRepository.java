@@ -6,6 +6,7 @@ import cn.hush.domain.activity.model.entity.*;
 import cn.hush.domain.activity.model.vo.ActivitySkuStockKeyVO;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author Hush
@@ -45,4 +46,6 @@ public interface IActivityRepository {
     ActivityAccountMonthEntity queryActivityAccountMonthByUserId(String userId, Long activityId, String month);
 
     ActivityAccountDayEntity queryActivityAccountDayByUserId(String userId, Long activityId, String day);
+
+    List<ActivitySkuEntity> queryActivitySkuListByActivityId(Long activityId);
 }

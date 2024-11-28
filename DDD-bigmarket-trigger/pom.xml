@@ -64,6 +64,10 @@
             <groupId>cn.hush</groupId>
             <artifactId>DDD-bigmarket-api</artifactId>
         </dependency>
+        <dependency>
+            <groupId>cn.bugstack.middleware</groupId>
+            <artifactId>db-router-spring-boot-starter</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
