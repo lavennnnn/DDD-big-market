@@ -2,6 +2,8 @@ package cn.hush.domain.strategy.service.rule.tree;
 
 import cn.hush.domain.strategy.service.rule.tree.factory.DefaultTreeFactory;
 
+import java.util.Date;
+
 /**
  * @author Hush
  * @description 规则树接口
@@ -9,6 +11,6 @@ import cn.hush.domain.strategy.service.rule.tree.factory.DefaultTreeFactory;
  */
 public interface ILogicTreeNode {
 
-    DefaultTreeFactory.TreeActionEntity logic(String userId, Long StrategyId, Integer awardId, String ruleValue);
+    DefaultTreeFactory.TreeActionEntity logic(String userId, Long StrategyId, Integer awardId, String ruleValue, Date endDateTime);
 
 }
