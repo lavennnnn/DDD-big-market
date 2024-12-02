@@ -72,7 +72,7 @@ public class RaffleActivityPartakeService extends AbstractRaffleActivityPartake 
             activityAccountDayEntity.setActivityId(activityId);
             activityAccountDayEntity.setDay(day);
             activityAccountDayEntity.setDayCount(activityAccountEntity.getDayCount());
-            activityAccountDayEntity.setDayCountSurplus(activityAccountEntity.getDayCountSurplus());
+            activityAccountDayEntity.setDayCountSurplus(activityAccountEntity.getDayCount());
         }
 
         // 构建对象
@@ -101,6 +101,7 @@ public class RaffleActivityPartakeService extends AbstractRaffleActivityPartake 
         userRaffleOrderEntity.setOrderTime(currentDate);
         userRaffleOrderEntity.setActivityName(activityEntity.getActivityName());
         userRaffleOrderEntity.setStrategyId(activityEntity.getStrategyId());
+        userRaffleOrderEntity.setEndDateTime(activityEntity.getEndDateTime());
         return userRaffleOrderEntity;
     }
 

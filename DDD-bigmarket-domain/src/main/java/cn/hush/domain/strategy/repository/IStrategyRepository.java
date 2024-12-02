@@ -6,9 +6,7 @@ import cn.hush.domain.strategy.model.entity.StrategyRuleEntity;
 import cn.hush.domain.strategy.model.vo.RuleTreeVO;
 import cn.hush.domain.strategy.model.vo.StrategyAwardRuleModelVO;
 import cn.hush.domain.strategy.model.vo.StrategyAwardStockKeyVO;
-
-import java.math.BigDecimal;
-import java.util.HashMap;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -50,6 +48,8 @@ public interface IStrategyRepository {
 
     Boolean subtractAwardStock(String cacheKey);
 
+    Boolean subtractAwardStock(String cacheKey, Date endDateTime);
+
     void awardStockConsumeSendQueue(StrategyAwardStockKeyVO strategyAwardStockKeyVO);
 
     StrategyAwardStockKeyVO takeQueueValue();
@@ -61,6 +61,8 @@ public interface IStrategyRepository {
     Long queryStrategyIdByActivityId(Long activityId);
 
     Integer queryTodayUserRaffleCount(String userId, Long strategyId);
+
+    Map<String, Integer> queryAwardRuleLockCount(String[] treeIds);
 }
 
 
