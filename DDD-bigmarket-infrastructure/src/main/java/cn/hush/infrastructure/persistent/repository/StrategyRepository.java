@@ -80,6 +80,7 @@ public class StrategyRepository implements IStrategyRepository {
                         .awardCountSurplus(strategyAward.getAwardCountSurplus())
                         .awardRate(strategyAward.getAwardRate())
                         .sort(strategyAward.getSort())
+                        .ruleModels(strategyAward.getRuleModels())
                         .build();
                 strategyAwardEntities.add(strategyAwardEntity);
             }
@@ -246,13 +247,28 @@ public class StrategyRepository implements IStrategyRepository {
 
     @Override
     public Boolean subtractAwardStock(String cacheKey) {
+        return subtractAwardStock(cacheKey, null);
+    }
+
+    @Override
+    public Boolean subtractAwardStock(String cacheKey, Date endDateTime) {
         long surplus = redisService.decr(cacheKey);
         if (surplus < 0) {
+            //库存小于0，恢复为零
             redisService.setValue(cacheKey, 0);
             return false;
-        };
+        }
+
+        // 1. 按照cacheKey decr 后的值，如 99、98 和 key 组成为库存锁的 key
+        // 2. 加锁为了兜底，如果后续有恢复库存，手动处理等，也不会超卖，因为所有可用库存的 key 都被加锁了
         String lockKey = cacheKey + Constants.UNDERLINE + surplus;
-        Boolean lock = redisService.setNx(lockKey);
+        Boolean lock = false;
+        if (null != endDateTime) {
+            long expireMillis = endDateTime.getTime() - System.currentTimeMillis() + TimeUnit.DAYS.toMillis(1);
+            lock = redisService.setNx(lockKey, expireMillis, TimeUnit.MILLISECONDS);
+        } else {
+            lock = redisService.setNx(lockKey);
+        }
         if (!lock) {
             log.info("策略奖品库存加锁失败 {}" ,lockKey);
         }
@@ -327,6 +343,19 @@ public class StrategyRepository implements IStrategyRepository {
         if (null == raffleActivityAccountDay) return 0;
         //总次数 - 剩余的 = 今日参与的
         return raffleActivityAccountDay.getDayCount() - raffleActivityAccountDay.getDayCountSurplus();
+    }
+
+    @Override
+    public Map<String, Integer> queryAwardRuleLockCount(String[] treeIds) {
+        if (null == treeIds || treeIds.length == 0) return new HashMap<>();
+        List<RuleTreeNodePO> ruleTreeNodes = ruleTreeNodeDao.queryRuleLocks(treeIds);
+        HashMap<String, Integer> resultMap = new HashMap<>();
+        for (RuleTreeNodePO ruleTreeNode : ruleTreeNodes) {
+            String treeId = ruleTreeNode.getTreeId();
+            Integer ruleValue = Integer.valueOf(ruleTreeNode.getRuleValue());
+            resultMap.put(treeId, ruleValue);
+        }
+        return resultMap;
     }
 
 

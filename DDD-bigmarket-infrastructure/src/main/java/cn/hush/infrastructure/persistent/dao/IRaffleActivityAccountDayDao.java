@@ -1,7 +1,6 @@
 package cn.hush.infrastructure.persistent.dao;
 import cn.bugstack.middleware.db.router.annotation.DBRouter;
 import cn.hush.infrastructure.persistent.po.RaffleActivityAccountDayPO;
-import cn.hush.infrastructure.persistent.po.RaffleActivityAccountPO;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -22,4 +21,7 @@ public interface IRaffleActivityAccountDayDao {
     int updateActivityAccountDaySubtractionQuota(RaffleActivityAccountDayPO raffleActivityAccountDayPO);
 
     void insertActivityAccountDay(RaffleActivityAccountDayPO build);
+
+    @DBRouter
+    Integer queryRaffleActivityAccountDayPartakeCount(RaffleActivityAccountDayPO raffleActivityAccountDay);
 }

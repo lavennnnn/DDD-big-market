@@ -7,6 +7,7 @@ import cn.hush.domain.strategy.model.vo.StrategyAwardStockKeyVO;
 import cn.hush.domain.strategy.repository.IStrategyRepository;
 import cn.hush.domain.strategy.service.AbstractRaffleStrategy;
 import cn.hush.domain.strategy.service.IRaffleAward;
+import cn.hush.domain.strategy.service.IRaffleRule;
 import cn.hush.domain.strategy.service.IRaffleStock;
 import cn.hush.domain.strategy.service.armory.IStrategyDispatch;
 import cn.hush.domain.strategy.service.rule.chain.ILogicChain;
@@ -15,8 +16,9 @@ import cn.hush.domain.strategy.service.rule.tree.factory.DefaultTreeFactory;
 import cn.hush.domain.strategy.service.rule.tree.factory.engine.IDecisionTreeEngine;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -26,7 +28,7 @@ import java.util.List;
  */
 @Service
 @Slf4j
-public class DefaultRaffleStrategy extends AbstractRaffleStrategy implements IRaffleAward, IRaffleStock {
+public class DefaultRaffleStrategy extends AbstractRaffleStrategy implements IRaffleAward, IRaffleStock, IRaffleRule {
 
     public DefaultRaffleStrategy(IStrategyRepository repository, IStrategyDispatch strategyDispatch, DefaultChainFactory defaultChainFactory, DefaultTreeFactory defaultTreeFactory) {
         super(repository, strategyDispatch, defaultChainFactory, defaultTreeFactory);
@@ -41,6 +43,11 @@ public class DefaultRaffleStrategy extends AbstractRaffleStrategy implements IRa
 
     @Override
     public DefaultTreeFactory.StrategyAwardVO raffleLogicTree(String userId, Long strategyId, Integer awardId) {
+        return raffleLogicTree(userId, strategyId, awardId, null);
+    }
+
+    @Override
+    public DefaultTreeFactory.StrategyAwardVO raffleLogicTree(String userId, Long strategyId, Integer awardId, Date endDateTime) {
         StrategyAwardRuleModelVO strategyAwardRuleModelVO = repository.queryStrategyAwardRuleModelVO(strategyId, awardId);
         if (null == strategyAwardRuleModelVO) {
             return DefaultTreeFactory.StrategyAwardVO.builder().awardId(awardId).build();
@@ -50,8 +57,7 @@ public class DefaultRaffleStrategy extends AbstractRaffleStrategy implements IRa
             throw new RuntimeException("存在抽奖策略配置的规则模型 Key，未在库表 rule_tree、rule_tree_node、rule_tree_line 配置对应的规则树信息 " + strategyAwardRuleModelVO.getRuleModels());
         }
         IDecisionTreeEngine treeEngine = defaultTreeFactory.openLogicTree(ruleTreeVO);
-        return treeEngine.process(userId, strategyId, awardId);
-
+        return treeEngine.process(userId, strategyId, awardId, endDateTime);
     }
 
 
@@ -70,6 +76,17 @@ public class DefaultRaffleStrategy extends AbstractRaffleStrategy implements IRa
         return repository.queryStrategyAwardList(strategyId);
     }
 
+    @Override
+    public List<StrategyAwardEntity> queryRaffleStrategyAwardListByActivityId(Long activityId) {
+        Long strategyId = repository.queryStrategyIdByActivityId(activityId);
+        return queryRaffleStrategyAwardList(strategyId);
+
+    }
+
+    @Override
+    public Map<String, Integer> queryAwardRuleLockCount(String[] treeIds) {
+        return repository.queryAwardRuleLockCount(treeIds);
+    }
 }
 
 

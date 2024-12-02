@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
+
 /**
  * @author Hush
  * @description 抽奖奖品实体
@@ -25,5 +27,6 @@ public class RaffleAwardEntity {
     private Integer sort;
     /** 奖品标题（名称） */
     private String awardTitle;
+
 
 }

@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.security.SecureRandom;
 import java.util.*;
 
@@ -162,7 +161,7 @@ public class  StrategyArmoryDispatch implements IStrategyArmory, IStrategyDispat
     }
 
     @Override
-    public Boolean subtractAwardStock(Long strategyId, Integer awardId) {
+    public Boolean subtractAwardStock(Long strategyId, Integer awardId, Date endDateTime) {
         String cacheKey = Constants.RedisKey.STRATEGY_AWARD_COUNT_KEY + strategyId + Constants.UNDERLINE + awardId;
         return repository.subtractAwardStock(cacheKey);
     }

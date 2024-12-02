@@ -20,7 +20,7 @@ public class RuleTreeNodePO {
     private String ruleKey;
     /** 规则描述 */
     private String ruleDesc;
-    /** 规则比值 */
+    /** 规则值 */
     private String ruleValue;
     /** 创建时间 */
     private Date createTime;

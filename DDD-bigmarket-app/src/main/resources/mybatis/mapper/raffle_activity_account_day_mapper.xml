@@ -33,5 +33,12 @@
         where user_id = #{userId} and activity_id = #{activityId} and day = #{day}
     </select>
 
+    <select id="queryRaffleActivityAccountDayPartakeCount" resultMap="dataMap" parameterType="cn.hush.infrastructure.persistent.po.RaffleActivityAccountDayPO">
+        select day_count - day_count_surplus
+        from raffle_activity_account_day
+        where activity_id = #{activityId} and user_id = #{userId} and day = #{day}
+
+    </select>
+
 
 </mapper>
