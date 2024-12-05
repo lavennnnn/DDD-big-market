@@ -9,6 +9,9 @@ import cn.hush.domain.activity.service.armory.IActivityArmory;
 import cn.hush.domain.award.model.entity.UserAwardRecordEntity;
 import cn.hush.domain.award.model.vo.AwardStateVO;
 import cn.hush.domain.award.service.IAwardService;
+import cn.hush.domain.rebate.model.entity.BehaviorEntity;
+import cn.hush.domain.rebate.model.valobj.BehaviorTypeVO;
+import cn.hush.domain.rebate.service.IBehaviorRebateService;
 import cn.hush.domain.strategy.model.entity.RaffleAwardEntity;
 import cn.hush.domain.strategy.model.entity.RaffleFactorEntity;
 import cn.hush.domain.strategy.service.IRaffleStrategy;
@@ -16,12 +19,15 @@ import cn.hush.domain.strategy.service.armory.IStrategyArmory;
 import cn.hush.types.enums.ResponseCode;
 import cn.hush.types.exception.AppException;
 import cn.hush.types.model.Response;
+import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author Hush
@@ -34,6 +40,8 @@ import java.util.Date;
 @RequestMapping("/api/${app.config.api-version}/raffle/activity")
 public class RaffleActivityController implements IRaffleActivityService {
 
+    private final SimpleDateFormat sdfDay = new SimpleDateFormat("yyyyMMdd");
+
     @Resource
     private IActivityArmory activityArmory;
     @Resource
@@ -44,6 +52,8 @@ public class RaffleActivityController implements IRaffleActivityService {
     private IRaffleStrategy raffleStrategy;
     @Resource
     private IAwardService awardService;
+    @Resource
+    private IBehaviorRebateService behaviorRebateService;
 
     /**
      * 活动装配 - 数据预热 | 把活动配置的对应的 sku 一起装配
@@ -158,6 +168,48 @@ public class RaffleActivityController implements IRaffleActivityService {
                     .info(ResponseCode.UN_ERROR.getInfo())
                     .build();
 
+        }
+    }
+
+    /**
+     * 日历签到返利接口
+     *
+     * <a href="http://localhost:8091/api/v1/raffle/activity/calender_sign_in_reabte">...</a>
+     *
+     * @param userId 用户id
+     * @return 结果信息
+     */
+    @RequestMapping(value = "calender_sign_in_rebate", method = RequestMethod.POST)
+    @Override
+    public Response<Boolean> calenderSignInRebate(String userId) {
+        try {
+            log.info("日历签到返利开始 userId:{}" ,userId);
+            BehaviorEntity behaviorEntity = BehaviorEntity.builder()
+                    .userId(userId)
+                    .behaviorType(BehaviorTypeVO.SIGN_IN)
+                    .outBusinessNo(sdfDay.format(new Date()))
+                    .build();
+            List<String> orderList = behaviorRebateService.createOrder(behaviorEntity);
+            log.info("签到返利完成 userId:{} orderId:{}", userId, JSON.toJSONString(orderList));
+            return Response.<Boolean>builder()
+                    .code(ResponseCode.SUCCESS.getCode())
+                    .info(ResponseCode.SUCCESS.getInfo())
+                    .data(true)
+                    .build();
+        }catch (AppException e) {
+            log.error("签到返利异常 userId:{}", userId, e);
+            return Response.<Boolean>builder()
+                    .code(e.getCode())
+                    .info(e.getInfo())
+                    .build();
+        }
+        catch (Exception e) {
+            log.error("签到返利失败 userId:{}", userId, e);
+            return Response.<Boolean>builder()
+                    .code(ResponseCode.UN_ERROR.getCode())
+                    .info(ResponseCode.UN_ERROR.getInfo())
+                    .data(false)
+                    .build();
         }
     }
 }

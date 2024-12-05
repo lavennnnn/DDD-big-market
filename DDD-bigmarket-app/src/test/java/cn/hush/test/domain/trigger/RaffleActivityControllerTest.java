@@ -43,5 +43,14 @@ public class RaffleActivityControllerTest {
         log.info("测试结果: {}", JSON.toJSONString(response));
     }
 
+    @Test
+    public void test_signIn() {
+
+        Response<Boolean> response = raffleActivityService.calenderSignInRebate("xiaofuge");
+        log.info("测试结果:{}", JSON.toJSONString(response));
+
+
+    }
+
 
 }

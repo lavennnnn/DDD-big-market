@@ -32,6 +32,14 @@
                )
     </insert>
 
+    <update id="addAccountQuota" parameterType="cn.hush.infrastructure.persistent.po.RaffleActivityAccountMonthPO">
+        update raffle_activity_account_month
+        set month_count_surplus = month_count_surplus + #{monthCountSurplus},
+            month_count = month_count + #{monthCount},
+            update_time = now()
+        where user_id = #{userId} and activity_id = #{activityId} and month = #{month}
+    </update>
+
 
     <select id="queryActivityAccountMonthByUserId" parameterType="cn.hush.infrastructure.persistent.po.RaffleActivityAccountMonthPO" resultMap="dataMap">
         select user_id, activity_id, month, month_count, month_count_surplus
