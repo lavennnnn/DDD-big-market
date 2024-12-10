@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 /**
  * @author Hush
- * @description 抽奖奖品列表，应答对象
+ * @description 抽奖奖品列表，响应对象
  * @create 2024-11-06 下午5:31
  */
 

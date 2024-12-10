@@ -2,6 +2,7 @@ package cn.hush.domain.rebate.repository;
 
 import cn.hush.domain.rebate.model.aggregate.BehaviorRebateAggregate;
 import cn.hush.domain.rebate.model.entity.BehaviorEntity;
+import cn.hush.domain.rebate.model.entity.BehaviorRebateOrderEntity;
 import cn.hush.domain.rebate.model.valobj.BehaviorTypeVO;
 import cn.hush.domain.rebate.model.valobj.DailyBehaviorRebateVO;
 
@@ -21,4 +22,6 @@ public interface IBehaviorRebateRepository {
 
     //保存聚合
     void saveUserRebateRecord(String userId, ArrayList<BehaviorRebateAggregate> behaviorRebateAggregateList);
+
+    List<BehaviorRebateOrderEntity> queryOrderByUserIdAndOutBusinessNo(String userId, String outBusinessNo);
 }

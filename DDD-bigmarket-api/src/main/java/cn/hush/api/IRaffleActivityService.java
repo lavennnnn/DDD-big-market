@@ -2,6 +2,8 @@ package cn.hush.api;
 
 import cn.hush.api.dto.ActivityDrawRequestDTO;
 import cn.hush.api.dto.ActivityDrawResponseDTO;
+import cn.hush.api.dto.UserActivityAccountRequestDTO;
+import cn.hush.api.dto.UserActivityAccountResponseDTO;
 import cn.hush.types.model.Response;
 
 /**
@@ -33,4 +35,17 @@ public interface IRaffleActivityService {
      */
     Response<Boolean> calenderSignInRebate(String userId);
 
+    /**
+     * 判断是否完成日历签到返利
+     * @param userId 用户id
+     * @return 签到获得
+     */
+    Response<Boolean> isCalenderSignInRebateDone(String userId);
+
+    /**
+     * 查詢用户活动额度
+     * @param request 查詢用户活动额度 请求对象
+     * @return 额度结果
+     */
+    Response<UserActivityAccountResponseDTO> queryUserActivityAccount(UserActivityAccountRequestDTO request);
 }

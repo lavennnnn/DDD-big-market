@@ -4,6 +4,7 @@ import cn.hush.domain.strategy.model.entity.StrategyAwardEntity;
 import cn.hush.domain.strategy.model.entity.StrategyEntity;
 import cn.hush.domain.strategy.model.entity.StrategyRuleEntity;
 import cn.hush.domain.strategy.model.vo.RuleTreeVO;
+import cn.hush.domain.strategy.model.vo.RuleWeightVO;
 import cn.hush.domain.strategy.model.vo.StrategyAwardRuleModelVO;
 import cn.hush.domain.strategy.model.vo.StrategyAwardStockKeyVO;
 import java.util.Date;
@@ -63,6 +64,10 @@ public interface IStrategyRepository {
     Integer queryTodayUserRaffleCount(String userId, Long strategyId);
 
     Map<String, Integer> queryAwardRuleLockCount(String[] treeIds);
+
+    Integer queryActivityAccountTotalUseCount(String userId, Long strategyId);
+
+    List<RuleWeightVO> queryAwardRuleWeightByStrategyId(Long strategyId);
 }
 
 

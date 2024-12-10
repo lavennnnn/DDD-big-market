@@ -479,6 +479,71 @@ public class ActivityRepository implements IActivityRepository {
         return null == dayPartakeCount ? 0 : dayPartakeCount;
     }
 
+    @Override
+    public ActivityAccountEntity queryActivityAccountEntity(Long activityId, String userId) {
+
+        RaffleActivityAccountPO raffleActivityAccountResponsePO = raffleActivityAccountDao.queryActivityAccountByUserId(RaffleActivityAccountPO.builder()
+                .userId(userId)
+                .activityId(activityId)
+                .build());
+        if (null == raffleActivityAccountResponsePO) {
+            return ActivityAccountEntity.builder()
+                    .activityId(activityId)
+                    .userId(userId)
+                    .totalCount(0)
+                    .totalCountSurplus(0)
+                    .dayCount(0)
+                    .dayCountSurplus(0)
+                    .monthCount(0)
+                    .monthCountSurplus(0)
+                    .build();
+        };
+
+        RaffleActivityAccountMonthPO raffleActivityAccountMonthResponsePO = raffleActivityAccountMonthDao.queryActivityAccountMonthByUserId(RaffleActivityAccountMonthPO.builder()
+                .userId(userId)
+                .activityId(activityId)
+                .build());
+
+        RaffleActivityAccountDayPO raffleActivityAccountDayResponsePO = raffleActivityAccountDayDao.queryActivityAccountDayByUserId(RaffleActivityAccountDayPO.builder()
+                .userId(userId)
+                .activityId(activityId)
+                .build());
+
+        // 组装对象
+        ActivityAccountEntity activityAccountEntity = new ActivityAccountEntity();
+        activityAccountEntity.setUserId(userId);
+        activityAccountEntity.setActivityId(activityId);
+        activityAccountEntity.setTotalCount(raffleActivityAccountResponsePO.getTotalCount());
+        activityAccountEntity.setTotalCountSurplus(raffleActivityAccountResponsePO.getTotalCountSurplus());
+
+        if (null == raffleActivityAccountDayResponsePO) {
+            activityAccountEntity.setDayCount(raffleActivityAccountResponsePO.getDayCount());
+            activityAccountEntity.setDayCountSurplus(raffleActivityAccountResponsePO.getDayCount());
+        } else {
+            activityAccountEntity.setDayCount(raffleActivityAccountDayResponsePO.getDayCount());
+            activityAccountEntity.setDayCountSurplus(raffleActivityAccountDayResponsePO.getDayCountSurplus());
+        }
+
+        if (null == raffleActivityAccountMonthResponsePO) {
+            activityAccountEntity.setMonthCount(raffleActivityAccountResponsePO.getMonthCount());
+            activityAccountEntity.setMonthCountSurplus(raffleActivityAccountResponsePO.getMonthCount());
+        } else {
+            activityAccountEntity.setMonthCount(raffleActivityAccountMonthResponsePO.getMonthCount());
+            activityAccountEntity.setMonthCountSurplus(raffleActivityAccountMonthResponsePO.getMonthCountSurplus());
+        }
+
+        return activityAccountEntity;
+    }
+
+    @Override
+    public Integer queryRaffleActivityAccountPartakeCount(Long activityId, String userId) {
+        RaffleActivityAccountPO raffleActivityAccountPO = raffleActivityAccountDao.queryActivityAccountByUserId(RaffleActivityAccountPO.builder()
+                .userId(userId)
+                .activityId(activityId)
+                .build());
+        return raffleActivityAccountPO.getTotalCount() - raffleActivityAccountPO.getTotalCountSurplus();
+    }
+
 
 }
 

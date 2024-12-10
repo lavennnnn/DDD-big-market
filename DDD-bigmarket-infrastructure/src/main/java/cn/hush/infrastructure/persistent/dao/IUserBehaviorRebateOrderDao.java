@@ -1,8 +1,11 @@
 package cn.hush.infrastructure.persistent.dao;
 
+import cn.bugstack.middleware.db.router.annotation.DBRouter;
 import cn.bugstack.middleware.db.router.annotation.DBRouterStrategy;
 import cn.hush.infrastructure.persistent.po.UserBehaviorRebateOrderPO;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * @author Hush
@@ -16,4 +19,6 @@ public interface IUserBehaviorRebateOrderDao {
 
     void insert(UserBehaviorRebateOrderPO userBehaviorRebateOrder);
 
+    @DBRouter
+    List<UserBehaviorRebateOrderPO> queryOrderByOutBusinessNo(UserBehaviorRebateOrderPO userBehaviorRebateOrderPO);
 }
