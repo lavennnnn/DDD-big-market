@@ -84,7 +84,7 @@ public class RaffleStrategyController implements IRaffleStrategyService {
      * <a href="http://localhost:8091/api/v1/raffle/query_raffle_award_list">/api/v1/raffle/query_raffle_award_list</a>
      * 请求参数 raw json
      *
-     * @param request {"strategyId":1000001}
+     * @param request {"activityId":100301,"userId":"xiaofuge"}
      * @return 奖品列表
      */
     @RequestMapping(value = "query_raffle_award_list", method = RequestMethod.POST)
@@ -94,10 +94,7 @@ public class RaffleStrategyController implements IRaffleStrategyService {
             log.info("查询奖品列表开始 userId:{} activityId : {}", request.getUserId(), request.getActivityId());
             // 1. 参数校验
             if (StringUtils.isBlank(request.getUserId()) || null == request.getActivityId()) {
-                return Response.<List<RaffleAwardListResponseDTO>>builder()
-                        .code(ResponseCode.ILLEGAL_PARAMETER.getCode())
-                        .info(ResponseCode.ILLEGAL_PARAMETER.getInfo())
-                        .build();
+                throw new AppException(ResponseCode.ILLEGAL_PARAMETER.getCode(), ResponseCode.ILLEGAL_PARAMETER.getInfo());
             }
 
             // 2. 查询奖品配置
@@ -161,7 +158,7 @@ public class RaffleStrategyController implements IRaffleStrategyService {
 
     @RequestMapping(value = "query_raffle_strategy_rule_weight", method = RequestMethod.POST)
     @Override
-    public Response<List<RaffleStrategyRuleWeightResponseDTO>> queryRaffleStrategyRuleWeight(RaffleStrategyRuleWeightRequestDTO request) {
+    public Response<List<RaffleStrategyRuleWeightResponseDTO>> queryRaffleStrategyRuleWeight(@RequestBody RaffleStrategyRuleWeightRequestDTO request) {
         try {
             log.info("查询抽奖策略权重规则配置开始 userId:{} activityId：{}", request.getUserId(), request.getActivityId());
             // 1. 参数校验

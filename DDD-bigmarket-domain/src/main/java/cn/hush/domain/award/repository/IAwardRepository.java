@@ -1,5 +1,6 @@
 package cn.hush.domain.award.repository;
 
+import cn.hush.domain.award.model.aggregate.GiveOutPrizesAggregate;
 import cn.hush.domain.award.model.aggregate.UserAwardRecordAggregate;
 import cn.hush.domain.award.model.entity.UserAwardRecordEntity;
 
@@ -12,4 +13,9 @@ public interface IAwardRepository {
 
     void saveUserAwardRecord(UserAwardRecordAggregate userAwardRecordAggregate);
 
+    String queryAwardConfig(Integer awardId);
+
+    void saveGiveOutPrizesAggregate(GiveOutPrizesAggregate giveOutPrizesAggregate);
+
+    String queryAwardKey(Integer awardId);
 }

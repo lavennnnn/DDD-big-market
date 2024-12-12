@@ -30,7 +30,8 @@ public class RebateMessageCostumer {
     @Resource
     private IRaffleActivityAccountQuotaService raffleActivityAccountQuotaService;
 
-    @RabbitListener(queuesToDeclare = @Queue(value = "${spring.rabbitmq.topic.send_rebate}"))
+    //todo
+    @RabbitListener(queuesToDeclare = @Queue(value = "${spring.rabbitmq.topic.send_rebate}", autoDelete = "true"))
     public void listener(String message) {
         try {
             log.info("监听用户行为返利 topic:{} message:{}", topic, message);

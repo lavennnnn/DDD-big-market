@@ -154,7 +154,7 @@ public class ActivityRepository implements IActivityRepository {
             RaffleActivityAccountMonthPO raffleActivityAccountMonth = new RaffleActivityAccountMonthPO();
             raffleActivityAccountMonth.setUserId(createQuotaOrderAggregate.getUserId());
             raffleActivityAccountMonth.setActivityId(createQuotaOrderAggregate.getActivityId());
-            raffleActivityAccountMonth.setMonth(raffleActivityAccountMonth.currentMonth());
+            raffleActivityAccountMonth.setMonth(RaffleActivityAccountMonthPO.currentMonth());
             raffleActivityAccountMonth.setMonthCount(createQuotaOrderAggregate.getMonthCount());
             raffleActivityAccountMonth.setMonthCountSurplus(createQuotaOrderAggregate.getMonthCount());
 
@@ -162,7 +162,7 @@ public class ActivityRepository implements IActivityRepository {
             RaffleActivityAccountDayPO raffleActivityAccountDay = new RaffleActivityAccountDayPO();
             raffleActivityAccountDay.setUserId(createQuotaOrderAggregate.getUserId());
             raffleActivityAccountDay.setActivityId(createQuotaOrderAggregate.getActivityId());
-            raffleActivityAccountDay.setDay(raffleActivityAccountDay.currentDay());
+            raffleActivityAccountDay.setDay(RaffleActivityAccountDayPO.currentDay());
             raffleActivityAccountDay.setDayCount(createQuotaOrderAggregate.getDayCount());
             raffleActivityAccountDay.setDayCountSurplus(createQuotaOrderAggregate.getDayCount());
 
@@ -207,7 +207,6 @@ public class ActivityRepository implements IActivityRepository {
         if (surplus == 0) {
             //库存为零，发送MQ消息，更新数据库库存
             eventPublisher.publish(activitySkuStockZeroMessageEvent.topic(), activitySkuStockZeroMessageEvent.buildEventMessage(sku));
-            return false;
         }else if (surplus < 0) {
             //库存＜0，恢复为0
             redisService.setAtomicLong(cacheKey, 0);
@@ -474,7 +473,7 @@ public class ActivityRepository implements IActivityRepository {
         RaffleActivityAccountDayPO raffleActivityAccountDay = new RaffleActivityAccountDayPO();
         raffleActivityAccountDay.setUserId(userId);
         raffleActivityAccountDay.setActivityId(activityId);
-        raffleActivityAccountDay.setDay(raffleActivityAccountDay.currentDay());
+        raffleActivityAccountDay.setDay(RaffleActivityAccountDayPO.currentDay());
         Integer dayPartakeCount = raffleActivityAccountDayDao.queryRaffleActivityAccountDayPartakeCount(raffleActivityAccountDay);
         return null == dayPartakeCount ? 0 : dayPartakeCount;
     }

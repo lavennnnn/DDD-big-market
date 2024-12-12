@@ -38,6 +38,8 @@ public class BlackListLogicChain extends AbstractLogicChain {
                 return DefaultChainFactory.StrategyAwardVO.builder()
                         .awardId(awardId)
                         .logicModel(ruleModel())
+                        //写入黑名单默认配置奖品值，也可以配置到数据库中方便动态更换
+                        .awardRuleValue("1,10")
                         .build();
             }
         }

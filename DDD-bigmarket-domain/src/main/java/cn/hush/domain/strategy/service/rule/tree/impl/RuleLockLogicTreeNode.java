@@ -7,6 +7,7 @@ import cn.hush.domain.strategy.service.rule.tree.ILogicTreeNode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.util.Date;
 
 /**
@@ -20,7 +21,7 @@ public class RuleLockLogicTreeNode implements ILogicTreeNode {
 
     // 用户抽奖次数，后续开发从数据库、redis中读取（旧版本死数据已废除）
     //private Long userRaffleCount = 10L;
-
+    @Resource
     private IStrategyRepository strategyRepository;
 
     @Override

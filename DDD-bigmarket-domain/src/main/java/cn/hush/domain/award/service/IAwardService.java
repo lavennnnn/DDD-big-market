@@ -1,5 +1,6 @@
 package cn.hush.domain.award.service;
 
+import cn.hush.domain.award.model.entity.DistributeAwardEntity;
 import cn.hush.domain.award.model.entity.UserAwardRecordEntity;
 
 /**
@@ -11,4 +12,6 @@ public interface IAwardService {
 
     void saveUserAwardRecord(UserAwardRecordEntity userAwardRecordEntity);
 
+    //配送奖品
+    void distributeAward(DistributeAwardEntity distributeAwardEntity);
 }

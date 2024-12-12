@@ -148,6 +148,7 @@ public class RaffleActivityController implements IRaffleActivityService {
                     .awardTitle(raffleAwardEntity.getAwardTitle())
                     .awardTime(new Date())
                     .awardState(AwardStateVO.create)
+                    .awardConfig(raffleAwardEntity.getAwardConfig())
                     .build();
             awardService.saveUserAwardRecord(userAwardRecord);
 
@@ -180,7 +181,6 @@ public class RaffleActivityController implements IRaffleActivityService {
 
     /**
      * 日历签到返利接口
-     *
      * <a href="http://localhost:8091/api/v1/raffle/activity/calender_sign_in_reabte">...</a>
      *
      * @param userId 用户id
@@ -188,7 +188,7 @@ public class RaffleActivityController implements IRaffleActivityService {
      */
     @RequestMapping(value = "calender_sign_in_rebate", method = RequestMethod.POST)
     @Override
-    public Response<Boolean> calenderSignInRebate(String userId) {
+    public Response<Boolean> calenderSignInRebate(@RequestParam String userId) {
         try {
             log.info("日历签到返利开始 userId:{}" ,userId);
             BehaviorEntity behaviorEntity = BehaviorEntity.builder()
@@ -222,7 +222,7 @@ public class RaffleActivityController implements IRaffleActivityService {
 
     @RequestMapping(value = "is_calender_sign_in_rebate_done", method = RequestMethod.POST)
     @Override
-    public Response<Boolean> isCalenderSignInRebateDone(String userId) {
+    public Response<Boolean> isCalenderSignInRebateDone(@RequestParam String userId) {
         try {
             log.info("查询用户是否完成日历签到返利 开始…… userId:{}" ,userId);
             String outBusinessNo = sdfDay.format(new Date());
@@ -246,7 +246,7 @@ public class RaffleActivityController implements IRaffleActivityService {
 
     @RequestMapping(value = "query_user_activity_account", method = RequestMethod.POST)
     @Override
-    public Response<UserActivityAccountResponseDTO> queryUserActivityAccount(UserActivityAccountRequestDTO request) {
+    public Response<UserActivityAccountResponseDTO> queryUserActivityAccount(@RequestBody UserActivityAccountRequestDTO request) {
         try {
             log.info("查询用户活动账户 开始…… userId:{}， activityId:{}", request.getUserId(), request.getActivityId());
             // 1. 参数校验

@@ -1,6 +1,9 @@
 package cn.hush.api.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @author Hush
@@ -10,12 +13,11 @@ import lombok.Data;
 @Data
 public class RaffleAwardListRequestDTO {
 
-    // 抽奖策略ID
-    @Deprecated
-    private Long strategyId;
-    // 活动ID
-    private Long activityId;
     // 用户ID
     private String userId;
+
+    // 活动ID
+    private Long activityId;
+
 
 }

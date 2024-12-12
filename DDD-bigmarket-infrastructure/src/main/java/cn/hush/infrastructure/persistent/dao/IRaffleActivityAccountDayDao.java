@@ -10,7 +10,6 @@ import org.apache.ibatis.annotations.Mapper;
  */
 
 @Mapper
-
 public interface IRaffleActivityAccountDayDao {
 
     //这里的其他方法不添加 @DBRouter ，因为在实现的事务手动进行了路由处理

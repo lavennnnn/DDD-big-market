@@ -26,7 +26,7 @@
 
     <select id="queryOrderByOutBusinessNo" resultMap="dataMap" parameterType="cn.hush.infrastructure.persistent.po.UserBehaviorRebateOrderPO">
         select user_id, order_id, behavior_type, rebate_desc, rebate_type, rebate_config, out_business_no, biz_id
-        from user_behavior_rebate_order_000
+        from user_behavior_rebate_order
         where user_id = #{userId} and out_business_no = #{outBusinessNo}
     </select>
 
