@@ -12,7 +12,7 @@
         <result column="update_time" property="updateTime"/>
     </resultMap>
 
-    <insert id="insert" parameterType="cn.hush.infrastructure.persistent.po.UserAwardRecordPO">
+    <insert id="insert" parameterType="cn.hush.infrastructure.persistent.po.UserCreditAccountPO" >
         INSERT INTO user_credit_account(
         user_id, total_amount, available_amount, account_status, create_time, update_time
         )
@@ -23,7 +23,7 @@
     </insert>
 
 
-    <update id="updateAmount" parameterType="cn.hush.infrastructure.persistent.po.UserAwardRecordPO">
+    <update id="updateAmount" parameterType="cn.hush.infrastructure.persistent.po.UserCreditAccountPO" >
         UPDATE user_credit_account
         SET
             total_amount = #{totalAmount} + total_amount,
@@ -31,6 +31,11 @@
         where user_id = #{userId}
 
     </update>
+
+    <select id="queryUserCreditAccount" parameterType="cn.hush.infrastructure.persistent.po.UserCreditAccountPO" resultMap="dataMap">
+        select user_id, total_amount, available_amount, account_status from user_credit_account
+        where user_id = #{userId}
+    </select>
 </mapper>
 
 

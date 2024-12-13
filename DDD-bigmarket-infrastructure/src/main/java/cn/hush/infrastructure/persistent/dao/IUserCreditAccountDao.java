@@ -1,5 +1,6 @@
 package cn.hush.infrastructure.persistent.dao;
 
+import cn.bugstack.middleware.db.router.annotation.DBRouter;
 import cn.hush.infrastructure.persistent.po.UserCreditAccountPO;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -11,8 +12,11 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface IUserCreditAccountDao {
 
-
     int updateAmount(UserCreditAccountPO userCreditAccountReq);
 
     void insert(UserCreditAccountPO userCreditAccountReq);
+
+    UserCreditAccountPO queryUserCreditAccount(UserCreditAccountPO userCreditAccountReq);
+
+
 }
