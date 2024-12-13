@@ -19,6 +19,7 @@ import cn.hush.types.exception.AppException;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RBlockingQueue;
 import org.redisson.api.RDelayedQueue;
+import org.redisson.api.RLock;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.support.TransactionTemplate;
@@ -119,7 +120,12 @@ public class ActivityRepository implements IActivityRepository {
 
     @Override
     public void doSaveOrder(CreateQuotaOrderAggregate createQuotaOrderAggregate) {
+        RLock lock = redisService.getLock(Constants.RedisKey.ACTIVITY_ACCOUNT_LOCK +
+                createQuotaOrderAggregate.getUserId() +
+                Constants.UNDERLINE + createQuotaOrderAggregate.getActivityId());
         try {
+            //加锁
+            lock.lock(3, TimeUnit.SECONDS);
             // 订单对象
             ActivityOrderEntity activityOrderEntity = createQuotaOrderAggregate.getActivityOrderEntity();
             RaffleActivityOrderPO raffleActivityOrder = new RaffleActivityOrderPO();
@@ -173,11 +179,13 @@ public class ActivityRepository implements IActivityRepository {
                 try {
                     // 1. 写入订单
                     raffleActivityOrderDao.insert(raffleActivityOrder);
-                    // 2. 更新账户
-                    int count = raffleActivityAccountDao.updateAccountQuota(raffleActivityAccount);
-                    // 3. 创建账户 - 更新为0，则账户不存在，创新新账户。
-                    if (0 == count) {
+                    // 2. 查询账户
+                    RaffleActivityAccountPO raffleActivityAccountRes = raffleActivityAccountDao.queryActivityAccountByUserId(raffleActivityAccount);
+                    // 3. 更新 & 创建账户 - raffleActivityAccountRes 为 NULL，则账户不存在，创新新账户。
+                    if (null == raffleActivityAccountRes) {
                         raffleActivityAccountDao.insert(raffleActivityAccount);
+                    } else {
+                        raffleActivityAccountDao.updateAccountQuota(raffleActivityAccount);
                     }
                     //4. 更新月账户
                     raffleActivityAccountMonthDao.addAccountQuota(raffleActivityAccountMonth);
