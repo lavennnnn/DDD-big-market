@@ -4,12 +4,15 @@ import cn.hush.domain.activity.model.aggregate.CreateQuotaOrderAggregate;
 import cn.hush.domain.activity.model.entity.*;
 import cn.hush.domain.activity.repository.IActivityRepository;
 import cn.hush.domain.activity.service.IRaffleActivityAccountQuotaService;
+import cn.hush.domain.activity.service.quota.policy.ITradePolicy;
 import cn.hush.domain.activity.service.quota.rule.IActionChain;
 import cn.hush.domain.activity.service.quota.rule.factory.DefaultActivityChainFactory;
 import cn.hush.types.enums.ResponseCode;
 import cn.hush.types.exception.AppException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+
+import java.util.Map;
 
 /**
  * @author Hush
@@ -19,8 +22,13 @@ import org.apache.commons.lang3.StringUtils;
 @Slf4j
 public abstract class AbstractRaffleActivityAccount extends RaffleActivityAccountQuotaSupport implements IRaffleActivityAccountQuotaService {
 
-    public AbstractRaffleActivityAccount(IActivityRepository activityRepository, DefaultActivityChainFactory activityChainFactory) {
-        super(activityRepository, activityChainFactory);
+    private final Map<String, ITradePolicy> tradePolicyGroup;
+
+    public AbstractRaffleActivityAccount(IActivityRepository activityRepository,
+                                         DefaultActivityChainFactory defaultactivityChainFactory,
+                                         Map<String, ITradePolicy> tradePolicyGroup) {
+        super(activityRepository, defaultactivityChainFactory);
+        this.tradePolicyGroup = tradePolicyGroup;
     }
 
 
@@ -50,7 +58,8 @@ public abstract class AbstractRaffleActivityAccount extends RaffleActivityAccoun
         CreateQuotaOrderAggregate createQuotaOrderAggregate = buildOrderAggregate(skuRechargeEntity, activitySkuEntity, activityEntity, activityCountEntity);
 
         // 5. 保存单号
-        doSaveOrder(createQuotaOrderAggregate);
+        ITradePolicy tradePolicy = tradePolicyGroup.get(skuRechargeEntity.getOrderTradeType().getCode());
+        tradePolicy.trade(createQuotaOrderAggregate);
 
         // 6. 返回单号
         return createQuotaOrderAggregate.getActivityOrderEntity().getOrderId();
@@ -58,5 +67,4 @@ public abstract class AbstractRaffleActivityAccount extends RaffleActivityAccoun
 
     protected abstract CreateQuotaOrderAggregate buildOrderAggregate(SkuRechargeEntity skuRechargeEntity, ActivitySkuEntity activitySkuEntity, ActivityEntity activityEntity, ActivityCountEntity activityCountEntity);
 
-    protected abstract void doSaveOrder(CreateQuotaOrderAggregate createOrderAggregate);
 }

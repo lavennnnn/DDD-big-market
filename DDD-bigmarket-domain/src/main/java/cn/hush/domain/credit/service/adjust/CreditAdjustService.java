@@ -1,11 +1,16 @@
-package cn.hush.domain.credit.service;
+package cn.hush.domain.credit.service.adjust;
 
+import cn.hush.domain.credit.event.CreditAdjustSuccessMessageEvent;
 import cn.hush.domain.credit.model.aggregate.TradeAggregate;
 import cn.hush.domain.credit.model.entity.CreditAccountEntity;
 import cn.hush.domain.credit.model.entity.CreditOrderEntity;
+import cn.hush.domain.credit.model.entity.TaskEntity;
 import cn.hush.domain.credit.model.entity.TradeEntity;
 import cn.hush.domain.credit.repository.ICreditRepository;
+import cn.hush.domain.credit.service.ICreditAdjustService;
+import cn.hush.types.event.BaseEvent;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -17,10 +22,12 @@ import javax.annotation.Resource;
  */
 @Slf4j
 @Service
-public class CreditAdjustService implements ICreditAdjustService{
+public class CreditAdjustService implements ICreditAdjustService {
 
     @Resource
     private ICreditRepository creditRepository;
+    @Autowired
+    private CreditAdjustSuccessMessageEvent creditAdjustSuccessMessageEvent;
 
     @Override
     public String createOrder(TradeEntity tradeEntity) {
@@ -42,11 +49,22 @@ public class CreditAdjustService implements ICreditAdjustService{
                 tradeEntity.getOutBusinessNo()
         );
 
-        // 3.构建聚合对象
+        // 3. 构建消息任务对象
+        CreditAdjustSuccessMessageEvent.CreditAdjustSuccessMessage creditAdjustSuccessMessage = new CreditAdjustSuccessMessageEvent.CreditAdjustSuccessMessage();
+        creditAdjustSuccessMessage.setUserId(tradeEntity.getUserId());
+        creditAdjustSuccessMessage.setOrderId(creditOrderEntity.getOrderId());
+        creditAdjustSuccessMessage.setAmount(tradeEntity.getAmount());
+        creditAdjustSuccessMessage.setOutBusinessNo(tradeEntity.getOutBusinessNo());
+        BaseEvent.EventMessage<CreditAdjustSuccessMessageEvent.CreditAdjustSuccessMessage> creditAdjustSuccessMessageEventMessage = creditAdjustSuccessMessageEvent.buildEventMessage(creditAdjustSuccessMessage);
+
+        TaskEntity taskEntity = TradeAggregate.createTaskEntity(tradeEntity.getUserId(), creditAdjustSuccessMessageEvent.topic(), creditAdjustSuccessMessageEventMessage.getId(), creditAdjustSuccessMessageEventMessage);
+
+        // 4.构建聚合对象
         TradeAggregate tradeAggregate = TradeAggregate.builder()
                 .userId(tradeEntity.getUserId())
                 .creditAccountEntity(creditAccountEntity)
                 .creditOrderEntity(creditOrderEntity)
+                .taskEntity(taskEntity)
                 .build();
 
         // 4. 保存积分交易订单

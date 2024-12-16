@@ -1,6 +1,7 @@
 package cn.hush.infrastructure.persistent.dao;
 import cn.bugstack.middleware.db.router.annotation.DBRouter;
 import cn.bugstack.middleware.db.router.annotation.DBRouterStrategy;
+import cn.hush.infrastructure.persistent.po.RaffleActivityAccountPO;
 import cn.hush.infrastructure.persistent.po.RaffleActivityOrderPO;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -22,4 +23,8 @@ public interface IRaffleActivityOrderDao {
     @DBRouter
     List<RaffleActivityOrderPO> queryRaffleActivityOrderByUserId(String userId);
 
+    @DBRouter
+    RaffleActivityOrderPO queryRaffleActivityOrder(RaffleActivityOrderPO raffleActivityOrderReq);
+
+    int updateOrderCompleted(RaffleActivityOrderPO raffleActivityOrderReq);
 }

@@ -2,6 +2,7 @@ package cn.hush.infrastructure.persistent.po;
 
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -67,6 +68,10 @@ public class RaffleActivityOrderPO {
      */
     private Integer monthCount;
 
+    /**
+     * 支付金额【积分】
+     */
+    private BigDecimal payPriceAmount;
 
     /**
      * 订单状态

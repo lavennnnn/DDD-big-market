@@ -1,6 +1,7 @@
 package cn.hush.trigger.listener;
 
 import cn.hush.domain.activity.model.entity.SkuRechargeEntity;
+import cn.hush.domain.activity.model.vo.OrderTradeTypeVO;
 import cn.hush.domain.activity.service.IRaffleActivityAccountQuotaService;
 import cn.hush.domain.credit.model.entity.TradeEntity;
 import cn.hush.domain.credit.model.valobj.TradeNameVO;
@@ -57,6 +58,7 @@ public class RebateMessageCostumer {
                     skuRechargeEntity.setUserId(rebateMessage.getUserId());
                     skuRechargeEntity.setSku(Long.valueOf(rebateMessage.getRebateConfig()));
                     skuRechargeEntity.setOutBusinessNo(rebateMessage.getBizId());
+                    skuRechargeEntity.setOrderTradeType(OrderTradeTypeVO.rebate_no_pay_trade);
                     raffleActivityAccountQuotaService.createOrder(skuRechargeEntity);
                     break;
                 // 2. 积分奖励

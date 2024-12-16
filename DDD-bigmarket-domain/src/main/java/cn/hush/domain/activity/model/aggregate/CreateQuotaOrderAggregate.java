@@ -2,10 +2,13 @@ package cn.hush.domain.activity.model.aggregate;
 
 import cn.hush.domain.activity.model.entity.ActivityAccountEntity;
 import cn.hush.domain.activity.model.entity.ActivityOrderEntity;
+import cn.hush.domain.activity.model.vo.OrderStateVO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.math.BigDecimal;
 
 /**
  * @author Hush
@@ -43,10 +46,14 @@ public class CreateQuotaOrderAggregate {
      */
     private Integer monthCount;
 
+
     /**
      * 活动订单实体
      */
     private ActivityOrderEntity activityOrderEntity;
 
+    public void setOrderState(OrderStateVO orderState) {
+        this.activityOrderEntity.setState(orderState);
+    }
 }
 

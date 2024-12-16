@@ -4,15 +4,21 @@ import cn.bugstack.middleware.db.router.strategy.IDBRouterStrategy;
 import cn.hush.domain.credit.model.aggregate.TradeAggregate;
 import cn.hush.domain.credit.model.entity.CreditAccountEntity;
 import cn.hush.domain.credit.model.entity.CreditOrderEntity;
+import cn.hush.domain.credit.model.entity.TaskEntity;
 import cn.hush.domain.credit.repository.ICreditRepository;
+import cn.hush.infrastructure.event.EventPublisher;
+import cn.hush.infrastructure.persistent.dao.ITaskDao;
 import cn.hush.infrastructure.persistent.dao.IUserCreditAccountDao;
 import cn.hush.infrastructure.persistent.dao.IUserCreditOrderDao;
+import cn.hush.infrastructure.persistent.po.TaskPO;
 import cn.hush.infrastructure.persistent.po.UserCreditAccountPO;
 import cn.hush.infrastructure.persistent.po.UserCreditOrderPO;
 import cn.hush.infrastructure.persistent.redis.IRedisService;
 import cn.hush.types.common.Constants;
+import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RLock;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.support.TransactionTemplate;
@@ -39,6 +45,10 @@ public class CreditRepository implements ICreditRepository {
     private IDBRouterStrategy dbRouter;
     @Resource
     private TransactionTemplate transactionTemplate;
+    @Resource
+    private ITaskDao taskDao;
+    @Resource
+    private EventPublisher eventPublisher;
 
     @Override
     public void saveUserCreditTradeOrder(TradeAggregate tradeAggregate) {
@@ -46,7 +56,7 @@ public class CreditRepository implements ICreditRepository {
         String userId = tradeAggregate.getUserId();
         CreditAccountEntity creditAccountEntity = tradeAggregate.getCreditAccountEntity();
         CreditOrderEntity creditOrderEntity = tradeAggregate.getCreditOrderEntity();
-
+        TaskEntity taskEntity = tradeAggregate.getTaskEntity();
 
         // 积分账户
         UserCreditAccountPO userCreditAccountReq = new UserCreditAccountPO();
@@ -65,6 +75,14 @@ public class CreditRepository implements ICreditRepository {
         userCreditOrderReq.setTradeAmount(creditOrderEntity.getTradeAmount());
         userCreditOrderReq.setOutBusinessNo(creditOrderEntity.getOutBusinessNo());
 
+        // 任务
+        TaskPO task = new TaskPO();
+        task.setUserId(taskEntity.getUserId());
+        task.setTopic(taskEntity.getTopic());
+        task.setMessageId(taskEntity.getMessageId());
+        task.setMessage(JSON.toJSONString(taskEntity.getMessage()));
+        task.setState(taskEntity.getState().getCode());
+
         RLock lock = redisService.getLock(Constants.RedisKey.USER_CREDIT_ACCOUNT_LOCK + userId + Constants.UNDERLINE + creditOrderEntity.getOutBusinessNo());
         try {
             lock.lock(3, TimeUnit.SECONDS);
@@ -81,6 +99,8 @@ public class CreditRepository implements ICreditRepository {
                     }
                     // 2. 保存账户订单
                     userCreditOrderDao.insert(userCreditOrderReq);
+                    // 3. 写入任务
+                    taskDao.insert(task);
                 } catch (DuplicateKeyException e) {
                     status.setRollbackOnly();
                     log.error("调整账户积分额度异常，唯一索引冲突 userId:{} orderId:{}", userId, creditOrderEntity.getOrderId(), e);
@@ -93,6 +113,17 @@ public class CreditRepository implements ICreditRepository {
         } finally {
             dbRouter.clear();
             lock.unlock();
+        }
+
+        try {
+            // 发送消息【在事务外执行，如果失败还有任务补偿】
+            eventPublisher.publish(task.getTopic(), task.getMessage());
+            // 更新数据库记录，task 任务表
+            taskDao.updateTaskSendMessageCompleted(task);
+            log.info("调整账户积分记录，发送MQ消息完成 userId: {} orderId:{} topic: {}", userId, creditOrderEntity.getOrderId(), task.getTopic());
+        } catch (Exception e) {
+            log.error("调整账户积分记录，发送MQ消息失败 userId: {} topic: {}", userId, task.getTopic());
+            taskDao.updateTaskSendMessageFail(task);
         }
 
     }
