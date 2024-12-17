@@ -1,10 +1,10 @@
 package cn.hush.api;
 
-import cn.hush.api.dto.ActivityDrawRequestDTO;
-import cn.hush.api.dto.ActivityDrawResponseDTO;
-import cn.hush.api.dto.UserActivityAccountRequestDTO;
-import cn.hush.api.dto.UserActivityAccountResponseDTO;
+import cn.hush.api.dto.*;
 import cn.hush.types.model.Response;
+
+import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * @author Hush
@@ -48,4 +48,27 @@ public interface IRaffleActivityService {
      * @return 额度结果
      */
     Response<UserActivityAccountResponseDTO> queryUserActivityAccount(UserActivityAccountRequestDTO request);
+
+    /**
+     * 查询sku商品集合
+     *
+     * @param activityId 活动ID
+     * @return 商品集合
+     */
+    Response<List<SkuProductResponseDTO>> querySkuProductListByActivityId(Long activityId);
+
+    /**
+     * 查询用户积分账户额度
+     * @param userId 用户id
+     * @return 额度结果
+     */
+    Response<BigDecimal> queryUserCreditAccount(String userId);
+
+    /**
+     * 积分支付兑换商品
+     *
+     * @param request 请求对象「用户ID、商品ID」
+     * @return 兑换结果
+     */
+    Response<Boolean> creditExchangeSku(SkuProductShopCartRequestDTO request);
 }

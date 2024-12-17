@@ -1,7 +1,10 @@
 package cn.hush.domain.activity.model.entity;
 
 import cn.hush.domain.activity.model.vo.OrderTradeTypeVO;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @author Hush
@@ -9,6 +12,9 @@ import lombok.Data;
  * @create 2024-11-20 上午12:42
  */
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class SkuRechargeEntity {
 
     /** 用户ID */

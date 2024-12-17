@@ -1,6 +1,7 @@
 package cn.hush.domain.credit.repository;
 
 import cn.hush.domain.credit.model.aggregate.TradeAggregate;
+import cn.hush.domain.credit.model.entity.CreditAccountEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
@@ -16,4 +17,5 @@ public interface ICreditRepository {
 
     void saveUserCreditTradeOrder(TradeAggregate tradeAggregate);
 
+    CreditAccountEntity queryUserCreditAccount(String userId);
 }

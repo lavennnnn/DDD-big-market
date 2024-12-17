@@ -1,4 +1,4 @@
-package cn.hush.test.domain.trigger;
+package cn.hush.test.trigger;
 
 import cn.hush.api.IRaffleStrategyService;
 import cn.hush.api.dto.RaffleAwardListRequestDTO;

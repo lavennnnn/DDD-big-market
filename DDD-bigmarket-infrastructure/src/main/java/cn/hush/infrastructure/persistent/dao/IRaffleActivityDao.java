@@ -21,4 +21,5 @@ public interface IRaffleActivityDao {
     Long queryStrategyIdByActivityId(Long activityId);
 
     Long queryActivityIdByStrategyId(Long strategyId);
+
 }

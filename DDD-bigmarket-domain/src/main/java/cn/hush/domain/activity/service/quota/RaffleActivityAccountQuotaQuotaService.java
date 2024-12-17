@@ -3,7 +3,6 @@ package cn.hush.domain.activity.service.quota;
 import cn.hush.domain.activity.model.aggregate.CreateQuotaOrderAggregate;
 import cn.hush.domain.activity.model.entity.*;
 import cn.hush.domain.activity.model.vo.ActivitySkuStockKeyVO;
-import cn.hush.domain.activity.model.vo.OrderStateVO;
 import cn.hush.domain.activity.repository.IActivityRepository;
 import cn.hush.domain.activity.service.IRaffleActivitySkuStockService;
 import cn.hush.domain.activity.service.quota.policy.ITradePolicy;
@@ -20,10 +19,10 @@ import java.util.Map;
  * @create 2024-11-16 上午3:50
  */
 @Service
-public class RaffleActivityAccountQuotaService extends AbstractRaffleActivityAccount implements IRaffleActivitySkuStockService {
+public class RaffleActivityAccountQuotaQuotaService extends AbstractRaffleActivityAccountQuota implements IRaffleActivitySkuStockService {
 
 
-    public RaffleActivityAccountQuotaService(IActivityRepository activityRepository, DefaultActivityChainFactory defaultactivityChainFactory, Map<String, ITradePolicy> tradePolicyGroup) {
+    public RaffleActivityAccountQuotaQuotaService(IActivityRepository activityRepository, DefaultActivityChainFactory defaultactivityChainFactory, Map<String, ITradePolicy> tradePolicyGroup) {
         super(activityRepository, defaultactivityChainFactory, tradePolicyGroup);
     }
 

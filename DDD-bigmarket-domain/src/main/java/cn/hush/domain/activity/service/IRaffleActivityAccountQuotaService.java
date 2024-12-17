@@ -3,6 +3,7 @@ package cn.hush.domain.activity.service;
 import cn.hush.domain.activity.model.entity.ActivityAccountEntity;
 import cn.hush.domain.activity.model.entity.DeliveryOrderEntity;
 import cn.hush.domain.activity.model.entity.SkuRechargeEntity;
+import cn.hush.domain.activity.model.entity.UnpaidActivityOrderEntity;
 
 /**
  * @author Hush
@@ -20,7 +21,7 @@ public interface IRaffleActivityAccountQuotaService {
      * @param skuRechargeEntity 活动商品充值实体对象
      * @return 活动ID
      */
-    String createOrder(SkuRechargeEntity skuRechargeEntity);
+    UnpaidActivityOrderEntity createOrder(SkuRechargeEntity skuRechargeEntity);
 
 
     /**

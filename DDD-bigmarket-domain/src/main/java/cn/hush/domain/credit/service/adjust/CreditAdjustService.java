@@ -26,7 +26,7 @@ public class CreditAdjustService implements ICreditAdjustService {
 
     @Resource
     private ICreditRepository creditRepository;
-    @Autowired
+    @Resource
     private CreditAdjustSuccessMessageEvent creditAdjustSuccessMessageEvent;
 
     @Override
@@ -55,9 +55,12 @@ public class CreditAdjustService implements ICreditAdjustService {
         creditAdjustSuccessMessage.setOrderId(creditOrderEntity.getOrderId());
         creditAdjustSuccessMessage.setAmount(tradeEntity.getAmount());
         creditAdjustSuccessMessage.setOutBusinessNo(tradeEntity.getOutBusinessNo());
-        BaseEvent.EventMessage<CreditAdjustSuccessMessageEvent.CreditAdjustSuccessMessage> creditAdjustSuccessMessageEventMessage = creditAdjustSuccessMessageEvent.buildEventMessage(creditAdjustSuccessMessage);
+        BaseEvent.EventMessage<CreditAdjustSuccessMessageEvent.CreditAdjustSuccessMessage> creditAdjustSuccessMessageEventMessage = creditAdjustSuccessMessageEvent
+                .buildEventMessage(creditAdjustSuccessMessage);
 
-        TaskEntity taskEntity = TradeAggregate.createTaskEntity(tradeEntity.getUserId(), creditAdjustSuccessMessageEvent.topic(), creditAdjustSuccessMessageEventMessage.getId(), creditAdjustSuccessMessageEventMessage);
+        TaskEntity taskEntity = TradeAggregate.createTaskEntity(tradeEntity.getUserId(), creditAdjustSuccessMessageEvent.topic(),
+                creditAdjustSuccessMessageEventMessage.getId(),
+                creditAdjustSuccessMessageEventMessage);
 
         // 4.构建聚合对象
         TradeAggregate tradeAggregate = TradeAggregate.builder()
@@ -72,6 +75,11 @@ public class CreditAdjustService implements ICreditAdjustService {
         log.info("增加账户积分额度完成 userId:{} orderId:{}", tradeEntity.getUserId(), creditOrderEntity.getOrderId());
 
         return creditOrderEntity.getOrderId();
+    }
+
+    @Override
+    public CreditAccountEntity queryUserCreditAccount(String userId) {
+        return creditRepository.queryUserCreditAccount(userId);
     }
 
 }

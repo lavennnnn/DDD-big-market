@@ -1,6 +1,7 @@
 package cn.hush.test.domain.activity;
 
 import cn.hush.domain.activity.model.entity.SkuRechargeEntity;
+import cn.hush.domain.activity.model.entity.UnpaidActivityOrderEntity;
 import cn.hush.domain.activity.model.vo.OrderTradeTypeVO;
 import cn.hush.domain.activity.service.IRaffleActivityAccountQuotaService;
 import cn.hush.domain.activity.service.armory.IActivityArmory;
@@ -44,8 +45,8 @@ public class RaffleActivityQuotaServiceTest {
         // outBusinessNo 作为幂等仿重使用，同一个业务单号2次使用会抛出索引冲突 Duplicate entry '700091009111' for key 'uq_out_business_no' 确保唯一性。
         skuRechargeEntity.setOutBusinessNo("700091009990");
         skuRechargeEntity.setOrderTradeType(OrderTradeTypeVO.rebate_no_pay_trade);
-        String orderId = raffleActivityAccountQuotaService.createOrder(skuRechargeEntity);
-        log.info("测试结果：{}", orderId);
+        UnpaidActivityOrderEntity unpaidActivityOrder = raffleActivityAccountQuotaService.createOrder(skuRechargeEntity);
+        log.info("测试结果：{}", unpaidActivityOrder);
     }
 
     /**
@@ -64,8 +65,8 @@ public class RaffleActivityQuotaServiceTest {
                 // outBusinessNo 作为幂等仿重使用，同一个业务单号2次使用会抛出索引冲突 Duplicate entry '700091009111' for key 'uq_out_business_no' 确保唯一性。
                 skuRechargeEntity.setOutBusinessNo(RandomStringUtils.randomNumeric(12));
                 skuRechargeEntity.setOrderTradeType(OrderTradeTypeVO.rebate_no_pay_trade);
-                String orderId = raffleActivityAccountQuotaService.createOrder(skuRechargeEntity);
-                log.info("测试结果：{}", orderId);
+                UnpaidActivityOrderEntity unpaidActivityOrder = raffleActivityAccountQuotaService.createOrder(skuRechargeEntity);
+                log.info("测试结果：{}", unpaidActivityOrder);
             } catch (AppException e) {
                 log.warn(e.getInfo());
             }
@@ -82,8 +83,8 @@ public class RaffleActivityQuotaServiceTest {
         // outBusinessNo 作为幂等仿重使用，同一个业务单号2次使用会抛出索引冲突 Duplicate entry '700091009111' for key 'uq_out_business_no' 确保唯一性。
         skuRechargeEntity.setOutBusinessNo("70009240609902");
         skuRechargeEntity.setOrderTradeType(OrderTradeTypeVO.credit_pay_trade);
-        String orderId = raffleActivityAccountQuotaService.createOrder(skuRechargeEntity);
-        log.info("测试结果：{}", orderId);
+        UnpaidActivityOrderEntity unpaidActivityOrder = raffleActivityAccountQuotaService.createOrder(skuRechargeEntity);
+        log.info("测试结果：{}", unpaidActivityOrder);
     }
 
 
