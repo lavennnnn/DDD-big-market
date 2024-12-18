@@ -25,6 +25,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.support.TransactionTemplate;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -66,6 +67,8 @@ public class ActivityRepository implements IActivityRepository {
     private ActivitySkuStockZeroMessageEvent activitySkuStockZeroMessageEvent;
     @Resource
     private IUserRaffleOrderDao userRaffleOrderDao;
+    @Resource
+    private IUserCreditAccountDao userCreditAccountDao;
 
     @Override
     public ActivitySkuEntity queryActivitySku(Long sku) {
@@ -355,6 +358,7 @@ public class ActivityRepository implements IActivityRepository {
                                         .activityId(activityId)
                                         .month(activityAccountMonthEntity.getMonth())
                                         .build());
+                        log.info("更新月度额度成功, updateMonthCount:{} ", updateMonthCount);
                         if (1 != updateMonthCount) {
                             // 未更新成功则回滚
                             status.setRollbackOnly();
@@ -376,36 +380,36 @@ public class ActivityRepository implements IActivityRepository {
                                 .monthCountSurplus(activityAccountEntity.getMonthCountSurplus())
                                 .build());
 
-                        // 3. 创建或更新日账户，true - 存在则更新，false - 不存在则插入
-                        if (createPartakeOrderAggregate.isExistAccountDay()) {
-                            int updateDayCount = raffleActivityAccountDayDao.updateActivityAccountDaySubtractionQuota(RaffleActivityAccountDayPO.builder()
-                                    .userId(userId)
-                                    .activityId(activityId)
-                                    .day(activityAccountDayEntity.getDay())
-                                    .build());
-                            if (1 != updateDayCount) {
-                                // 未更新成功则回滚
-                                status.setRollbackOnly();
-                                log.warn("写入创建参与活动记录，更新日账户额度不足，异常 userId: {} activityId: {} day: {}", userId, activityId, activityAccountDayEntity.getDay());
-                                throw new AppException(ResponseCode.ACCOUNT_DAY_QUOTA_ERROR.getCode(), ResponseCode.ACCOUNT_DAY_QUOTA_ERROR.getInfo());
-                            }
-                        } else {
-                            raffleActivityAccountDayDao.insertActivityAccountDay(RaffleActivityAccountDayPO.builder()
-                                    .userId(activityAccountDayEntity.getUserId())
-                                    .activityId(activityAccountDayEntity.getActivityId())
-                                    .day(activityAccountDayEntity.getDay())
-                                    .dayCount(activityAccountDayEntity.getDayCount())
-                                    .dayCountSurplus(activityAccountDayEntity.getDayCountSurplus() - 1)
-                                    .build());
-                            // 新创建日账户，则更新总账表中日镜像额度
-                            raffleActivityAccountDao.updateActivityAccountDaySurplusImageQuota(RaffleActivityAccountPO.builder()
-                                    .userId(userId)
-                                    .activityId(activityId)
-                                    .dayCountSurplus(activityAccountEntity.getDayCountSurplus())
-                                    .build());
-                        }
                     }
-
+                    // 3. 创建或更新日账户，true - 存在则更新，false - 不存在则插入
+                    if (createPartakeOrderAggregate.isExistAccountDay()) {
+                        int updateDayCount = raffleActivityAccountDayDao.updateActivityAccountDaySubtractionQuota(RaffleActivityAccountDayPO.builder()
+                                .userId(userId)
+                                .activityId(activityId)
+                                .day(activityAccountDayEntity.getDay())
+                                .build());
+                        log.info("更新日账户额度成功, updateDayCount:{} ", updateDayCount);
+                        if (1 != updateDayCount) {
+                            // 未更新成功则回滚
+                            status.setRollbackOnly();
+                            log.warn("写入创建参与活动记录，更新日账户额度不足，异常 userId: {} activityId: {} day: {}", userId, activityId, activityAccountDayEntity.getDay());
+                            throw new AppException(ResponseCode.ACCOUNT_DAY_QUOTA_ERROR.getCode(), ResponseCode.ACCOUNT_DAY_QUOTA_ERROR.getInfo());
+                        }
+                    } else {
+                        raffleActivityAccountDayDao.insertActivityAccountDay(RaffleActivityAccountDayPO.builder()
+                                .userId(activityAccountDayEntity.getUserId())
+                                .activityId(activityAccountDayEntity.getActivityId())
+                                .day(activityAccountDayEntity.getDay())
+                                .dayCount(activityAccountDayEntity.getDayCount())
+                                .dayCountSurplus(activityAccountDayEntity.getDayCountSurplus() - 1)
+                                .build());
+                        // 新创建日账户，则更新总账表中日镜像额度
+                        raffleActivityAccountDao.updateActivityAccountDaySurplusImageQuota(RaffleActivityAccountPO.builder()
+                                .userId(userId)
+                                .activityId(activityId)
+                                .dayCountSurplus(activityAccountEntity.getDayCountSurplus())
+                                .build());
+                    }
                     // 4. 写入参与活动订单
                     userRaffleOrderDao.insert(UserRaffleOrderPO.builder()
                             .userId(userRaffleOrderEntity.getUserId())
@@ -537,7 +541,7 @@ public class ActivityRepository implements IActivityRepository {
 
     @Override
     public ActivityAccountEntity queryActivityAccountEntity(Long activityId, String userId) {
-
+        // 1. 查询总账户额度
         RaffleActivityAccountPO raffleActivityAccountResponsePO = raffleActivityAccountDao.queryActivityAccountByUserId(RaffleActivityAccountPO.builder()
                 .userId(userId)
                 .activityId(activityId)
@@ -554,15 +558,19 @@ public class ActivityRepository implements IActivityRepository {
                     .monthCountSurplus(0)
                     .build();
         };
-
-        RaffleActivityAccountMonthPO raffleActivityAccountMonthResponsePO = raffleActivityAccountMonthDao.queryActivityAccountMonthByUserId(RaffleActivityAccountMonthPO.builder()
+        // 2. 查询月账户额度
+        RaffleActivityAccountMonthPO raffleActivityAccountMonthResponsePO = raffleActivityAccountMonthDao
+                .queryActivityAccountMonthByUserId(RaffleActivityAccountMonthPO.builder()
                 .userId(userId)
                 .activityId(activityId)
+                        .month(RaffleActivityAccountMonthPO.currentMonth())
                 .build());
-
-        RaffleActivityAccountDayPO raffleActivityAccountDayResponsePO = raffleActivityAccountDayDao.queryActivityAccountDayByUserId(RaffleActivityAccountDayPO.builder()
+        // 3. 查询日账户额度
+        RaffleActivityAccountDayPO raffleActivityAccountDayResponsePO = raffleActivityAccountDayDao
+                .queryActivityAccountDayByUserId(RaffleActivityAccountDayPO.builder()
                 .userId(userId)
                 .activityId(activityId)
+                        .day(RaffleActivityAccountDayPO.currentDay())
                 .build());
 
         // 组装对象
@@ -572,6 +580,7 @@ public class ActivityRepository implements IActivityRepository {
         activityAccountEntity.setTotalCount(raffleActivityAccountResponsePO.getTotalCount());
         activityAccountEntity.setTotalCountSurplus(raffleActivityAccountResponsePO.getTotalCountSurplus());
 
+        // 如果没有创建日账户，则从总账户中获取日总额度填充。「当新创建日账户时，会获得总账户额度」
         if (null == raffleActivityAccountDayResponsePO) {
             activityAccountEntity.setDayCount(raffleActivityAccountResponsePO.getDayCount());
             activityAccountEntity.setDayCountSurplus(raffleActivityAccountResponsePO.getDayCount());
@@ -580,6 +589,7 @@ public class ActivityRepository implements IActivityRepository {
             activityAccountEntity.setDayCountSurplus(raffleActivityAccountDayResponsePO.getDayCountSurplus());
         }
 
+        // 如果没有创建月账户，则从总账户中获取月总额度填充。「当新创建日账户时，会获得总账户额度」
         if (null == raffleActivityAccountMonthResponsePO) {
             activityAccountEntity.setMonthCount(raffleActivityAccountResponsePO.getMonthCount());
             activityAccountEntity.setMonthCountSurplus(raffleActivityAccountResponsePO.getMonthCount());
@@ -611,6 +621,11 @@ public class ActivityRepository implements IActivityRepository {
             raffleActivityOrderReq.setUserId(deliveryOrderEntity.getUserId());
             raffleActivityOrderReq.setOutBusinessNo(deliveryOrderEntity.getOutBusinessNo());
             RaffleActivityOrderPO raffleActivityOrderRes = raffleActivityOrderDao.queryRaffleActivityOrder(raffleActivityOrderReq);
+
+            if(null == raffleActivityOrderRes) {
+                if (lock.isLocked()) lock.unlock();
+                return;
+            }
 
             // 账户对象 - 总
             RaffleActivityAccountPO raffleActivityAccount = new RaffleActivityAccountPO();
@@ -674,7 +689,9 @@ public class ActivityRepository implements IActivityRepository {
             });
         }finally {
             dbRouter.clear();
-            lock.unlock();
+            if (lock.isLocked()) {
+                lock.unlock();
+            }
         }
     }
 
@@ -719,6 +736,20 @@ public class ActivityRepository implements IActivityRepository {
                     .build());
         }
         return skuProductEntities;
+    }
+
+    @Override
+    public BigDecimal queryUserCreditAccountAmount(String userId) {
+        try {
+            dbRouter.doRouter(userId);
+            UserCreditAccountPO userCreditAccountReq = new UserCreditAccountPO();
+            userCreditAccountReq.setUserId(userId);
+            UserCreditAccountPO userCreditAccount = userCreditAccountDao.queryUserCreditAccount(userCreditAccountReq);
+            if (null == userCreditAccount) return BigDecimal.ZERO;
+            return userCreditAccount.getAvailableAmount();
+        }finally {
+            dbRouter.clear();
+        }
     }
 
 

@@ -34,10 +34,10 @@ public class RaffleStrategyControllerTest {
         RaffleAwardListRequestDTO request = new RaffleAwardListRequestDTO();
         request.setUserId("xiaofuge");
         request.setActivityId(100301L);
-        Response<List<RaffleAwardListResponseDTO>> response = raffleStrategyService.queryRaffleAwardList(request);
+        //Response<List<RaffleAwardListResponseDTO>> response = raffleStrategyService.queryRaffleAwardList(request);
 
         log.info("请求参数 :{}", JSON.toJSONString(request));
-        log.info("测试结果:{}", JSON.toJSONString(response));
+        //log.info("测试结果:{}", JSON.toJSONString(response));
     }
 
     @Test

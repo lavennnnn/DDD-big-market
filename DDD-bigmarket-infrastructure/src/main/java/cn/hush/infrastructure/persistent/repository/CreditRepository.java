@@ -24,6 +24,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.support.TransactionTemplate;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -95,7 +96,13 @@ public class CreditRepository implements ICreditRepository {
                     if (null == userCreditAccount) {
                         userCreditAccountDao.insert(userCreditAccountReq);
                     } else {
-                        userCreditAccountDao.updateAmount(userCreditAccountReq);
+                        // todo
+                        if ("forward".equals(userCreditOrderReq.getTradeType())){
+                            userCreditAccountDao.updateAmountAdd(userCreditAccountReq);
+                        }
+                        if("reverse".equals(userCreditOrderReq.getTradeType())){
+                            userCreditAccountDao.updateAmountSubtraction(userCreditAccountReq);
+                        }
                     }
                     // 2. 保存账户订单
                     userCreditOrderDao.insert(userCreditOrderReq);
@@ -112,7 +119,10 @@ public class CreditRepository implements ICreditRepository {
             });
         } finally {
             dbRouter.clear();
-            lock.unlock();
+            if (lock.isLocked()) {
+                lock.unlock();
+            }
+
         }
 
         try {
@@ -135,9 +145,13 @@ public class CreditRepository implements ICreditRepository {
         try {
             dbRouter.doRouter(userId);
             UserCreditAccountPO userCreditAccount = userCreditAccountDao.queryUserCreditAccount(userCreditAccountReq);
+            BigDecimal availableAmount = BigDecimal.ZERO;
+            if (null != userCreditAccount) {
+                availableAmount = userCreditAccount.getAvailableAmount();
+            }
             return CreditAccountEntity.builder()
                     .userId(userId)
-                    .adjustAmount(userCreditAccount.getAvailableAmount())
+                    .adjustAmount(availableAmount)
                     .build();
         }finally {
             dbRouter.clear();

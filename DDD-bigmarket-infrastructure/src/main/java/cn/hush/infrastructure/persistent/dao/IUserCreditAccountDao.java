@@ -12,11 +12,12 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface IUserCreditAccountDao {
 
-    int updateAmount(UserCreditAccountPO userCreditAccountReq);
+    int updateAmountAdd(UserCreditAccountPO userCreditAccountReq);
 
     void insert(UserCreditAccountPO userCreditAccountReq);
 
     UserCreditAccountPO queryUserCreditAccount(UserCreditAccountPO userCreditAccountReq);
 
+    int updateAmountSubtraction(UserCreditAccountPO userCreditAccountReq);
 
 }

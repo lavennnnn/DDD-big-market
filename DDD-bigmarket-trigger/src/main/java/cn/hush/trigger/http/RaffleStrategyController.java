@@ -123,8 +123,7 @@ public class RaffleStrategyController implements IRaffleStrategyService {
                         .awardSubtitle(strategyAward.getAwardSubtitle())
                         .sort(strategyAward.getSort())
                         .awardRuleLockCount(awardRuleLockCount)
-                        //todo 感觉是 >=
-                        .isAwardUnlocked(null == awardRuleLockCount || dayPartakeCount > awardRuleLockCount)
+                        .isAwardUnlocked(null == awardRuleLockCount || dayPartakeCount >= awardRuleLockCount)
                         .waitUnlockCount(null == awardRuleLockCount || dayPartakeCount >= awardRuleLockCount ? 0 : awardRuleLockCount - dayPartakeCount)
                         .build());
             }

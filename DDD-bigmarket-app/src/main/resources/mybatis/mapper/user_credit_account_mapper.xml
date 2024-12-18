@@ -23,14 +23,21 @@
     </insert>
 
 
-    <update id="updateAmount" parameterType="cn.hush.infrastructure.persistent.po.UserCreditAccountPO" >
+    <update id="updateAmountAdd" parameterType="cn.hush.infrastructure.persistent.po.UserCreditAccountPO" >
         UPDATE user_credit_account
         SET
             total_amount = #{totalAmount} + total_amount,
             available_amount = available_amount + #{availableAmount}
         where user_id = #{userId}
-
     </update>
+
+    <update id="updateAmountSubtraction" parameterType="cn.hush.infrastructure.persistent.po.UserCreditAccountPO" >
+        UPDATE user_credit_account
+        SET
+            available_amount = available_amount - #{availableAmount}
+        where user_id = #{userId} and available_amount > 0
+    </update>
+
 
     <select id="queryUserCreditAccount" parameterType="cn.hush.infrastructure.persistent.po.UserCreditAccountPO" resultMap="dataMap">
         select user_id, total_amount, available_amount, account_status from user_credit_account
