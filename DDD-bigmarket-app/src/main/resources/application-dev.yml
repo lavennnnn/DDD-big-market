@@ -123,18 +123,18 @@ spring:
     virtual-host: /hush
 
 # Dubbo
-#dubbo:
-#  application:
-#    name: xfg-frame-archetype-std
-#    version: 1.0.0
-#  registry:
-#    id: nacos-registry
-#    address: nacos://127.0.0.1:8848
-#  protocol:
-#    name: dubbo
-#    port: -1
-#  scan:
-#    base-packages: cn.bugstack.api
+dubbo:
+  application:
+    version: 1.0.0
+    name: Dubbo1st
+  registry:
+    id: nacos-registry
+    address: nacos://127.0.0.1:8848
+  protocol:
+    name: dubbo
+    port: -1
+  scan:
+    base-packages: cn.hush.api
 
 # RocketMQ 配置，在docs/dev-ops下，有创建 xfg-group 脚本，也有场景mq消息的脚本
 #rocketmq:

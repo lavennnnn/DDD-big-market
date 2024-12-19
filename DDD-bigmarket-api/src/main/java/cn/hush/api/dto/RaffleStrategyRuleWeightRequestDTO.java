@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * @author Hush
  * @description 抽奖策略规则，权重配置，查询N次抽奖可解锁奖品范围，请求对象
@@ -14,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class RaffleStrategyRuleWeightRequestDTO {
+public class RaffleStrategyRuleWeightRequestDTO implements Serializable {
 
     // 用户ID
     private String userId;

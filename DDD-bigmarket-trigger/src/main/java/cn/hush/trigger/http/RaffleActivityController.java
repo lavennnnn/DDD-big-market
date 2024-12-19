@@ -31,6 +31,7 @@ import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -51,7 +52,8 @@ import java.util.List;
 @RestController
 @CrossOrigin("${app.config.cross-origin}")
 @RequestMapping("/api/${app.config.api-version}/raffle/activity")
-public class RaffleActivityController implements IRaffleActivityService {
+@DubboService(version = "1.0")
+public class  RaffleActivityController implements IRaffleActivityService {
 
     private final SimpleDateFormat sdfDay = new SimpleDateFormat("yyyyMMdd");
 
