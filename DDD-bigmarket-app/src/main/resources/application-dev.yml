@@ -136,6 +136,16 @@ dubbo:
   scan:
     base-packages: cn.hush.api
 
+# zookeeper
+zookeeper:
+  sdk:
+    config:
+      connect-string: 127.0.0.1:2181
+      base-sleep-time-ms: 1000
+      max-retries: 3
+      session-timeout-ms: 180000
+      connection-timeout-ms: 30000
+
 # RocketMQ 配置，在docs/dev-ops下，有创建 xfg-group 脚本，也有场景mq消息的脚本
 #rocketmq:
 #  name-server: 127.0.0.1:9876
