@@ -38,6 +38,16 @@
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-spring-boot-starter</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.cloud</groupId>
+                    <artifactId>spring-cloud-starter</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 <!--        <dependency>-->
 <!--            <groupId>com.xuxueli</groupId>-->
 <!--            <artifactId>xxl-job-core</artifactId>-->
@@ -72,6 +82,7 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-zookeeper-discovery</artifactId>
         </dependency>
+
     </dependencies>
 
     <build>
