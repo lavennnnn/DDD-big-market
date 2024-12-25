@@ -139,7 +139,7 @@ public class  RaffleActivityController implements IRaffleActivityService {
      *     "activityId": 100301
      * }'
      */
-    @RateLimiterAccessInterceptor(key = "userId", fallbackMethod = "drawRateLimiterError", permitsPerSecond = 0.5d, blacklistCount = 1)
+    @RateLimiterAccessInterceptor(key = "userId", fallbackMethod = "drawRateLimiterError", permitsPerSecond = 1.0d, blackListCount = 1)
     @RequestMapping(value = "draw", method = RequestMethod.POST)
     @HystrixCommand(commandProperties = {
             @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "150")

@@ -33,6 +33,7 @@ public class DCCController implements IDCCService {
      * <p>
      * curl --request GET --url 'http://localhost:8091/api/v1/raffle/dcc/update_config?key=degradeSwitch&value=close'
      * curl --request GET --url 'http://localhost:8091/api/v1/raffle/dcc/update_config?key=rateLimiterSwitch&value=open'
+     * curl --request GET --url 'http://localhost:8091/api/v1/raffle/dcc/update_config?key=guavaOrRedis&value=Guava'
      */
     @RequestMapping(value = "update_config", method = RequestMethod.GET)
     @Override

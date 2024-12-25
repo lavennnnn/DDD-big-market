@@ -19,7 +19,7 @@ public @interface RateLimiterAccessInterceptor {
     double permitsPerSecond();
 
     /** 黑名单拦截（多少次限制后加入黑名单）0 不限制 */
-    double blacklistCount() default 0;
+    double blackListCount() default 0;
 
     /** 拦截后的执行方法 */
     String fallbackMethod();
