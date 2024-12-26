@@ -236,7 +236,7 @@ public class  RaffleActivityController implements IRaffleActivityService {
 
     /**
      * 日历签到返利接口
-     * <a href="http://localhost:8091/api/v1/raffle/activity/calender_sign_in_reabte">...</a>
+     * <a href="http://localhost:8091/api/v1/raffle/activity/calender_sign_in_rebate">...</a>
      *
      * @param userId 用户id
      * @return 结果信息

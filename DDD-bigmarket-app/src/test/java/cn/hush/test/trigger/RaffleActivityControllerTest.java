@@ -61,7 +61,7 @@ public class RaffleActivityControllerTest {
 
 
     @Test
-    public void test_calendarSignRebate() {
+    public void test_calenderSignRebate() {
         Response<Boolean> response = raffleActivityService.calenderSignInRebate("user005");
         log.info("测试结果：{}", JSON.toJSONString(response));
     }
