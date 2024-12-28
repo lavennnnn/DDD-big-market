@@ -48,6 +48,11 @@
         where strategy_id = #{strategyId} and award_id = #{awardId}
     </select>
 
+    <select id="queryOpenActivityStrategyAwardList" resultType="cn.hush.infrastructure.dao.po.StrategyAwardPO">
+        select strategy_id, award_id from big_market.strategy_award
+        where strategy_id in (select strategy_id from big_market.raffle_activity where state = 'open')
+    </select>
+
 </mapper>
 
 

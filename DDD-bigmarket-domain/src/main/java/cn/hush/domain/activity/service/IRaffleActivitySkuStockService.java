@@ -2,6 +2,8 @@ package cn.hush.domain.activity.service;
 
 import cn.hush.domain.activity.model.vo.ActivitySkuStockKeyVO;
 
+import java.util.List;
+
 /**
  * @author Hush
  * @description 活动sku库存处理接口
@@ -16,7 +18,7 @@ public interface IRaffleActivitySkuStockService {
      * @return 奖品库存Key信息
      * @throws InterruptedException 异常
      */
-    ActivitySkuStockKeyVO takeQueueValue() throws InterruptedException;
+    ActivitySkuStockKeyVO takeQueueValue(Long sku) throws InterruptedException;
 
     /**
      * 清空队列
@@ -37,4 +39,5 @@ public interface IRaffleActivitySkuStockService {
      */
     void clearActivitySkuStock(Long sku);
 
+    List<Long> querySkuList();
 }

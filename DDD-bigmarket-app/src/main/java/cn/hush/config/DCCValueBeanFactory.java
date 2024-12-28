@@ -8,6 +8,7 @@ import org.apache.curator.framework.recipes.cache.CuratorCache;
 import org.springframework.aop.framework.AopProxyUtils;
 import org.springframework.aop.support.AopUtils;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.annotation.Configuration;
 
@@ -28,13 +29,15 @@ public class DCCValueBeanFactory implements BeanPostProcessor {
     private static final String BASE_CONFIG_PATH = "/big-market-dcc";
     private static final String BASE_CONFIG_PATH_CONFIG = BASE_CONFIG_PATH + "/config";
 
-    private final CuratorFramework client;
+    @Autowired(required = false)
+    private CuratorFramework client;
 
     private final Map<String, Object> dccObjGroup = new HashMap<>();
 
-    //通过构造方法注入 CuratorFramework
-    public DCCValueBeanFactory(CuratorFramework client) throws Exception {
-        this.client = client;
+
+    public DCCValueBeanFactory() throws Exception {
+
+        if (client == null) return;
 
         //节点判断
         if (null == client.checkExists().forPath(BASE_CONFIG_PATH_CONFIG)) {
@@ -78,6 +81,9 @@ public class DCCValueBeanFactory implements BeanPostProcessor {
     //获取扫描的 Bean 对象类，对这些类的属性判断是否存在添加了自定义注解的属性
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+
+        if (null == client) return bean;
+
         // 注意；增加 AOP 代理后，获得类的方式要通过 AopProxyUtils.getTargetClass(bean);
         // 不能直接 bean.class 因为代理后类的结构发生变化，这样不能获得到自己的自定义注解了。
         Class<?> targetBeanClass = bean.getClass();

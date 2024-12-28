@@ -1,6 +1,7 @@
 package cn.hush.domain.strategy.service;
 
 import cn.hush.domain.strategy.model.entity.StrategyAwardEntity;
+import cn.hush.domain.strategy.model.vo.StrategyAwardStockKeyVO;
 
 import java.util.List;
 
@@ -27,4 +28,5 @@ public interface IRaffleAward {
      */
     List<StrategyAwardEntity> queryRaffleStrategyAwardListByActivityId(Long activityId);
 
+    List<StrategyAwardStockKeyVO> queryOpenActivityStrategyAwardList();
 }

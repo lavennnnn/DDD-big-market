@@ -40,5 +40,11 @@
         where activity_id = #{activityId}
     </select>
 
+    <select id="querySkuList" resultType="java.lang.Long">
+        select sku
+            from big_market.raffle_activity_sku
+        where activity_id in (select activity_id from big_market.raffle_activity where state = 'open')
+    </select>
+
 
 </mapper>

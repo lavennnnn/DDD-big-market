@@ -18,7 +18,6 @@ import cn.hush.domain.strategy.service.rule.tree.factory.engine.IDecisionTreeEng
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -65,8 +64,8 @@ public class DefaultRaffleStrategy extends AbstractRaffleStrategy implements IRa
 
 
     @Override
-    public StrategyAwardStockKeyVO takeQueueValue() throws InterruptedException {
-        return repository.takeQueueValue();
+    public StrategyAwardStockKeyVO takeQueueValue(Long strategyId, Integer awardId) throws InterruptedException {
+        return repository.takeQueueValue(strategyId, awardId);
     }
 
     @Override
@@ -84,6 +83,11 @@ public class DefaultRaffleStrategy extends AbstractRaffleStrategy implements IRa
         Long strategyId = repository.queryStrategyIdByActivityId(activityId);
         return queryRaffleStrategyAwardList(strategyId);
 
+    }
+
+    @Override
+    public List<StrategyAwardStockKeyVO> queryOpenActivityStrategyAwardList() {
+        return repository.queryOpenActivityStrategyAwardList();
     }
 
     @Override

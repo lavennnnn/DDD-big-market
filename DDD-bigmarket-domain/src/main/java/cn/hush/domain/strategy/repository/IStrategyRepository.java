@@ -68,6 +68,10 @@ public interface IStrategyRepository {
     Integer queryActivityAccountTotalUseCount(String userId, Long strategyId);
 
     List<RuleWeightVO> queryAwardRuleWeightByStrategyId(Long strategyId);
+
+    List<StrategyAwardStockKeyVO> queryOpenActivityStrategyAwardList();
+
+    StrategyAwardStockKeyVO takeQueueValue(Long strategyId, Integer awardId);
 }
 
 

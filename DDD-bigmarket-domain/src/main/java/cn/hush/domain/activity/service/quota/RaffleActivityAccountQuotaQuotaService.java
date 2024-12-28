@@ -10,7 +10,9 @@ import cn.hush.domain.activity.service.quota.rule.factory.DefaultActivityChainFa
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -57,8 +59,8 @@ public class RaffleActivityAccountQuotaQuotaService extends AbstractRaffleActivi
 
 
     @Override
-    public ActivitySkuStockKeyVO takeQueueValue() throws InterruptedException {
-        return activityRepository.takeQueueValue();
+    public ActivitySkuStockKeyVO takeQueueValue(Long sku) throws InterruptedException {
+        return activityRepository.takeQueueValue(sku);
     }
 
     @Override
@@ -74,6 +76,11 @@ public class RaffleActivityAccountQuotaQuotaService extends AbstractRaffleActivi
     @Override
     public void clearActivitySkuStock(Long sku) {
         activityRepository.clearActivitySkuStock(sku);
+    }
+
+    @Override
+    public List<Long> querySkuList() {
+        return activityRepository.querySkuList();
     }
 
     @Override
