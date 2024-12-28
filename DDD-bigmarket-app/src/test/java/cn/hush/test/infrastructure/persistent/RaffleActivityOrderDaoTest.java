@@ -1,7 +1,7 @@
 package cn.hush.test.infrastructure.persistent;
 
-import cn.hush.infrastructure.persistent.dao.IRaffleActivityOrderDao;
-import cn.hush.infrastructure.persistent.po.RaffleActivityOrderPO;
+import cn.hush.infrastructure.dao.IRaffleActivityOrderDao;
+import cn.hush.infrastructure.dao.po.RaffleActivityOrderPO;
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.RandomStringUtils;

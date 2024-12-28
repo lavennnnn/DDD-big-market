@@ -32,6 +32,7 @@ public class DCCValueBeanFactory implements BeanPostProcessor {
 
     private final Map<String, Object> dccObjGroup = new HashMap<>();
 
+    //通过构造方法注入 CuratorFramework
     public DCCValueBeanFactory(CuratorFramework client) throws Exception {
         this.client = client;
 
@@ -44,6 +45,7 @@ public class DCCValueBeanFactory implements BeanPostProcessor {
         CuratorCache curatorCache = CuratorCache.build(client, BASE_CONFIG_PATH_CONFIG);
         curatorCache.start();
 
+        //newData 即为修改后的新数据
         curatorCache.listenable().addListener((type, oldData, newData)->{
             switch (type) {
                 case NODE_CHANGED:
@@ -51,6 +53,7 @@ public class DCCValueBeanFactory implements BeanPostProcessor {
                     Object objectBean = dccObjGroup.get(dccValuePath);
                     if (null == objectBean) return;
 
+                    //通过反射修改字段
                     try {
                         Class<?> objectBeanClass = objectBean.getClass();
                         if (AopUtils.isAopProxy(objectBean)) {
@@ -72,6 +75,7 @@ public class DCCValueBeanFactory implements BeanPostProcessor {
         });
     }
 
+    //获取扫描的 Bean 对象类，对这些类的属性判断是否存在添加了自定义注解的属性
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
         // 注意；增加 AOP 代理后，获得类的方式要通过 AopProxyUtils.getTargetClass(bean);
@@ -86,6 +90,7 @@ public class DCCValueBeanFactory implements BeanPostProcessor {
 
         Field[] fields = targetBeanClass.getDeclaredFields();
         for (Field field : fields) {
+            //扫描注解 @DCCValue
             if (field.isAnnotationPresent(DCCValue.class)) {
                 DCCValue dccValue = field.getAnnotation(DCCValue.class);
 

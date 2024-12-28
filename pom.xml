@@ -153,6 +153,11 @@
                     </exclusion>
                 </exclusions>
             </dependency>
+            <dependency>
+                <groupId>org.elasticsearch.plugin</groupId>
+                <artifactId>x-pack-sql-jdbc</artifactId>
+                <version>7.17.14</version>
+            </dependency>
             <!-- <dependency>
                 <groupId>org.apache.shardingsphere</groupId>
                 <artifactId>shardingsphere-jdbc-core</artifactId>
@@ -180,9 +185,9 @@
             </dependency>-->
 
             <dependency>
-                <groupId>cn.bugstack.middleware</groupId>
+                <groupId>plus.gaga.middleware</groupId>
                 <artifactId>db-router-spring-boot-starter</artifactId>
-                <version>1.0.2</version>
+                <version>1.0.4</version>
             </dependency>
             <dependency>
                 <groupId>org.jeasy</groupId>

@@ -121,6 +121,9 @@ spring:
       send_rebate: send_rebate
       credit_adjust_success: credit_adjust_success
     virtual-host: /hush
+  elasticsearch.datasource:
+    driverClassName: org.elasticsearch.xpack.sql.jdbc.EsDriver
+    url: jdbc:es://http://127.0.0.1:9200
 
 # Dubbo
 dubbo:

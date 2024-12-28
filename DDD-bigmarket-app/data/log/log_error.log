@@ -1,12 +1,280 @@
-24-12-27.03:36:59.378 [main            ] WARN  EndpointId             - Endpoint ID 'hystrix.stream' contains invalid characters, please migrate to a valid format.
-24-12-27.03:37:09.855 [main            ] WARN  URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
-24-12-27.03:37:22.798 [main            ] WARN  ConfigurationUtils     -  [DUBBO] Config center was specified, but no config item found., dubbo version: 3.0.9, current host: 2.0.0.1
-24-12-27.03:37:22.798 [main            ] WARN  ConfigurationUtils     -  [DUBBO] Config center was specified, but no config item found., dubbo version: 3.0.9, current host: 2.0.0.1
-24-12-27.03:37:31.113 [main            ] WARN  ArchaiusAutoConfiguration - No spring.application.name found, defaulting to 'application'
-24-12-27.03:37:31.118 [main            ] WARN  URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
-24-12-27.03:37:39.958 [Thread-5        ] WARN  HttpClientBeanHolder   - [HttpClientBeanHolder] Start destroying common HttpClient
-24-12-27.03:37:39.959 [Thread-10       ] WARN  NotifyCenter           - [NotifyCenter] Start destroying Publisher
-24-12-27.03:37:39.959 [Thread-10       ] WARN  NotifyCenter           - [NotifyCenter] Destruction of the end
-24-12-27.03:37:39.960 [Thread-5        ] WARN  HttpClientBeanHolder   - [HttpClientBeanHolder] Destruction of the end
-24-12-27.03:37:51.819 [main            ] WARN  LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
-24-12-27.03:37:52.427 [main            ] WARN  GenericWebApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'ServiceBean:cn.hush.api.IRaffleActivityService:1.0': Invocation of init method failed; nested exception is java.lang.NullPointerException
+24-12-28.21:40:58.106 [main            ] WARN  EndpointId             - Endpoint ID 'hystrix.stream' contains invalid characters, please migrate to a valid format.
+24-12-28.21:41:04.938 [main            ] WARN  URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+24-12-28.21:41:20.198 [main            ] WARN  ConfigurationUtils     -  [DUBBO] Config center was specified, but no config item found., dubbo version: 3.0.9, current host: 2.0.0.1
+24-12-28.21:41:20.199 [main            ] WARN  ConfigurationUtils     -  [DUBBO] Config center was specified, but no config item found., dubbo version: 3.0.9, current host: 2.0.0.1
+24-12-28.21:41:27.481 [main            ] WARN  ArchaiusAutoConfiguration - No spring.application.name found, defaulting to 'application'
+24-12-28.21:41:27.486 [main            ] WARN  URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+24-12-28.21:41:44.263 [main            ] WARN  LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+24-12-28.21:41:44.385 [main            ] WARN  GenericWebApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'IElasticSearchUserRaffleOrderDao' defined in file [D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-infrastructure\target\classes\cn\hush\infrastructure\elasticsearch\IElasticSearchUserRaffleOrderDao.class]: Cannot resolve reference to bean 'elasticsearchSqlSessionFactory' while setting bean property 'sqlSessionFactory'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No bean named 'elasticsearchSqlSessionFactory' available
+24-12-28.21:41:45.342 [main            ] ERROR LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+A component required a bean named 'elasticsearchSqlSessionFactory' that could not be found.
+
+
+Action:
+
+Consider defining a bean named 'elasticsearchSqlSessionFactory' in your configuration.
+
+24-12-28.21:41:45.347 [main            ] ERROR TestContextManager     - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@6631f5ca] to prepare test instance [cn.hush.test.infrastructure.elasticsearch.ElasticSearchTest@69e23e94]
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:98)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:124)
+	at org.springframework.test.context.web.ServletTestExecutionListener.setUpRequestContextIfNecessary(ServletTestExecutionListener.java:190)
+	at org.springframework.test.context.web.ServletTestExecutionListener.prepareTestInstance(ServletTestExecutionListener.java:132)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:248)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:227)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:289)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:291)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:246)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38)
+	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:232)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:55)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'IElasticSearchUserRaffleOrderDao' defined in file [D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-infrastructure\target\classes\cn\hush\infrastructure\elasticsearch\IElasticSearchUserRaffleOrderDao.class]: Cannot resolve reference to bean 'elasticsearchSqlSessionFactory' while setting bean property 'sqlSessionFactory'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No bean named 'elasticsearchSqlSessionFactory' available
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:342)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:113)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1707)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1452)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:619)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:936)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:920)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:136)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:141)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:90)
+	... 27 common frames omitted
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No bean named 'elasticsearchSqlSessionFactory' available
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeanDefinition(DefaultListableBeanFactory.java:874)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getMergedLocalBeanDefinition(AbstractBeanFactory.java:1358)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:309)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:330)
+	... 45 common frames omitted
+24-12-28.21:41:45.376 [Thread-5        ] WARN  HttpClientBeanHolder   - [HttpClientBeanHolder] Start destroying common HttpClient
+24-12-28.21:41:45.377 [Thread-10       ] WARN  NotifyCenter           - [NotifyCenter] Start destroying Publisher
+24-12-28.21:41:45.377 [Thread-10       ] WARN  NotifyCenter           - [NotifyCenter] Destruction of the end
+24-12-28.21:41:45.382 [Thread-5        ] WARN  HttpClientBeanHolder   - [HttpClientBeanHolder] Destruction of the end
+24-12-28.21:45:06.382 [main            ] WARN  EndpointId             - Endpoint ID 'hystrix.stream' contains invalid characters, please migrate to a valid format.
+24-12-28.21:45:13.522 [main            ] WARN  URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+24-12-28.21:45:25.763 [main            ] WARN  ConfigurationUtils     -  [DUBBO] Config center was specified, but no config item found., dubbo version: 3.0.9, current host: 2.0.0.1
+24-12-28.21:45:25.763 [main            ] WARN  ConfigurationUtils     -  [DUBBO] Config center was specified, but no config item found., dubbo version: 3.0.9, current host: 2.0.0.1
+24-12-28.21:45:31.573 [main            ] WARN  ArchaiusAutoConfiguration - No spring.application.name found, defaulting to 'application'
+24-12-28.21:45:31.575 [main            ] WARN  URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+24-12-28.21:45:47.402 [main            ] WARN  LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+24-12-28.21:45:48.391 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
+24-12-28.21:45:49.396 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
+24-12-28.21:45:51.403 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
+24-12-28.21:45:55.409 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
+24-12-28.21:46:00.412 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
+24-12-28.21:46:00.744 [main            ] WARN  ServiceConfig          -  [DUBBO] Use random available port(20880) for protocol dubbo, dubbo version: 3.0.9, current host: 2.0.0.1
+24-12-28.21:46:02.092 [main            ] WARN  NacosRegistry          -  [DUBBO] Ignore empty notify urls for subscribe url provider://2.0.0.1:20880/cn.hush.api.IRaffleStrategyService?anyhost=true&application=Dubbo1st&application.version=1.0.0&background=false&bind.ip=2.0.0.1&bind.port=20880&category=configurators&check=false&deprecated=false&dubbo=2.0.2&dynamic=true&generic=false&interface=cn.hush.api.IRaffleStrategyService&methods=randomRaffle,queryRaffleAwardList,strategyArmory,queryRaffleStrategyRuleWeight&pid=18140&qos.enable=false&release=3.0.9&revision=1.0&service-name-mapping=true&side=provider&timestamp=1735393560734&version=1.0, dubbo version: 3.0.9, current host: 2.0.0.1
+24-12-28.21:46:02.538 [main            ] WARN  NacosRegistry          -  [DUBBO] Ignore empty notify urls for subscribe url provider://2.0.0.1:20880/cn.hush.api.IRaffleActivityService?anyhost=true&application=Dubbo1st&application.version=1.0.0&background=false&bind.ip=2.0.0.1&bind.port=20880&category=configurators&check=false&deprecated=false&dubbo=2.0.2&dynamic=true&generic=false&interface=cn.hush.api.IRaffleActivityService&methods=queryUserActivityAccount,querySkuProductListByActivityId,isCalenderSignInRebateDone,queryUserCreditAccount,creditExchangeSku,armory,calenderSignInRebate,draw&pid=18140&qos.enable=false&release=3.0.9&revision=1.0&service-name-mapping=true&side=provider&timestamp=1735393562266&version=1.0, dubbo version: 3.0.9, current host: 2.0.0.1
+24-12-28.21:46:04.663 [main            ] WARN  NacosRegistry          -  [DUBBO] Ignore empty notify urls for subscribe url provider://2.0.0.1:20880/org.apache.dubbo.metadata.MetadataService?anyhost=true&application=Dubbo1st&application.version=1.0.0&background=false&bind.ip=2.0.0.1&bind.port=20880&category=configurators&check=false&connections=1&corethreads=2&delay=0&deprecated=false&dubbo=2.0.2&dynamic=true&executes=100&generic=false&getAndListenInstanceMetadata.1.callback=true&getAndListenInstanceMetadata.return=true&getAndListenInstanceMetadata.sent=true&group=Dubbo1st&interface=org.apache.dubbo.metadata.MetadataService&methods=getMetadataURL,isMetadataService,getExportedURLs,getAndListenInstanceMetadata,serviceName,version,getSubscribedURLs,getExportedServiceURLs,exportInstanceMetadata,getMetadataInfo,toSortedStrings,getMetadataInfos,getServiceDefinition,getInstanceMetadataChangedListenerMap&pid=18140&qos.enable=false&register=false&release=3.0.9&revision=3.0.9&service-name-mapping=true&side=provider&threadpool=cached&threads=100&timestamp=1735393562585&version=1.0.0, dubbo version: 3.0.9, current host: 2.0.0.1
+24-12-28.21:46:07.699 [Thread-5        ] WARN  HttpClientBeanHolder   - [HttpClientBeanHolder] Start destroying common HttpClient
+24-12-28.21:46:07.699 [Thread-10       ] WARN  NotifyCenter           - [NotifyCenter] Start destroying Publisher
+24-12-28.21:46:07.699 [Thread-10       ] WARN  NotifyCenter           - [NotifyCenter] Destruction of the end
+24-12-28.21:46:07.701 [Thread-5        ] WARN  HttpClientBeanHolder   - [HttpClientBeanHolder] Destruction of the end
+24-12-28.21:46:07.708 [SpringApplicationShutdownHook] WARN  RegistryManager        -  [DUBBO] All registry instances have been destroyed, failed to fetch any instance. Usually, this means no need to try to do unnecessary redundant resource clearance, all registries has been taken care of., dubbo version: 3.0.9, current host: 2.0.0.1
+24-12-28.21:46:07.710 [SpringApplicationShutdownHook] WARN  RegistryManager        -  [DUBBO] All registry instances have been destroyed, failed to fetch any instance. Usually, this means no need to try to do unnecessary redundant resource clearance, all registries has been taken care of., dubbo version: 3.0.9, current host: 2.0.0.1
+24-12-28.21:46:07.712 [SpringApplicationShutdownHook] WARN  RegistryManager        -  [DUBBO] All registry instances have been destroyed, failed to fetch any instance. Usually, this means no need to try to do unnecessary redundant resource clearance, all registries has been taken care of., dubbo version: 3.0.9, current host: 2.0.0.1
+24-12-28.21:46:07.713 [SpringApplicationShutdownHook] WARN  RegistryManager        -  [DUBBO] All registry instances have been destroyed, failed to fetch any instance. Usually, this means no need to try to do unnecessary redundant resource clearance, all registries has been taken care of., dubbo version: 3.0.9, current host: 2.0.0.1
+24-12-28.21:46:08.278 [Dubbo-framework-registry-notification-2-thread-1] WARN  NacosRegistry          -  [DUBBO] Ignore empty notify urls for subscribe url provider://2.0.0.1:20880/cn.hush.api.IRaffleActivityService?anyhost=true&application=Dubbo1st&application.version=1.0.0&background=false&bind.ip=2.0.0.1&bind.port=20880&category=configurators&check=false&deprecated=false&dubbo=2.0.2&dynamic=true&generic=false&interface=cn.hush.api.IRaffleActivityService&methods=queryUserActivityAccount,querySkuProductListByActivityId,isCalenderSignInRebateDone,queryUserCreditAccount,creditExchangeSku,armory,calenderSignInRebate,draw&pid=18140&qos.enable=false&release=3.0.9&revision=1.0&service-name-mapping=true&side=provider&timestamp=1735393562266&version=1.0, dubbo version: 3.0.9, current host: 2.0.0.1
+24-12-28.23:16:07.644 [main            ] WARN  EndpointId             - Endpoint ID 'hystrix.stream' contains invalid characters, please migrate to a valid format.
+24-12-28.23:16:19.376 [main            ] WARN  URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+24-12-28.23:16:37.222 [main            ] WARN  ConfigurationUtils     -  [DUBBO] Config center was specified, but no config item found., dubbo version: 3.0.9, current host: 2.0.0.1
+24-12-28.23:16:37.223 [main            ] WARN  ConfigurationUtils     -  [DUBBO] Config center was specified, but no config item found., dubbo version: 3.0.9, current host: 2.0.0.1
+24-12-28.23:16:49.752 [main            ] WARN  GenericWebApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'elasticsearchSqlSessionFactory' defined in class path resource [cn/hush/config/DataSourceConfig$ElasticsearchMybatisConfig.class]: Unsatisfied dependency expressed through method 'elasticsearchSqlSessionFactory' parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'javax.sql.DataSource' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Qualifier(value=elasticsearchDataSource)}
+24-12-28.23:16:50.149 [main            ] ERROR SpringApplication      - Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'elasticsearchSqlSessionFactory' defined in class path resource [cn/hush/config/DataSourceConfig$ElasticsearchMybatisConfig.class]: Unsatisfied dependency expressed through method 'elasticsearchSqlSessionFactory' parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'javax.sql.DataSource' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Qualifier(value=elasticsearchDataSource)}
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:800)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:541)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:920)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:136)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:141)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:90)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:124)
+	at org.springframework.test.context.web.ServletTestExecutionListener.setUpRequestContextIfNecessary(ServletTestExecutionListener.java:190)
+	at org.springframework.test.context.web.ServletTestExecutionListener.prepareTestInstance(ServletTestExecutionListener.java:132)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:248)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:227)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:289)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:291)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:246)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38)
+	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:232)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:55)
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'javax.sql.DataSource' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Qualifier(value=elasticsearchDataSource)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:1801)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1357)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:887)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 45 common frames omitted
+24-12-28.23:16:50.154 [main            ] ERROR TestContextManager     - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@6631f5ca] to prepare test instance [cn.hush.test.infrastructure.elasticsearch.ElasticSearchTest@53917c92]
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:98)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:124)
+	at org.springframework.test.context.web.ServletTestExecutionListener.setUpRequestContextIfNecessary(ServletTestExecutionListener.java:190)
+	at org.springframework.test.context.web.ServletTestExecutionListener.prepareTestInstance(ServletTestExecutionListener.java:132)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:248)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:227)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:289)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:291)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:246)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38)
+	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:232)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:55)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'elasticsearchSqlSessionFactory' defined in class path resource [cn/hush/config/DataSourceConfig$ElasticsearchMybatisConfig.class]: Unsatisfied dependency expressed through method 'elasticsearchSqlSessionFactory' parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'javax.sql.DataSource' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Qualifier(value=elasticsearchDataSource)}
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:800)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:541)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:920)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:136)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:141)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:90)
+	... 27 common frames omitted
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'javax.sql.DataSource' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Qualifier(value=elasticsearchDataSource)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:1801)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1357)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:887)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 45 common frames omitted
+24-12-28.23:16:50.183 [Thread-10       ] WARN  NotifyCenter           - [NotifyCenter] Start destroying Publisher
+24-12-28.23:16:50.183 [Thread-5        ] WARN  HttpClientBeanHolder   - [HttpClientBeanHolder] Start destroying common HttpClient
+24-12-28.23:16:50.185 [Thread-10       ] WARN  NotifyCenter           - [NotifyCenter] Destruction of the end
+24-12-28.23:16:50.186 [Thread-5        ] WARN  HttpClientBeanHolder   - [HttpClientBeanHolder] Destruction of the end
+24-12-28.23:18:08.679 [main            ] WARN  EndpointId             - Endpoint ID 'hystrix.stream' contains invalid characters, please migrate to a valid format.
+24-12-28.23:18:20.066 [main            ] WARN  URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+24-12-28.23:18:36.193 [main            ] WARN  ConfigurationUtils     -  [DUBBO] Config center was specified, but no config item found., dubbo version: 3.0.9, current host: 2.0.0.1
+24-12-28.23:18:36.193 [main            ] WARN  ConfigurationUtils     -  [DUBBO] Config center was specified, but no config item found., dubbo version: 3.0.9, current host: 2.0.0.1
+24-12-28.23:18:44.382 [main            ] WARN  ArchaiusAutoConfiguration - No spring.application.name found, defaulting to 'application'
+24-12-28.23:18:44.385 [main            ] WARN  URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+24-12-28.23:19:07.251 [main            ] WARN  LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+24-12-28.23:19:08.484 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
+24-12-28.23:19:09.498 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
+24-12-28.23:19:11.506 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
+24-12-28.23:19:15.515 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
+24-12-28.23:19:20.524 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
+24-12-28.23:19:21.022 [main            ] WARN  ServiceConfig          -  [DUBBO] Use random available port(20880) for protocol dubbo, dubbo version: 3.0.9, current host: 2.0.0.1
+24-12-28.23:19:23.136 [main            ] WARN  NacosRegistry          -  [DUBBO] Ignore empty notify urls for subscribe url provider://2.0.0.1:20880/cn.hush.api.IRaffleStrategyService?anyhost=true&application=Dubbo1st&application.version=1.0.0&background=false&bind.ip=2.0.0.1&bind.port=20880&category=configurators&check=false&deprecated=false&dubbo=2.0.2&dynamic=true&generic=false&interface=cn.hush.api.IRaffleStrategyService&methods=randomRaffle,strategyArmory,queryRaffleAwardList,queryRaffleStrategyRuleWeight&pid=17960&qos.enable=false&release=3.0.9&revision=1.0&service-name-mapping=true&side=provider&timestamp=1735399161005&version=1.0, dubbo version: 3.0.9, current host: 2.0.0.1
+24-12-28.23:19:25.913 [main            ] WARN  NacosRegistry          -  [DUBBO] Ignore empty notify urls for subscribe url provider://2.0.0.1:20880/cn.hush.api.IRaffleActivityService?anyhost=true&application=Dubbo1st&application.version=1.0.0&background=false&bind.ip=2.0.0.1&bind.port=20880&category=configurators&check=false&deprecated=false&dubbo=2.0.2&dynamic=true&generic=false&interface=cn.hush.api.IRaffleActivityService&methods=queryUserActivityAccount,querySkuProductListByActivityId,isCalenderSignInRebateDone,queryUserCreditAccount,armory,creditExchangeSku,calenderSignInRebate,draw&pid=17960&qos.enable=false&release=3.0.9&revision=1.0&service-name-mapping=true&side=provider&timestamp=1735399163415&version=1.0, dubbo version: 3.0.9, current host: 2.0.0.1
+24-12-28.23:19:26.398 [main            ] WARN  NacosRegistry          -  [DUBBO] Ignore empty notify urls for subscribe url provider://2.0.0.1:20880/org.apache.dubbo.metadata.MetadataService?anyhost=true&application=Dubbo1st&application.version=1.0.0&background=false&bind.ip=2.0.0.1&bind.port=20880&category=configurators&check=false&connections=1&corethreads=2&delay=0&deprecated=false&dubbo=2.0.2&dynamic=true&executes=100&generic=false&getAndListenInstanceMetadata.1.callback=true&getAndListenInstanceMetadata.return=true&getAndListenInstanceMetadata.sent=true&group=Dubbo1st&interface=org.apache.dubbo.metadata.MetadataService&methods=getMetadataURL,isMetadataService,getAndListenInstanceMetadata,getExportedURLs,serviceName,getSubscribedURLs,version,exportInstanceMetadata,getExportedServiceURLs,getMetadataInfo,toSortedStrings,getMetadataInfos,getServiceDefinition,getInstanceMetadataChangedListenerMap&pid=17960&qos.enable=false&register=false&release=3.0.9&revision=3.0.9&service-name-mapping=true&side=provider&threadpool=cached&threads=100&timestamp=1735399166019&version=1.0.0, dubbo version: 3.0.9, current host: 2.0.0.1
+24-12-28.23:19:28.525 [Thread-5        ] WARN  HttpClientBeanHolder   - [HttpClientBeanHolder] Start destroying common HttpClient
+24-12-28.23:19:28.525 [Thread-10       ] WARN  NotifyCenter           - [NotifyCenter] Start destroying Publisher
+24-12-28.23:19:28.528 [Thread-10       ] WARN  NotifyCenter           - [NotifyCenter] Destruction of the end
+24-12-28.23:19:28.532 [Thread-5        ] WARN  HttpClientBeanHolder   - [HttpClientBeanHolder] Destruction of the end
+24-12-28.23:19:28.536 [SpringApplicationShutdownHook] WARN  RegistryManager        -  [DUBBO] All registry instances have been destroyed, failed to fetch any instance. Usually, this means no need to try to do unnecessary redundant resource clearance, all registries has been taken care of., dubbo version: 3.0.9, current host: 2.0.0.1
+24-12-28.23:19:28.539 [SpringApplicationShutdownHook] WARN  RegistryManager        -  [DUBBO] All registry instances have been destroyed, failed to fetch any instance. Usually, this means no need to try to do unnecessary redundant resource clearance, all registries has been taken care of., dubbo version: 3.0.9, current host: 2.0.0.1
+24-12-28.23:19:28.540 [SpringApplicationShutdownHook] WARN  RegistryManager        -  [DUBBO] All registry instances have been destroyed, failed to fetch any instance. Usually, this means no need to try to do unnecessary redundant resource clearance, all registries has been taken care of., dubbo version: 3.0.9, current host: 2.0.0.1
+24-12-28.23:19:28.540 [SpringApplicationShutdownHook] WARN  RegistryManager        -  [DUBBO] All registry instances have been destroyed, failed to fetch any instance. Usually, this means no need to try to do unnecessary redundant resource clearance, all registries has been taken care of., dubbo version: 3.0.9, current host: 2.0.0.1
+24-12-28.23:22:30.703 [main            ] WARN  EndpointId             - Endpoint ID 'hystrix.stream' contains invalid characters, please migrate to a valid format.
+24-12-28.23:22:39.718 [main            ] WARN  URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+24-12-28.23:22:54.922 [main            ] WARN  ConfigurationUtils     -  [DUBBO] Config center was specified, but no config item found., dubbo version: 3.0.9, current host: 2.0.0.1
+24-12-28.23:22:54.922 [main            ] WARN  ConfigurationUtils     -  [DUBBO] Config center was specified, but no config item found., dubbo version: 3.0.9, current host: 2.0.0.1
+24-12-28.23:23:03.511 [main            ] WARN  ArchaiusAutoConfiguration - No spring.application.name found, defaulting to 'application'
+24-12-28.23:23:03.513 [main            ] WARN  URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+24-12-28.23:23:22.644 [main            ] WARN  LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+24-12-28.23:23:23.513 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
+24-12-28.23:23:24.533 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
+24-12-28.23:23:26.539 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
+24-12-28.23:23:30.549 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
+24-12-28.23:23:35.561 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
+24-12-28.23:23:36.000 [main            ] WARN  ServiceConfig          -  [DUBBO] Use random available port(20880) for protocol dubbo, dubbo version: 3.0.9, current host: 2.0.0.1
+24-12-28.23:23:37.664 [main            ] WARN  NacosRegistry          -  [DUBBO] Ignore empty notify urls for subscribe url provider://2.0.0.1:20880/cn.hush.api.IRaffleStrategyService?anyhost=true&application=Dubbo1st&application.version=1.0.0&background=false&bind.ip=2.0.0.1&bind.port=20880&category=configurators&check=false&deprecated=false&dubbo=2.0.2&dynamic=true&generic=false&interface=cn.hush.api.IRaffleStrategyService&methods=randomRaffle,queryRaffleAwardList,strategyArmory,queryRaffleStrategyRuleWeight&pid=6708&qos.enable=false&release=3.0.9&revision=1.0&service-name-mapping=true&side=provider&timestamp=1735399415985&version=1.0, dubbo version: 3.0.9, current host: 2.0.0.1
+24-12-28.23:23:38.156 [main            ] WARN  NacosRegistry          -  [DUBBO] Ignore empty notify urls for subscribe url provider://2.0.0.1:20880/cn.hush.api.IRaffleActivityService?anyhost=true&application=Dubbo1st&application.version=1.0.0&background=false&bind.ip=2.0.0.1&bind.port=20880&category=configurators&check=false&deprecated=false&dubbo=2.0.2&dynamic=true&generic=false&interface=cn.hush.api.IRaffleActivityService&methods=queryUserActivityAccount,querySkuProductListByActivityId,isCalenderSignInRebateDone,queryUserCreditAccount,creditExchangeSku,armory,calenderSignInRebate,draw&pid=6708&qos.enable=false&release=3.0.9&revision=1.0&service-name-mapping=true&side=provider&timestamp=1735399417867&version=1.0, dubbo version: 3.0.9, current host: 2.0.0.1
+24-12-28.23:23:38.462 [main            ] WARN  NacosRegistry          -  [DUBBO] Ignore empty notify urls for subscribe url provider://2.0.0.1:20880/org.apache.dubbo.metadata.MetadataService?anyhost=true&application=Dubbo1st&application.version=1.0.0&background=false&bind.ip=2.0.0.1&bind.port=20880&category=configurators&check=false&connections=1&corethreads=2&delay=0&deprecated=false&dubbo=2.0.2&dynamic=true&executes=100&generic=false&getAndListenInstanceMetadata.1.callback=true&getAndListenInstanceMetadata.return=true&getAndListenInstanceMetadata.sent=true&group=Dubbo1st&interface=org.apache.dubbo.metadata.MetadataService&methods=getMetadataURL,isMetadataService,getExportedURLs,getAndListenInstanceMetadata,serviceName,version,getSubscribedURLs,getExportedServiceURLs,exportInstanceMetadata,getMetadataInfo,toSortedStrings,getMetadataInfos,getServiceDefinition,getInstanceMetadataChangedListenerMap&pid=6708&qos.enable=false&register=false&release=3.0.9&revision=3.0.9&service-name-mapping=true&side=provider&threadpool=cached&threads=100&timestamp=1735399418213&version=1.0.0, dubbo version: 3.0.9, current host: 2.0.0.1
+24-12-28.23:23:39.662 [Thread-10       ] WARN  NotifyCenter           - [NotifyCenter] Start destroying Publisher
+24-12-28.23:23:39.662 [Thread-5        ] WARN  HttpClientBeanHolder   - [HttpClientBeanHolder] Start destroying common HttpClient
+24-12-28.23:23:39.662 [Thread-10       ] WARN  NotifyCenter           - [NotifyCenter] Destruction of the end
+24-12-28.23:23:39.664 [Thread-5        ] WARN  HttpClientBeanHolder   - [HttpClientBeanHolder] Destruction of the end
+24-12-28.23:23:39.667 [SpringApplicationShutdownHook] WARN  RegistryManager        -  [DUBBO] All registry instances have been destroyed, failed to fetch any instance. Usually, this means no need to try to do unnecessary redundant resource clearance, all registries has been taken care of., dubbo version: 3.0.9, current host: 2.0.0.1
+24-12-28.23:23:39.671 [SpringApplicationShutdownHook] WARN  RegistryManager        -  [DUBBO] All registry instances have been destroyed, failed to fetch any instance. Usually, this means no need to try to do unnecessary redundant resource clearance, all registries has been taken care of., dubbo version: 3.0.9, current host: 2.0.0.1
+24-12-28.23:23:39.671 [SpringApplicationShutdownHook] WARN  RegistryManager        -  [DUBBO] All registry instances have been destroyed, failed to fetch any instance. Usually, this means no need to try to do unnecessary redundant resource clearance, all registries has been taken care of., dubbo version: 3.0.9, current host: 2.0.0.1
+24-12-28.23:23:39.672 [SpringApplicationShutdownHook] WARN  RegistryManager        -  [DUBBO] All registry instances have been destroyed, failed to fetch any instance. Usually, this means no need to try to do unnecessary redundant resource clearance, all registries has been taken care of., dubbo version: 3.0.9, current host: 2.0.0.1

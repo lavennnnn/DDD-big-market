@@ -1,6 +1,6 @@
 package cn.hush.test;
 
-import cn.hush.infrastructure.persistent.redis.IRedisService;
+import cn.hush.infrastructure.redis.IRedisService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
