@@ -20,7 +20,7 @@ public interface IStrategyRepository {
 
     List<StrategyAwardEntity> queryStrategyAwardList(Long strategyId);
 
-    void storeStrategyAwardSearchRateTables(String key, Integer rateRange, Map<Integer, Integer> shuffledStrategyAwardSearchRateTables);
+    <K,V> void storeStrategyAwardSearchRateTables(String key, Integer rateRange, Map<K,V> shuffledStrategyAwardSearchRateTables);
 
     int getRateRange(Long strategyId);
 
@@ -72,6 +72,12 @@ public interface IStrategyRepository {
     List<StrategyAwardStockKeyVO> queryOpenActivityStrategyAwardList();
 
     StrategyAwardStockKeyVO takeQueueValue(Long strategyId, Integer awardId);
+
+    <K,V> Map<K,V> getMap(String key);
+
+    void cacheStrategyArmoryAlgorithm(String key, String beanName);
+
+    String queryStrategyArmoryAlgorithmFromCache(String key);
 }
 
 

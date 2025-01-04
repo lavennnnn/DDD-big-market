@@ -96,11 +96,15 @@ public class StrategyRepository implements IStrategyRepository {
 
     //存到redis中
     @Override
-    public void storeStrategyAwardSearchRateTables(String key, Integer rateRange, Map<Integer, Integer> strategyAwardSearchRateTables) {
+    public <K,V> void storeStrategyAwardSearchRateTables(String key, Integer rateRange, Map<K,V> strategyAwardSearchRateTables) {
         // 1. 存储抽奖策略范围值，如10000，用于生成1000以内的随机数
         redisService.setValue(Constants.RedisKey.STRATEGY_RATE_RANGE_KEY + key, rateRange);
         // 2. 存储概率查找表
-        Map<Integer, Integer> cacheRateTable = redisService.getMap(Constants.RedisKey.STRATEGY_RATE_TABLE_KEY + key);
+        String tableCacheKey = Constants.RedisKey.STRATEGY_RATE_TABLE_KEY + key;
+        if (redisService.isExists(tableCacheKey)) {
+            redisService.remove(tableCacheKey);
+        }
+        Map<K,V> cacheRateTable = redisService.getMap(Constants.RedisKey.STRATEGY_RATE_TABLE_KEY + key);
         cacheRateTable.putAll(strategyAwardSearchRateTables);
     }
 
@@ -302,6 +306,26 @@ public class StrategyRepository implements IStrategyRepository {
     }
 
     @Override
+    public <K, V> Map<K, V> getMap(String key) {
+        return redisService.getMap(Constants.RedisKey.STRATEGY_RATE_TABLE_KEY + key);
+    }
+
+    @Override
+    public void cacheStrategyArmoryAlgorithm(String key, String beanName) {
+
+        String cacheKey = Constants.RedisKey.STRATEGY_ARMORY_ALGORITHM_KEY + key;
+        redisService.setValue(cacheKey, beanName);
+
+    }
+
+    @Override
+    public String queryStrategyArmoryAlgorithmFromCache(String key) {
+        String cacheKey = Constants.RedisKey.STRATEGY_ARMORY_ALGORITHM_KEY + key;
+        if (!redisService.isExists(cacheKey)) return null;
+        return redisService.getValue(cacheKey);
+    }
+
+    @Override
     public void updateStrategyAwardStock(Long strategyId, Integer awardId) {
         StrategyAwardPO strategyAwardPO = new StrategyAwardPO();
         strategyAwardPO.setStrategyId(strategyId);
@@ -349,7 +373,7 @@ public class StrategyRepository implements IStrategyRepository {
         RaffleActivityAccountDayPO raffleActivityAccountDayReq = new RaffleActivityAccountDayPO();
         raffleActivityAccountDayReq.setUserId(userId);
         raffleActivityAccountDayReq.setActivityId(activityId);
-        raffleActivityAccountDayReq.setDay(raffleActivityAccountDayReq.currentDay());
+        raffleActivityAccountDayReq.setDay(RaffleActivityAccountDayPO.currentDay());
         RaffleActivityAccountDayPO raffleActivityAccountDay = raffleActivityAccountDayDao.queryActivityAccountDayByUserId(raffleActivityAccountDayReq);
         if (null == raffleActivityAccountDay) return 0;
         //总次数 - 剩余的 = 今日参与的

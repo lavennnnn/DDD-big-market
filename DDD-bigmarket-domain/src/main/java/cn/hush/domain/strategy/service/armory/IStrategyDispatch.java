@@ -18,6 +18,7 @@ public interface IStrategyDispatch {
 
     Integer getRandomAwardId(Long strategyId, String ruleWeightValue);
 
+    Integer getRandomAwardId(String key);
     /**
      * 根据策略id和奖品id,扣减奖品缓存库存
      * @param strategyId 策略id

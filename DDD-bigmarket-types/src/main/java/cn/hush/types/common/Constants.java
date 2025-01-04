@@ -28,6 +28,8 @@ public class Constants {
         public static String STRATEGY_RULE_WEIGHT_KEY = "strategy_rule_weight_key_";
         public static String USER_CREDIT_ACCOUNT_LOCK = "user_credit_account_lock_";
         public static String STRATEGY_AWARD_COUNT_QUERY_KEY = "strategy_award_count_query_key_";
+        public static String STRATEGY_ARMORY_ALGORITHM_KEY = "strategy_armory_algorithm_key_";
+
     }
 
 //    @AllArgsConstructor
