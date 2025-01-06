@@ -9,6 +9,8 @@
     <file url="file://$PROJECT_DIR$/DDD-bigmarket-domain/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/DDD-bigmarket-infrastructure/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/DDD-bigmarket-infrastructure/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DDD-bigmarket-querys/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DDD-bigmarket-querys/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/DDD-bigmarket-trigger/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/DDD-bigmarket-trigger/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/DDD-bigmarket-types/src/main/java" charset="UTF-8" />

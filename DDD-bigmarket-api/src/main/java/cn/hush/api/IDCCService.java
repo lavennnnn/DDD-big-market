@@ -1,6 +1,6 @@
 package cn.hush.api;
 
-import cn.hush.types.model.Response;
+import cn.hush.api.response.Response;
 
 /**
  * @author Hush

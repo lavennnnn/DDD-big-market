@@ -1,7 +1,7 @@
 package cn.hush.api;
 
 import cn.hush.api.dto.*;
-import cn.hush.types.model.Response;
+import cn.hush.api.response.Response;
 
 import java.math.BigDecimal;
 import java.util.List;

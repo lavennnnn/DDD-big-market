@@ -2,10 +2,9 @@ package cn.hush.test.trigger;
 
 import cn.hush.api.IRaffleStrategyService;
 import cn.hush.api.dto.RaffleAwardListRequestDTO;
-import cn.hush.api.dto.RaffleAwardListResponseDTO;
 import cn.hush.api.dto.RaffleStrategyRuleWeightRequestDTO;
 import cn.hush.api.dto.RaffleStrategyRuleWeightResponseDTO;
-import cn.hush.types.model.Response;
+import cn.hush.api.response.Response;
 import com.alibaba.fastjson2.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;

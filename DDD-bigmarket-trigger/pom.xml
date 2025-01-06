@@ -85,7 +85,10 @@
             <groupId>cn.hush</groupId>
             <artifactId>DDD-bigmarket-api</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>cn.hush</groupId>
+            <artifactId>DDD-bigmarket-querys</artifactId>
+        </dependency>
 
     </dependencies>
 

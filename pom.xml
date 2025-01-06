@@ -14,6 +14,7 @@
         <module>DDD-bigmarket-trigger</module>
         <module>DDD-bigmarket-infrastructure</module>
         <module>DDD-bigmarket-types</module>
+        <module>DDD-bigmarket-querys</module>
     </modules>
 
     <properties>
@@ -218,6 +219,11 @@
             <dependency>
                 <groupId>cn.hush</groupId>
                 <artifactId>DDD-bigmarket-api</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.hush</groupId>
+                <artifactId>DDD-bigmarket-querys</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
         </dependencies>

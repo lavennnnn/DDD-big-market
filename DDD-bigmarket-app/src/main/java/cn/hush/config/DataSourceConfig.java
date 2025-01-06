@@ -22,6 +22,7 @@ import javax.sql.DataSource;
 @Configuration
 public class DataSourceConfig {
 
+    //es数据源配置
     @Configuration
     @MapperScan(basePackages = "cn.hush.infrastructure.elasticsearch", sqlSessionFactoryRef = "elasticsearchSqlSessionFactory")
     static class ElasticsearchMybatisConfig {
@@ -41,6 +42,7 @@ public class DataSourceConfig {
         }
     }
 
+    //mysql数据源配置
     @Configuration
     @MapperScan(basePackages = "cn.hush.infrastructure.dao", sqlSessionFactoryRef = "mysqlSqlSessionFactory")
     static class MysqlMyBatisConfig {

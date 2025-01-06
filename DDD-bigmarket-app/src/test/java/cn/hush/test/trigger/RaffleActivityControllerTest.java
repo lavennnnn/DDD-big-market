@@ -2,7 +2,7 @@ package cn.hush.test.trigger;
 
 import cn.hush.api.IRaffleActivityService;
 import cn.hush.api.dto.*;
-import cn.hush.types.model.Response;
+import cn.hush.api.response.Response;
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -13,7 +13,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.concurrent.CountDownLatch;
 
 /**
  * @author Hush

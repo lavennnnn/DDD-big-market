@@ -1,4 +1,4 @@
-package cn.hush.types.model;
+package cn.hush.api.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

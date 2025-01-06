@@ -2,14 +2,13 @@ package cn.hush.trigger.http;
 
 import cn.hush.api.IDCCService;
 import cn.hush.types.enums.ResponseCode;
-import cn.hush.types.model.Response;
+import cn.hush.api.response.Response;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.zookeeper.data.Stat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
 import java.nio.charset.StandardCharsets;
 
 /**

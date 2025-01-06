@@ -1,7 +1,7 @@
 //package cn.hush.xfg.frame.trigger.http;
 //
 //import cn.hush.types.common.Constants;
-//import cn.hush.types.model.Response;
+//import cn.hush.api.response.Response;
 //import lombok.extern.slf4j.Slf4j;
 //import org.springframework.web.bind.annotation.RequestMapping;
 //import org.springframework.web.bind.annotation.RestController;

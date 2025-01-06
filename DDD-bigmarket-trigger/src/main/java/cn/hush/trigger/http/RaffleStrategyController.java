@@ -13,7 +13,7 @@ import cn.hush.domain.strategy.service.IRaffleStrategy;
 import cn.hush.domain.strategy.service.armory.IStrategyArmory;
 import cn.hush.types.enums.ResponseCode;
 import cn.hush.types.exception.AppException;
-import cn.hush.types.model.Response;
+import cn.hush.api.response.Response;
 import com.alibaba.fastjson2.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
