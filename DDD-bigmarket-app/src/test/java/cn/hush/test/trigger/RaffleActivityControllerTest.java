@@ -36,8 +36,8 @@ public class RaffleActivityControllerTest {
     @Test
     public void test_draw() {
         ActivityDrawRequestDTO request = new ActivityDrawRequestDTO();
-        request.setActivityId(100301L);
-        request.setUserId("xiaofuge1");
+        request.setActivityId(100401L);
+        request.setUserId("xfg");
         Response<ActivityDrawResponseDTO> response = raffleActivityService.draw(request);
 
         log.info("请求参数: {}", JSON.toJSONString(request));

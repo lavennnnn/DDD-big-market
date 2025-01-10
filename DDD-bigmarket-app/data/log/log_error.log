@@ -1,11 +1,145 @@
-25-01-04.21:16:48.226 [main            ] WARN  EndpointId             - Endpoint ID 'hystrix.stream' contains invalid characters, please migrate to a valid format.
-25-01-04.21:16:55.594 [main            ] WARN  URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
-25-01-04.21:17:11.812 [main            ] WARN  ArchaiusAutoConfiguration - No spring.application.name found, defaulting to 'application'
-25-01-04.21:17:11.817 [main            ] WARN  URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
-25-01-04.21:17:24.422 [main            ] WARN  LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
-25-01-04.21:17:25.621 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
-25-01-04.21:17:26.631 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
-25-01-04.21:17:27.225 [xxl-job, executor ExecutorRegistryThread] ERROR XxlJobRemotingUtil     - Connection refused: connect
+25-01-10.18:59:54.183 [main            ] WARN  EndpointId             - Endpoint ID 'hystrix.stream' contains invalid characters, please migrate to a valid format.
+25-01-10.18:59:57.724 [main            ] WARN  URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+25-01-10.19:00:12.306 [main            ] WARN  GenericWebApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'raffleActivityController': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'awardService' defined in file [D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-domain\target\classes\cn\hush\domain\award\service\AwardService.class]: Unsatisfied dependency expressed through constructor parameter 2; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'openai_use_count': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'awardPort': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'cn.hush.infrastructure.gateway.IOpenAIAccountService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@javax.annotation.Resource(shareable=true, lookup=, name=, description=, authenticationType=CONTAINER, type=class java.lang.Object, mappedName=)}
+25-01-10.19:00:12.440 [main            ] ERROR LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 2 of constructor in cn.hush.domain.award.service.AwardService required a bean of type 'cn.hush.infrastructure.gateway.IOpenAIAccountService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'cn.hush.infrastructure.gateway.IOpenAIAccountService' in your configuration.
+
+25-01-10.19:00:12.446 [main            ] ERROR TestContextManager     - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@693fe6c9] to prepare test instance [cn.hush.test.trigger.RaffleActivityControllerTest@774013dc]
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:98)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:124)
+	at org.springframework.test.context.web.ServletTestExecutionListener.setUpRequestContextIfNecessary(ServletTestExecutionListener.java:190)
+	at org.springframework.test.context.web.ServletTestExecutionListener.prepareTestInstance(ServletTestExecutionListener.java:132)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:248)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:227)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:289)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:291)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:246)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38)
+	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:232)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:55)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'raffleActivityController': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'awardService' defined in file [D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-domain\target\classes\cn\hush\domain\award\service\AwardService.class]: Unsatisfied dependency expressed through constructor parameter 2; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'openai_use_count': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'awardPort': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'cn.hush.infrastructure.gateway.IOpenAIAccountService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@javax.annotation.Resource(shareable=true, lookup=, name=, description=, authenticationType=CONTAINER, type=class java.lang.Object, mappedName=)}
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessProperties(CommonAnnotationBeanPostProcessor.java:332)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1431)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:619)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:920)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:136)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:141)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:90)
+	... 27 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'awardService' defined in file [D:\workspace\big_market\DDD-bigmarket\DDD-bigmarket-domain\target\classes\cn\hush\domain\award\service\AwardService.class]: Unsatisfied dependency expressed through constructor parameter 2; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'openai_use_count': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'awardPort': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'cn.hush.infrastructure.gateway.IOpenAIAccountService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@javax.annotation.Resource(shareable=true, lookup=, name=, description=, authenticationType=CONTAINER, type=class java.lang.Object, mappedName=)}
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:800)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:229)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1372)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1222)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:213)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.resolveBeanByName(AbstractAutowireCapableBeanFactory.java:479)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.autowireResource(CommonAnnotationBeanPostProcessor.java:550)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.getResource(CommonAnnotationBeanPostProcessor.java:520)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$ResourceElement.getResourceToInject(CommonAnnotationBeanPostProcessor.java:673)
+	at org.springframework.beans.factory.annotation.InjectionMetadata$InjectedElement.inject(InjectionMetadata.java:228)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessProperties(CommonAnnotationBeanPostProcessor.java:329)
+	... 43 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'openai_use_count': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'awardPort': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'cn.hush.infrastructure.gateway.IOpenAIAccountService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@javax.annotation.Resource(shareable=true, lookup=, name=, description=, authenticationType=CONTAINER, type=class java.lang.Object, mappedName=)}
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessProperties(CommonAnnotationBeanPostProcessor.java:332)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1431)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:619)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.addCandidateEntry(DefaultListableBeanFactory.java:1609)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1573)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveMultipleBeans(DefaultListableBeanFactory.java:1492)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1349)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:887)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 59 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'awardPort': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'cn.hush.infrastructure.gateway.IOpenAIAccountService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@javax.annotation.Resource(shareable=true, lookup=, name=, description=, authenticationType=CONTAINER, type=class java.lang.Object, mappedName=)}
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessProperties(CommonAnnotationBeanPostProcessor.java:332)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1431)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:619)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.autowireResource(CommonAnnotationBeanPostProcessor.java:544)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.getResource(CommonAnnotationBeanPostProcessor.java:520)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$ResourceElement.getResourceToInject(CommonAnnotationBeanPostProcessor.java:673)
+	at org.springframework.beans.factory.annotation.InjectionMetadata$InjectedElement.inject(InjectionMetadata.java:228)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessProperties(CommonAnnotationBeanPostProcessor.java:329)
+	... 74 common frames omitted
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'cn.hush.infrastructure.gateway.IOpenAIAccountService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@javax.annotation.Resource(shareable=true, lookup=, name=, description=, authenticationType=CONTAINER, type=class java.lang.Object, mappedName=)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:1801)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1357)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.autowireResource(CommonAnnotationBeanPostProcessor.java:544)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.getResource(CommonAnnotationBeanPostProcessor.java:520)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$ResourceElement.getResourceToInject(CommonAnnotationBeanPostProcessor.java:673)
+	at org.springframework.beans.factory.annotation.InjectionMetadata$InjectedElement.inject(InjectionMetadata.java:228)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessProperties(CommonAnnotationBeanPostProcessor.java:329)
+	... 90 common frames omitted
+25-01-10.19:02:53.054 [main            ] WARN  EndpointId             - Endpoint ID 'hystrix.stream' contains invalid characters, please migrate to a valid format.
+25-01-10.19:02:57.060 [main            ] WARN  URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+25-01-10.19:03:11.689 [main            ] WARN  ArchaiusAutoConfiguration - No spring.application.name found, defaulting to 'application'
+25-01-10.19:03:11.692 [main            ] WARN  URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+25-01-10.19:03:22.219 [main            ] WARN  LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+25-01-10.19:03:23.733 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
+25-01-10.19:03:24.740 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
+25-01-10.19:03:25.454 [xxl-job, executor ExecutorRegistryThread] ERROR XxlJobRemotingUtil     - Connection refused: connect
 java.net.ConnectException: Connection refused: connect
 	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
 	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
@@ -29,13 +163,87 @@ java.net.ConnectException: Connection refused: connect
 	at com.xxl.job.core.biz.client.AdminBizClient.registry(AdminBizClient.java:42)
 	at com.xxl.job.core.thread.ExecutorRegistryThread$1.run(ExecutorRegistryThread.java:48)
 	at java.lang.Thread.run(Thread.java:750)
-25-01-04.21:17:28.636 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
-25-01-04.21:17:32.643 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
-25-01-04.21:17:37.646 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
-25-01-04.21:17:37.785 [main            ] WARN  ServiceConfig          -  [DUBBO] Use random available port(20880) for protocol dubbo, dubbo version: 3.0.9, current host: 2.0.0.1
-25-01-04.21:17:38.255 [main            ] WARN  MetadataUtils          -  [DUBBO] Remote Metadata Report Server is not provided or unavailable, will stop registering service definition to remote center!, dubbo version: 3.0.9, current host: 2.0.0.1
-25-01-04.21:17:38.346 [main            ] WARN  MetadataUtils          -  [DUBBO] Remote Metadata Report Server is not provided or unavailable, will stop registering service definition to remote center!, dubbo version: 3.0.9, current host: 2.0.0.1
-25-01-04.21:17:43.769 [xxl-job, executor ExecutorRegistryThread] ERROR XxlJobRemotingUtil     - Connection refused: connect
+25-01-10.19:03:26.743 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
+25-01-10.19:03:30.745 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
+25-01-10.19:03:35.750 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
+25-01-10.19:03:35.887 [main            ] WARN  ServiceConfig          -  [DUBBO] Use random available port(20880) for protocol dubbo, dubbo version: 3.0.9, current host: 2.0.0.1
+25-01-10.19:03:36.238 [main            ] WARN  MetadataUtils          -  [DUBBO] Remote Metadata Report Server is not provided or unavailable, will stop registering service definition to remote center!, dubbo version: 3.0.9, current host: 2.0.0.1
+25-01-10.19:03:36.285 [main            ] WARN  MetadataUtils          -  [DUBBO] Remote Metadata Report Server is not provided or unavailable, will stop registering service definition to remote center!, dubbo version: 3.0.9, current host: 2.0.0.1
+25-01-10.19:03:36.315 [main            ] WARN  MetadataUtils          -  [DUBBO] Remote Metadata Report Server is not provided or unavailable, will stop registering service definition to remote center!, dubbo version: 3.0.9, current host: 2.0.0.1
+25-01-10.19:03:38.743 [hystrix-RaffleActivityController-1] ERROR RaffleActivityController - 活动抽奖失败 userId:xfg activityId:100401
+org.springframework.dao.InvalidDataAccessApiUsageException: java.lang.InterruptedException; nested exception is org.redisson.client.RedisException: java.lang.InterruptedException
+	at org.redisson.spring.data.connection.RedissonExceptionConverter.convert(RedissonExceptionConverter.java:52)
+	at org.redisson.spring.data.connection.RedissonExceptionConverter.convert(RedissonExceptionConverter.java:35)
+	at org.springframework.data.redis.PassThroughExceptionTranslationStrategy.translate(PassThroughExceptionTranslationStrategy.java:44)
+	at org.redisson.spring.data.connection.RedissonConnectionFactory.translateExceptionIfPossible(RedissonConnectionFactory.java:91)
+	at org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:61)
+	at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:242)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:152)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708)
+	at cn.hush.infrastructure.adapter.repository.ActivityRepository$$EnhancerBySpringCGLIB$$77b36ee0.queryRaffleActivityByActivityId(<generated>)
+	at cn.hush.domain.activity.service.partake.AbstractRaffleActivityPartake.createOrder(AbstractRaffleActivityPartake.java:47)
+	at cn.hush.domain.activity.service.partake.AbstractRaffleActivityPartake.createOrder(AbstractRaffleActivityPartake.java:33)
+	at cn.hush.trigger.http.RaffleActivityController.draw(RaffleActivityController.java:165)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.netflix.hystrix.contrib.javanica.command.MethodExecutionAction.execute(MethodExecutionAction.java:116)
+	at com.netflix.hystrix.contrib.javanica.command.MethodExecutionAction.executeWithArgs(MethodExecutionAction.java:93)
+	at com.netflix.hystrix.contrib.javanica.command.MethodExecutionAction.execute(MethodExecutionAction.java:78)
+	at com.netflix.hystrix.contrib.javanica.command.GenericCommand$1.execute(GenericCommand.java:48)
+	at com.netflix.hystrix.contrib.javanica.command.AbstractHystrixCommand.process(AbstractHystrixCommand.java:145)
+	at com.netflix.hystrix.contrib.javanica.command.GenericCommand.run(GenericCommand.java:45)
+	at com.netflix.hystrix.HystrixCommand$2.call(HystrixCommand.java:302)
+	at com.netflix.hystrix.HystrixCommand$2.call(HystrixCommand.java:298)
+	at rx.internal.operators.OnSubscribeDefer.call(OnSubscribeDefer.java:46)
+	at rx.internal.operators.OnSubscribeDefer.call(OnSubscribeDefer.java:35)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:48)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:30)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:48)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:30)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:48)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:30)
+	at rx.Observable.unsafeSubscribe(Observable.java:10327)
+	at rx.internal.operators.OnSubscribeDefer.call(OnSubscribeDefer.java:51)
+	at rx.internal.operators.OnSubscribeDefer.call(OnSubscribeDefer.java:35)
+	at rx.Observable.unsafeSubscribe(Observable.java:10327)
+	at rx.internal.operators.OnSubscribeDoOnEach.call(OnSubscribeDoOnEach.java:41)
+	at rx.internal.operators.OnSubscribeDoOnEach.call(OnSubscribeDoOnEach.java:30)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:48)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:30)
+	at rx.Observable.unsafeSubscribe(Observable.java:10327)
+	at rx.internal.operators.OperatorSubscribeOn$SubscribeOnSubscriber.call(OperatorSubscribeOn.java:100)
+	at com.netflix.hystrix.strategy.concurrency.HystrixContexSchedulerAction$1.call(HystrixContexSchedulerAction.java:56)
+	at com.netflix.hystrix.strategy.concurrency.HystrixContexSchedulerAction$1.call(HystrixContexSchedulerAction.java:47)
+	at com.netflix.hystrix.strategy.concurrency.HystrixContexSchedulerAction.call(HystrixContexSchedulerAction.java:69)
+	at rx.internal.schedulers.ScheduledAction.run(ScheduledAction.java:55)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: org.redisson.client.RedisException: java.lang.InterruptedException
+	at org.redisson.command.CommandAsyncService.get(CommandAsyncService.java:148)
+	at org.redisson.RedissonObject.get(RedissonObject.java:90)
+	at org.redisson.RedissonBucket.set(RedissonBucket.java:170)
+	at cn.hush.infrastructure.redis.RedissonService.setValue(RedissonService.java:24)
+	at cn.hush.infrastructure.adapter.repository.ActivityRepository.queryRaffleActivityByActivityId(ActivityRepository.java:108)
+	at cn.hush.infrastructure.adapter.repository.ActivityRepository$$FastClassBySpringCGLIB$$49a7bd1c.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	... 46 common frames omitted
+Caused by: java.lang.InterruptedException: null
+	at java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:347)
+	at java.util.concurrent.CompletableFuture.get(CompletableFuture.java:1908)
+	at org.redisson.command.CommandAsyncService.get(CommandAsyncService.java:144)
+	... 56 common frames omitted
+25-01-10.19:03:41.108 [xxl-job, executor ExecutorRegistryThread] ERROR XxlJobRemotingUtil     - Connection refused: connect
 java.net.ConnectException: Connection refused: connect
 	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
 	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
@@ -59,14 +267,14 @@ java.net.ConnectException: Connection refused: connect
 	at com.xxl.job.core.biz.client.AdminBizClient.registryRemove(AdminBizClient.java:47)
 	at com.xxl.job.core.thread.ExecutorRegistryThread$1.run(ExecutorRegistryThread.java:84)
 	at java.lang.Thread.run(Thread.java:750)
-25-01-04.21:39:50.859 [main            ] WARN  EndpointId             - Endpoint ID 'hystrix.stream' contains invalid characters, please migrate to a valid format.
-25-01-04.21:39:54.521 [main            ] WARN  URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
-25-01-04.21:40:06.606 [main            ] WARN  ArchaiusAutoConfiguration - No spring.application.name found, defaulting to 'application'
-25-01-04.21:40:06.609 [main            ] WARN  URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
-25-01-04.21:40:16.192 [main            ] WARN  LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
-25-01-04.21:40:17.110 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
-25-01-04.21:40:18.115 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
-25-01-04.21:40:18.955 [xxl-job, executor ExecutorRegistryThread] ERROR XxlJobRemotingUtil     - Connection refused: connect
+25-01-10.19:05:22.371 [main            ] WARN  EndpointId             - Endpoint ID 'hystrix.stream' contains invalid characters, please migrate to a valid format.
+25-01-10.19:05:26.287 [main            ] WARN  URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+25-01-10.19:05:42.584 [main            ] WARN  ArchaiusAutoConfiguration - No spring.application.name found, defaulting to 'application'
+25-01-10.19:05:42.587 [main            ] WARN  URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+25-01-10.19:05:55.402 [main            ] WARN  LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+25-01-10.19:05:57.296 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
+25-01-10.19:05:58.308 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
+25-01-10.19:05:58.695 [xxl-job, executor ExecutorRegistryThread] ERROR XxlJobRemotingUtil     - Connection refused: connect
 java.net.ConnectException: Connection refused: connect
 	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
 	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
@@ -90,13 +298,87 @@ java.net.ConnectException: Connection refused: connect
 	at com.xxl.job.core.biz.client.AdminBizClient.registry(AdminBizClient.java:42)
 	at com.xxl.job.core.thread.ExecutorRegistryThread$1.run(ExecutorRegistryThread.java:48)
 	at java.lang.Thread.run(Thread.java:750)
-25-01-04.21:40:20.120 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
-25-01-04.21:40:24.125 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
-25-01-04.21:40:29.130 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
-25-01-04.21:40:29.276 [main            ] WARN  ServiceConfig          -  [DUBBO] Use random available port(20880) for protocol dubbo, dubbo version: 3.0.9, current host: 2.0.0.1
-25-01-04.21:40:29.578 [main            ] WARN  MetadataUtils          -  [DUBBO] Remote Metadata Report Server is not provided or unavailable, will stop registering service definition to remote center!, dubbo version: 3.0.9, current host: 2.0.0.1
-25-01-04.21:40:29.602 [main            ] WARN  MetadataUtils          -  [DUBBO] Remote Metadata Report Server is not provided or unavailable, will stop registering service definition to remote center!, dubbo version: 3.0.9, current host: 2.0.0.1
-25-01-04.21:40:33.231 [xxl-job, executor ExecutorRegistryThread] ERROR XxlJobRemotingUtil     - Connection refused: connect
+25-01-10.19:06:00.312 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
+25-01-10.19:06:04.315 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
+25-01-10.19:06:09.319 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
+25-01-10.19:06:09.490 [main            ] WARN  ServiceConfig          -  [DUBBO] Use random available port(20880) for protocol dubbo, dubbo version: 3.0.9, current host: 2.0.0.1
+25-01-10.19:06:10.057 [main            ] WARN  MetadataUtils          -  [DUBBO] Remote Metadata Report Server is not provided or unavailable, will stop registering service definition to remote center!, dubbo version: 3.0.9, current host: 2.0.0.1
+25-01-10.19:06:10.106 [main            ] WARN  MetadataUtils          -  [DUBBO] Remote Metadata Report Server is not provided or unavailable, will stop registering service definition to remote center!, dubbo version: 3.0.9, current host: 2.0.0.1
+25-01-10.19:06:10.142 [main            ] WARN  MetadataUtils          -  [DUBBO] Remote Metadata Report Server is not provided or unavailable, will stop registering service definition to remote center!, dubbo version: 3.0.9, current host: 2.0.0.1
+25-01-10.19:06:11.708 [hystrix-RaffleActivityController-1] ERROR RaffleActivityController - 活动抽奖失败 userId:xfg activityId:100401
+org.springframework.dao.InvalidDataAccessApiUsageException: java.lang.InterruptedException; nested exception is org.redisson.client.RedisException: java.lang.InterruptedException
+	at org.redisson.spring.data.connection.RedissonExceptionConverter.convert(RedissonExceptionConverter.java:52)
+	at org.redisson.spring.data.connection.RedissonExceptionConverter.convert(RedissonExceptionConverter.java:35)
+	at org.springframework.data.redis.PassThroughExceptionTranslationStrategy.translate(PassThroughExceptionTranslationStrategy.java:44)
+	at org.redisson.spring.data.connection.RedissonConnectionFactory.translateExceptionIfPossible(RedissonConnectionFactory.java:91)
+	at org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:61)
+	at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:242)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:152)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708)
+	at cn.hush.infrastructure.adapter.repository.ActivityRepository$$EnhancerBySpringCGLIB$$77b36ee0.queryRaffleActivityByActivityId(<generated>)
+	at cn.hush.domain.activity.service.partake.AbstractRaffleActivityPartake.createOrder(AbstractRaffleActivityPartake.java:47)
+	at cn.hush.domain.activity.service.partake.AbstractRaffleActivityPartake.createOrder(AbstractRaffleActivityPartake.java:33)
+	at cn.hush.trigger.http.RaffleActivityController.draw(RaffleActivityController.java:165)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.netflix.hystrix.contrib.javanica.command.MethodExecutionAction.execute(MethodExecutionAction.java:116)
+	at com.netflix.hystrix.contrib.javanica.command.MethodExecutionAction.executeWithArgs(MethodExecutionAction.java:93)
+	at com.netflix.hystrix.contrib.javanica.command.MethodExecutionAction.execute(MethodExecutionAction.java:78)
+	at com.netflix.hystrix.contrib.javanica.command.GenericCommand$1.execute(GenericCommand.java:48)
+	at com.netflix.hystrix.contrib.javanica.command.AbstractHystrixCommand.process(AbstractHystrixCommand.java:145)
+	at com.netflix.hystrix.contrib.javanica.command.GenericCommand.run(GenericCommand.java:45)
+	at com.netflix.hystrix.HystrixCommand$2.call(HystrixCommand.java:302)
+	at com.netflix.hystrix.HystrixCommand$2.call(HystrixCommand.java:298)
+	at rx.internal.operators.OnSubscribeDefer.call(OnSubscribeDefer.java:46)
+	at rx.internal.operators.OnSubscribeDefer.call(OnSubscribeDefer.java:35)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:48)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:30)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:48)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:30)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:48)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:30)
+	at rx.Observable.unsafeSubscribe(Observable.java:10327)
+	at rx.internal.operators.OnSubscribeDefer.call(OnSubscribeDefer.java:51)
+	at rx.internal.operators.OnSubscribeDefer.call(OnSubscribeDefer.java:35)
+	at rx.Observable.unsafeSubscribe(Observable.java:10327)
+	at rx.internal.operators.OnSubscribeDoOnEach.call(OnSubscribeDoOnEach.java:41)
+	at rx.internal.operators.OnSubscribeDoOnEach.call(OnSubscribeDoOnEach.java:30)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:48)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:30)
+	at rx.Observable.unsafeSubscribe(Observable.java:10327)
+	at rx.internal.operators.OperatorSubscribeOn$SubscribeOnSubscriber.call(OperatorSubscribeOn.java:100)
+	at com.netflix.hystrix.strategy.concurrency.HystrixContexSchedulerAction$1.call(HystrixContexSchedulerAction.java:56)
+	at com.netflix.hystrix.strategy.concurrency.HystrixContexSchedulerAction$1.call(HystrixContexSchedulerAction.java:47)
+	at com.netflix.hystrix.strategy.concurrency.HystrixContexSchedulerAction.call(HystrixContexSchedulerAction.java:69)
+	at rx.internal.schedulers.ScheduledAction.run(ScheduledAction.java:55)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: org.redisson.client.RedisException: java.lang.InterruptedException
+	at org.redisson.command.CommandAsyncService.get(CommandAsyncService.java:148)
+	at org.redisson.RedissonObject.get(RedissonObject.java:90)
+	at org.redisson.RedissonBucket.get(RedissonBucket.java:136)
+	at cn.hush.infrastructure.redis.RedissonService.getValue(RedissonService.java:34)
+	at cn.hush.infrastructure.adapter.repository.ActivityRepository.queryRaffleActivityByActivityId(ActivityRepository.java:95)
+	at cn.hush.infrastructure.adapter.repository.ActivityRepository$$FastClassBySpringCGLIB$$49a7bd1c.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	... 46 common frames omitted
+Caused by: java.lang.InterruptedException: null
+	at java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:347)
+	at java.util.concurrent.CompletableFuture.get(CompletableFuture.java:1908)
+	at org.redisson.command.CommandAsyncService.get(CommandAsyncService.java:144)
+	... 56 common frames omitted
+25-01-10.19:06:14.751 [xxl-job, executor ExecutorRegistryThread] ERROR XxlJobRemotingUtil     - Connection refused: connect
 java.net.ConnectException: Connection refused: connect
 	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
 	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
@@ -120,14 +402,14 @@ java.net.ConnectException: Connection refused: connect
 	at com.xxl.job.core.biz.client.AdminBizClient.registryRemove(AdminBizClient.java:47)
 	at com.xxl.job.core.thread.ExecutorRegistryThread$1.run(ExecutorRegistryThread.java:84)
 	at java.lang.Thread.run(Thread.java:750)
-25-01-04.21:41:23.074 [main            ] WARN  EndpointId             - Endpoint ID 'hystrix.stream' contains invalid characters, please migrate to a valid format.
-25-01-04.21:41:29.185 [main            ] WARN  URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
-25-01-04.21:41:44.649 [main            ] WARN  ArchaiusAutoConfiguration - No spring.application.name found, defaulting to 'application'
-25-01-04.21:41:44.657 [main            ] WARN  URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
-25-01-04.21:41:55.707 [main            ] WARN  LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
-25-01-04.21:41:56.608 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
-25-01-04.21:41:57.621 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
-25-01-04.21:41:58.395 [xxl-job, executor ExecutorRegistryThread] ERROR XxlJobRemotingUtil     - Connection refused: connect
+25-01-10.19:08:01.356 [main            ] WARN  EndpointId             - Endpoint ID 'hystrix.stream' contains invalid characters, please migrate to a valid format.
+25-01-10.19:08:05.154 [main            ] WARN  URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+25-01-10.19:08:20.137 [main            ] WARN  ArchaiusAutoConfiguration - No spring.application.name found, defaulting to 'application'
+25-01-10.19:08:20.139 [main            ] WARN  URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+25-01-10.19:08:31.464 [main            ] WARN  LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+25-01-10.19:08:33.195 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
+25-01-10.19:08:34.203 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
+25-01-10.19:08:35.255 [xxl-job, executor ExecutorRegistryThread] ERROR XxlJobRemotingUtil     - Connection refused: connect
 java.net.ConnectException: Connection refused: connect
 	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
 	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
@@ -151,13 +433,321 @@ java.net.ConnectException: Connection refused: connect
 	at com.xxl.job.core.biz.client.AdminBizClient.registry(AdminBizClient.java:42)
 	at com.xxl.job.core.thread.ExecutorRegistryThread$1.run(ExecutorRegistryThread.java:48)
 	at java.lang.Thread.run(Thread.java:750)
-25-01-04.21:41:59.628 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
-25-01-04.21:42:03.631 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
-25-01-04.21:42:08.637 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
-25-01-04.21:42:08.857 [main            ] WARN  ServiceConfig          -  [DUBBO] Use random available port(20880) for protocol dubbo, dubbo version: 3.0.9, current host: 2.0.0.1
-25-01-04.21:42:09.209 [main            ] WARN  MetadataUtils          -  [DUBBO] Remote Metadata Report Server is not provided or unavailable, will stop registering service definition to remote center!, dubbo version: 3.0.9, current host: 2.0.0.1
-25-01-04.21:42:09.234 [main            ] WARN  MetadataUtils          -  [DUBBO] Remote Metadata Report Server is not provided or unavailable, will stop registering service definition to remote center!, dubbo version: 3.0.9, current host: 2.0.0.1
-25-01-04.21:42:12.778 [xxl-job, executor ExecutorRegistryThread] ERROR XxlJobRemotingUtil     - Connection refused: connect
+25-01-10.19:08:36.208 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
+25-01-10.19:08:40.214 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
+25-01-10.19:08:45.220 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
+25-01-10.19:08:45.395 [main            ] WARN  ServiceConfig          -  [DUBBO] Use random available port(20880) for protocol dubbo, dubbo version: 3.0.9, current host: 2.0.0.1
+25-01-10.19:08:45.810 [main            ] WARN  MetadataUtils          -  [DUBBO] Remote Metadata Report Server is not provided or unavailable, will stop registering service definition to remote center!, dubbo version: 3.0.9, current host: 2.0.0.1
+25-01-10.19:08:45.848 [main            ] WARN  MetadataUtils          -  [DUBBO] Remote Metadata Report Server is not provided or unavailable, will stop registering service definition to remote center!, dubbo version: 3.0.9, current host: 2.0.0.1
+25-01-10.19:08:45.871 [main            ] WARN  MetadataUtils          -  [DUBBO] Remote Metadata Report Server is not provided or unavailable, will stop registering service definition to remote center!, dubbo version: 3.0.9, current host: 2.0.0.1
+25-01-10.19:08:47.668 [main            ] ERROR RaffleActivityController - 活动抽奖失败 userId:xfg activityId:100401
+cn.hush.types.exception.AppException: null
+	at cn.hush.domain.activity.service.partake.RaffleActivityPartakeService.doFilterAccount(RaffleActivityPartakeService.java:38)
+	at cn.hush.domain.activity.service.partake.AbstractRaffleActivityPartake.createOrder(AbstractRaffleActivityPartake.java:66)
+	at cn.hush.domain.activity.service.partake.AbstractRaffleActivityPartake.createOrder(AbstractRaffleActivityPartake.java:33)
+	at cn.hush.trigger.http.RaffleActivityController.draw(RaffleActivityController.java:165)
+	at cn.hush.trigger.http.RaffleActivityController$$FastClassBySpringCGLIB$$e0cb68ba.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:89)
+	at cn.hush.aop.RateLimiterAOP.rateLimiter(RateLimiterAOP.java:69)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:634)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:624)
+	at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:72)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:175)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708)
+	at cn.hush.trigger.http.RaffleActivityController$$EnhancerBySpringCGLIB$$f2b1d78b.draw(<generated>)
+	at cn.hush.test.trigger.RaffleActivityControllerTest.test_draw(RaffleActivityControllerTest.java:41)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestExecutionCallbacks.evaluate(RunBeforeTestExecutionCallbacks.java:74)
+	at org.springframework.test.context.junit4.statements.RunAfterTestExecutionCallbacks.evaluate(RunAfterTestExecutionCallbacks.java:84)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestMethodCallbacks.evaluate(RunBeforeTestMethodCallbacks.java:75)
+	at org.springframework.test.context.junit4.statements.RunAfterTestMethodCallbacks.evaluate(RunAfterTestMethodCallbacks.java:86)
+	at org.springframework.test.context.junit4.statements.SpringRepeat.evaluate(SpringRepeat.java:84)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:251)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38)
+	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:232)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:55)
+25-01-10.19:08:50.637 [xxl-job, executor ExecutorRegistryThread] ERROR XxlJobRemotingUtil     - Connection refused: connect
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:607)
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:175)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:463)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:558)
+	at sun.net.www.http.HttpClient.<init>(HttpClient.java:242)
+	at sun.net.www.http.HttpClient.New(HttpClient.java:339)
+	at sun.net.www.http.HttpClient.New(HttpClient.java:357)
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1228)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1162)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1056)
+	at sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:990)
+	at com.xxl.job.core.util.XxlJobRemotingUtil.postBody(XxlJobRemotingUtil.java:99)
+	at com.xxl.job.core.biz.client.AdminBizClient.registryRemove(AdminBizClient.java:47)
+	at com.xxl.job.core.thread.ExecutorRegistryThread$1.run(ExecutorRegistryThread.java:84)
+	at java.lang.Thread.run(Thread.java:750)
+25-01-10.19:10:10.340 [main            ] WARN  EndpointId             - Endpoint ID 'hystrix.stream' contains invalid characters, please migrate to a valid format.
+25-01-10.19:10:14.943 [main            ] WARN  URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+25-01-10.19:10:30.312 [main            ] WARN  ArchaiusAutoConfiguration - No spring.application.name found, defaulting to 'application'
+25-01-10.19:10:30.314 [main            ] WARN  URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+25-01-10.19:10:41.325 [main            ] WARN  LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+25-01-10.19:10:42.625 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
+25-01-10.19:10:43.633 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
+25-01-10.19:10:44.713 [xxl-job, executor ExecutorRegistryThread] ERROR XxlJobRemotingUtil     - Connection refused: connect
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:607)
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:175)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:463)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:558)
+	at sun.net.www.http.HttpClient.<init>(HttpClient.java:242)
+	at sun.net.www.http.HttpClient.New(HttpClient.java:339)
+	at sun.net.www.http.HttpClient.New(HttpClient.java:357)
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1228)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1162)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1056)
+	at sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:990)
+	at com.xxl.job.core.util.XxlJobRemotingUtil.postBody(XxlJobRemotingUtil.java:99)
+	at com.xxl.job.core.biz.client.AdminBizClient.registry(AdminBizClient.java:42)
+	at com.xxl.job.core.thread.ExecutorRegistryThread$1.run(ExecutorRegistryThread.java:48)
+	at java.lang.Thread.run(Thread.java:750)
+25-01-10.19:10:45.637 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
+25-01-10.19:10:49.640 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
+25-01-10.19:10:54.646 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
+25-01-10.19:10:54.984 [main            ] WARN  ServiceConfig          -  [DUBBO] Use random available port(20880) for protocol dubbo, dubbo version: 3.0.9, current host: 2.0.0.1
+25-01-10.19:10:55.354 [main            ] WARN  MetadataUtils          -  [DUBBO] Remote Metadata Report Server is not provided or unavailable, will stop registering service definition to remote center!, dubbo version: 3.0.9, current host: 2.0.0.1
+25-01-10.19:10:55.387 [main            ] WARN  MetadataUtils          -  [DUBBO] Remote Metadata Report Server is not provided or unavailable, will stop registering service definition to remote center!, dubbo version: 3.0.9, current host: 2.0.0.1
+25-01-10.19:10:55.419 [main            ] WARN  MetadataUtils          -  [DUBBO] Remote Metadata Report Server is not provided or unavailable, will stop registering service definition to remote center!, dubbo version: 3.0.9, current host: 2.0.0.1
+25-01-10.19:10:57.173 [main            ] ERROR RaffleActivityController - 活动抽奖失败 userId:xfg activityId:100401
+cn.hush.types.exception.AppException: null
+	at cn.hush.domain.activity.service.partake.RaffleActivityPartakeService.doFilterAccount(RaffleActivityPartakeService.java:38)
+	at cn.hush.domain.activity.service.partake.AbstractRaffleActivityPartake.createOrder(AbstractRaffleActivityPartake.java:66)
+	at cn.hush.domain.activity.service.partake.AbstractRaffleActivityPartake.createOrder(AbstractRaffleActivityPartake.java:33)
+	at cn.hush.trigger.http.RaffleActivityController.draw(RaffleActivityController.java:165)
+	at cn.hush.trigger.http.RaffleActivityController$$FastClassBySpringCGLIB$$e0cb68ba.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:89)
+	at cn.hush.aop.RateLimiterAOP.rateLimiter(RateLimiterAOP.java:69)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:634)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:624)
+	at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:72)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:175)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708)
+	at cn.hush.trigger.http.RaffleActivityController$$EnhancerBySpringCGLIB$$f2b1d78b.draw(<generated>)
+	at cn.hush.test.trigger.RaffleActivityControllerTest.test_draw(RaffleActivityControllerTest.java:41)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestExecutionCallbacks.evaluate(RunBeforeTestExecutionCallbacks.java:74)
+	at org.springframework.test.context.junit4.statements.RunAfterTestExecutionCallbacks.evaluate(RunAfterTestExecutionCallbacks.java:84)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestMethodCallbacks.evaluate(RunBeforeTestMethodCallbacks.java:75)
+	at org.springframework.test.context.junit4.statements.RunAfterTestMethodCallbacks.evaluate(RunAfterTestMethodCallbacks.java:86)
+	at org.springframework.test.context.junit4.statements.SpringRepeat.evaluate(SpringRepeat.java:84)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:251)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38)
+	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:232)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:55)
+25-01-10.19:11:00.155 [xxl-job, executor ExecutorRegistryThread] ERROR XxlJobRemotingUtil     - Connection refused: connect
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:607)
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:175)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:463)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:558)
+	at sun.net.www.http.HttpClient.<init>(HttpClient.java:242)
+	at sun.net.www.http.HttpClient.New(HttpClient.java:339)
+	at sun.net.www.http.HttpClient.New(HttpClient.java:357)
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1228)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1162)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1056)
+	at sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:990)
+	at com.xxl.job.core.util.XxlJobRemotingUtil.postBody(XxlJobRemotingUtil.java:99)
+	at com.xxl.job.core.biz.client.AdminBizClient.registryRemove(AdminBizClient.java:47)
+	at com.xxl.job.core.thread.ExecutorRegistryThread$1.run(ExecutorRegistryThread.java:84)
+	at java.lang.Thread.run(Thread.java:750)
+25-01-10.19:39:09.160 [main            ] WARN  EndpointId             - Endpoint ID 'hystrix.stream' contains invalid characters, please migrate to a valid format.
+25-01-10.19:39:13.431 [main            ] WARN  URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+25-01-10.19:39:34.457 [main            ] WARN  ArchaiusAutoConfiguration - No spring.application.name found, defaulting to 'application'
+25-01-10.19:39:34.460 [main            ] WARN  URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+25-01-10.19:39:47.881 [main            ] WARN  LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+25-01-10.19:39:49.358 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
+25-01-10.19:39:50.396 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
+25-01-10.19:39:51.650 [xxl-job, executor ExecutorRegistryThread] ERROR XxlJobRemotingUtil     - Connection refused: connect
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:607)
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:175)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:463)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:558)
+	at sun.net.www.http.HttpClient.<init>(HttpClient.java:242)
+	at sun.net.www.http.HttpClient.New(HttpClient.java:339)
+	at sun.net.www.http.HttpClient.New(HttpClient.java:357)
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1228)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1162)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1056)
+	at sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:990)
+	at com.xxl.job.core.util.XxlJobRemotingUtil.postBody(XxlJobRemotingUtil.java:99)
+	at com.xxl.job.core.biz.client.AdminBizClient.registry(AdminBizClient.java:42)
+	at com.xxl.job.core.thread.ExecutorRegistryThread$1.run(ExecutorRegistryThread.java:48)
+	at java.lang.Thread.run(Thread.java:750)
+25-01-10.19:39:52.401 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
+25-01-10.19:39:56.404 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
+25-01-10.19:40:01.409 [AMQP Connection 127.0.0.1:5672] ERROR CachingConnectionFactory - Shutdown Signal: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'auto_delete' for queue 'send_rebate' in vhost '/hush': received 'true' but current is 'false', class-id=50, method-id=10)
+25-01-10.19:40:01.666 [main            ] WARN  ServiceConfig          -  [DUBBO] Use random available port(20880) for protocol dubbo, dubbo version: 3.0.9, current host: 2.0.0.1
+25-01-10.19:40:02.158 [main            ] WARN  MetadataUtils          -  [DUBBO] Remote Metadata Report Server is not provided or unavailable, will stop registering service definition to remote center!, dubbo version: 3.0.9, current host: 2.0.0.1
+25-01-10.19:40:02.207 [main            ] WARN  MetadataUtils          -  [DUBBO] Remote Metadata Report Server is not provided or unavailable, will stop registering service definition to remote center!, dubbo version: 3.0.9, current host: 2.0.0.1
+25-01-10.19:40:02.238 [main            ] WARN  MetadataUtils          -  [DUBBO] Remote Metadata Report Server is not provided or unavailable, will stop registering service definition to remote center!, dubbo version: 3.0.9, current host: 2.0.0.1
+25-01-10.19:40:04.008 [main            ] ERROR RaffleActivityController - 活动抽奖失败 userId:xfg activityId:100401
+cn.hush.types.exception.AppException: null
+	at cn.hush.domain.activity.service.partake.RaffleActivityPartakeService.doFilterAccount(RaffleActivityPartakeService.java:38)
+	at cn.hush.domain.activity.service.partake.AbstractRaffleActivityPartake.createOrder(AbstractRaffleActivityPartake.java:66)
+	at cn.hush.domain.activity.service.partake.AbstractRaffleActivityPartake.createOrder(AbstractRaffleActivityPartake.java:33)
+	at cn.hush.trigger.http.RaffleActivityController.draw(RaffleActivityController.java:165)
+	at cn.hush.trigger.http.RaffleActivityController$$FastClassBySpringCGLIB$$e0cb68ba.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:89)
+	at cn.hush.aop.RateLimiterAOP.rateLimiter(RateLimiterAOP.java:69)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:634)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:624)
+	at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:72)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:175)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708)
+	at cn.hush.trigger.http.RaffleActivityController$$EnhancerBySpringCGLIB$$63090e95.draw(<generated>)
+	at cn.hush.test.trigger.RaffleActivityControllerTest.test_draw(RaffleActivityControllerTest.java:41)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestExecutionCallbacks.evaluate(RunBeforeTestExecutionCallbacks.java:74)
+	at org.springframework.test.context.junit4.statements.RunAfterTestExecutionCallbacks.evaluate(RunAfterTestExecutionCallbacks.java:84)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestMethodCallbacks.evaluate(RunBeforeTestMethodCallbacks.java:75)
+	at org.springframework.test.context.junit4.statements.RunAfterTestMethodCallbacks.evaluate(RunAfterTestMethodCallbacks.java:86)
+	at org.springframework.test.context.junit4.statements.SpringRepeat.evaluate(SpringRepeat.java:84)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:251)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38)
+	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:232)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:55)
+25-01-10.19:40:06.681 [xxl-job, executor ExecutorRegistryThread] ERROR XxlJobRemotingUtil     - Connection refused: connect
 java.net.ConnectException: Connection refused: connect
 	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
 	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)

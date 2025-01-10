@@ -22,6 +22,7 @@ public enum ResponseCode {
     DEGRADE_SWITCH("0004", "活动已降级"),
     RATE_LIMITER("0005", "限流-访问拦截"),
     HYSTRIX("0006", "访问超时熔断"),
+    GATEWAY_ERROR("0007", "网关接口调用失败"),
     STRATEGY_RULE_WEIGHT_IS_NULL("ERR_BIZ_001", "业务异常，策略规则中 rule_weight 权重规则已适用但未配置"),
     UN_ASSEMBLED_STRATEGY_ARMORY("ERR_BIZ_002", "抽奖策略配置未装配。请通过IStrategyArmory完成装配"),
     ACTIVITY_STATE_ERROR("ERR_BIZ_003", "活动未开启（非open状态）"),
@@ -34,7 +35,8 @@ public enum ResponseCode {
     USER_CREDIT_ACCOUNT_NO_AVAILABLE_AMOUNT("ERR_CREDIT_001", "用户积分账户额度不足"),
     EMPLOYEE_ACCOUNT_NOT_FOUND("ERR_BIZ_010","该员工不存在"),
     PASSWORD_ERROR("ERR_BIZ_011","密码错误"),
-    ACCOUNT_LOCKED("ERR_BIZ_012","该账号已被冻结，无法登录")
+    ACCOUNT_LOCKED("ERR_BIZ_012","该账号已被冻结，无法登录"),
+
     ;
 
     private String code;

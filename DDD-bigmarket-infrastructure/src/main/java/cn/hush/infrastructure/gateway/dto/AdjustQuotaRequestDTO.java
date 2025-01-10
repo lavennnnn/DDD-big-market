@@ -1,0 +1,29 @@
+package cn.hush.infrastructure.gateway.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+/**
+ * @author Hush
+ * @description  调额请求对象
+ * @create 2025-01-10 下午2:57
+ */
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class AdjustQuotaRequestDTO {
+
+    /** 请求应用ID */
+    private String appId;
+    /** 请求应用Token */
+    private String appToken;
+
+    /** 用户ID；微信分配的唯一ID编码 */
+    private String openid;
+    /** 调增额度 */
+    private Integer increaseQuota;
+
+}

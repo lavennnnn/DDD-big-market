@@ -139,10 +139,10 @@ public class  RaffleActivityController implements IRaffleActivityService {
      */
     @RateLimiterAccessInterceptor(key = "userId", fallbackMethod = "drawRateLimiterError", permitsPerSecond = 1.0d, blackListCount = 1)
     @RequestMapping(value = "draw", method = RequestMethod.POST)
-    @HystrixCommand(commandProperties = {
+    /*@HystrixCommand(commandProperties = {
             @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "150")
     }, fallbackMethod = "drawHystrixError"
-    )
+    )*/
     @Override
     public Response<ActivityDrawResponseDTO> draw(@RequestBody ActivityDrawRequestDTO request) {
         try {

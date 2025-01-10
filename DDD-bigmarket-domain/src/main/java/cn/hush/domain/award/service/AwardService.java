@@ -69,7 +69,7 @@ public class AwardService implements IAwardService{
     }
 
     @Override
-    public void distributeAward(DistributeAwardEntity distributeAwardEntity) {
+    public void distributeAward(DistributeAwardEntity distributeAwardEntity) throws Exception {
         //奖品 key
         String awardKey = awardRepository.queryAwardKey(distributeAwardEntity.getAwardId());
         if (null == awardKey) {
@@ -80,9 +80,8 @@ public class AwardService implements IAwardService{
         IDistributeAward distributeAward = distributeAwardMap.get(awardKey);
         if (null == distributeAward) {
             log.error("分发奖品，对应的服务不存在， awardKey:{}", awardKey);
-            //todo 后续完善全部奖品后开启异常
-            //throw new RuntimeException("分发奖品：" + awardKey + "对应的服务不存在");
-            return;
+            throw new RuntimeException("分发奖品：" + awardKey + "对应的服务不存在");
+
         }
 
         //发放奖品

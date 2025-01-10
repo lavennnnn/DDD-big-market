@@ -1,5 +1,6 @@
 package cn.hush.domain.award.service.distribute.impl;
 
+import cn.hush.domain.award.adapter.port.IAwardPort;
 import cn.hush.domain.award.model.entity.DistributeAwardEntity;
 import cn.hush.domain.award.adapter.repository.IAwardRepository;
 import cn.hush.domain.award.service.distribute.IDistributeAward;
@@ -23,7 +24,7 @@ public class OpenAlAccountAdjustQuotaAward implements IDistributeAward {
     private IAwardRepository repository;
 
     @Override
-    public void giveOutPrizes(DistributeAwardEntity distributeAwardEntity) {
+    public void giveOutPrizes(DistributeAwardEntity distributeAwardEntity) throws Exception {
         //奖品id
         Integer awardId = distributeAwardEntity.getAwardId();
 
@@ -33,6 +34,6 @@ public class OpenAlAccountAdjustQuotaAward implements IDistributeAward {
         }
 
         //发奖
-        port.
+        port.adjustAmount(distributeAwardEntity.getUserId(),Integer.valueOf(awardConfig) );
     }
 }

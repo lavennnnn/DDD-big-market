@@ -39,6 +39,12 @@
             <groupId>cn.hush</groupId>
             <artifactId>DDD-bigmarket-querys</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>retrofit</artifactId>
+            <version>2.9.0</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>

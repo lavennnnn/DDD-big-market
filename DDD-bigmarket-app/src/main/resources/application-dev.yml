@@ -154,6 +154,16 @@ zookeeper:
       session-timeout-ms: 180000
       connection-timeout-ms: 30000
 
+# 外部接口调用配置
+gateway:
+  config:
+    # 状态；true = 开启、false 关闭
+    enable: true
+    apiHost: http://127.0.0.1:8091
+    # big-market 大营销接口调用配置
+    big-market-appId: big-market
+    big-market-appToken: 6ec604541f8b1ce4a
+
 # RocketMQ 配置，在docs/dev-ops下，有创建 xfg-group 脚本，也有场景mq消息的脚本
 #rocketmq:
 #  name-server: 127.0.0.1:9876

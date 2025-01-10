@@ -30,7 +30,7 @@ public class SendAwardCustomer {
     }
 
     @RabbitListener(queuesToDeclare = @Queue(value = "${spring.rabbitmq.topic.send_award}", autoDelete = "true"))
-    public void listener(String msg) {
+    public void listener(String msg) throws Exception {
         try {
             log.info("监听用户奖品发送消息 topic: {} message: {}", topic, msg);
 
