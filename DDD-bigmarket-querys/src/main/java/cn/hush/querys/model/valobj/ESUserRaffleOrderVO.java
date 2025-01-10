@@ -1,14 +1,13 @@
-package cn.hush.model.valobj;
-
-import lombok.Builder;
-import lombok.Getter;
+package cn.hush.querys.model.valobj;
 
 import java.util.Date;
+import lombok.Builder;
+import lombok.Getter;
 
 /**
  * @author Hush
  * @description
- * @create 2025-01-06 上午8:31
+ * @create 2025-01-07 上午1:43
  */
 @Getter
 @Builder

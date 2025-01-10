@@ -1,18 +1,17 @@
 package cn.hush.domain.award.service;
 
-import cn.hush.domain.award.event.SendAwardMessageEvent;
+import cn.hush.domain.award.adapter.event.SendAwardMessageEvent;
 import cn.hush.domain.award.model.aggregate.UserAwardRecordAggregate;
 import cn.hush.domain.award.model.entity.DistributeAwardEntity;
 import cn.hush.domain.award.model.entity.TaskEntity;
 import cn.hush.domain.award.model.entity.UserAwardRecordEntity;
 import cn.hush.domain.award.model.vo.TaskStateVO;
-import cn.hush.domain.award.repository.IAwardRepository;
+import cn.hush.domain.award.adapter.repository.IAwardRepository;
 import cn.hush.domain.award.service.distribute.IDistributeAward;
 import cn.hush.types.event.BaseEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.Map;
 
 /**

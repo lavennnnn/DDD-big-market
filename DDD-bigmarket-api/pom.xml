@@ -29,6 +29,11 @@
             <groupId>cn.hush</groupId>
             <artifactId>DDD-bigmarket-querys</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>1.5.22</version>
+        </dependency>
     </dependencies>
 
     <build>

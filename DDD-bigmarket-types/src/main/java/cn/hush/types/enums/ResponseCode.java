@@ -32,9 +32,9 @@ public enum ResponseCode {
     ACCOUNT_DAY_QUOTA_ERROR("ERR_BIZ_008","账户日额度不足"),
     ACCOUNT_ORDER_ERROR("ERR_BIZ_009","用户抽奖单已经使用过，不可重复抽奖"),
     USER_CREDIT_ACCOUNT_NO_AVAILABLE_AMOUNT("ERR_CREDIT_001", "用户积分账户额度不足"),
-
-
-
+    EMPLOYEE_ACCOUNT_NOT_FOUND("ERR_BIZ_010","该员工不存在"),
+    PASSWORD_ERROR("ERR_BIZ_011","密码错误"),
+    ACCOUNT_LOCKED("ERR_BIZ_012","该账号已被冻结，无法登录")
     ;
 
     private String code;

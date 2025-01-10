@@ -7,7 +7,7 @@ import cn.hush.domain.award.model.entity.TaskEntity;
 import cn.hush.domain.award.model.entity.UserAwardRecordEntity;
 import cn.hush.domain.award.model.entity.UserCreditAwardEntity;
 import cn.hush.domain.award.model.vo.AccountStatusVO;
-import cn.hush.domain.award.repository.IAwardRepository;
+import cn.hush.domain.award.adapter.repository.IAwardRepository;
 import cn.hush.infrastructure.dao.*;
 import cn.hush.infrastructure.event.EventPublisher;
 import cn.hush.infrastructure.dao.po.TaskPO;

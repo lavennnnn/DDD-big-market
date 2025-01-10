@@ -199,6 +199,18 @@ xxl:
       # 执行器日志文件保存天数 [选填] ： 过期日志自动清理, 限制值大于等于3时生效; 否则, 如-1, 关闭自动清理功能；
       logretentiondays: 30
 
+erp:
+  jwt:
+    # 设置jwt签名加密时使用的秘钥
+    admin-secret-key: hushIsCoding
+    # 设置jwt过期时间
+    admin-ttl: 7200000
+    # 设置前端传递过来的令牌名称
+    admin-token-name: token
+    user-secret-key: hushIsLearning
+    user-ttl: 7200000
+    user-token-name: authentication
+
 # 日志
 logging:
   level:

@@ -32,6 +32,26 @@ public class Constants {
 
     }
 
+    /**
+     * 状态常量，启用或者禁用
+     */
+    public static class StatusConstant {
+        //启用
+        public static final Integer ENABLE = 1;
+
+        //禁用
+        public static final Integer DISABLE = 0;
+    }
+
+    /**
+     * jwt常量
+     */
+    public static class JwtClaimsConstant {
+        public static final String EMP_ID = "empId";
+        public static final String USER_ID = "userId";
+        public static final String USERNAME = "username";
+        public static final String NAME = "name";
+    }
 //    @AllArgsConstructor
 //    @NoArgsConstructor
 //    @Getter

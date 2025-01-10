@@ -1,10 +1,9 @@
-package cn.hush.domain.award.event;
+package cn.hush.domain.award.adapter.event;
 
 import cn.hush.types.event.BaseEvent;
 import lombok.*;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;

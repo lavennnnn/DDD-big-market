@@ -1,9 +1,10 @@
 package cn.hush.infrastructure.adapter.repository;
 
-import cn.hush.adapter.repository.IESUserRaffleOrderRepository;
+
 import cn.hush.infrastructure.elasticsearch.IElasticSearchUserRaffleOrderDao;
 import cn.hush.infrastructure.elasticsearch.po.UserRaffleOrderPO;
-import cn.hush.model.valobj.ESUserRaffleOrderVO;
+import cn.hush.querys.adapter.repository.IESUserRaffleOrderRepository;
+import cn.hush.querys.model.valobj.ESUserRaffleOrderVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 

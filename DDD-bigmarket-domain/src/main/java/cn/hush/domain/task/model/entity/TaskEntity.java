@@ -1,8 +1,5 @@
 package cn.hush.domain.task.model.entity;
 
-import cn.hush.domain.award.event.SendAwardMessageEvent;
-import cn.hush.domain.award.model.vo.TaskStateVO;
-import cn.hush.types.event.BaseEvent;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

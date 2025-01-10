@@ -1,6 +1,6 @@
 package cn.hush.trigger.listener;
 
-import cn.hush.domain.award.event.SendAwardMessageEvent;
+import cn.hush.domain.award.adapter.event.SendAwardMessageEvent;
 import cn.hush.domain.award.model.entity.DistributeAwardEntity;
 import cn.hush.domain.award.service.IAwardService;
 import cn.hush.types.event.BaseEvent;

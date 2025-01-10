@@ -1,4 +1,4 @@
-package cn.hush.domain.award.repository;
+package cn.hush.domain.award.adapter.repository;
 
 import cn.hush.domain.award.model.aggregate.GiveOutPrizesAggregate;
 import cn.hush.domain.award.model.aggregate.UserAwardRecordAggregate;

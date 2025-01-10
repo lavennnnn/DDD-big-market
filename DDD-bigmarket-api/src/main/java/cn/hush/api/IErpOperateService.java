@@ -1,8 +1,11 @@
 package cn.hush.api;
 
 import cn.hush.api.dto.ESUserRaffleOrderResponseDTO;
+import cn.hush.api.dto.EmployeeLoginRequestDTO;
+import cn.hush.api.dto.EmployeeLoginResponseDTO;
 import cn.hush.api.response.Response;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -15,5 +18,7 @@ import java.util.List;
 public interface IErpOperateService {
 
      Response<List<ESUserRaffleOrderResponseDTO>> queryUserRaffleOrder();
+
+     Response<EmployeeLoginResponseDTO> employeeLogin ( EmployeeLoginRequestDTO employeeLoginRequestDTO);
 
 }

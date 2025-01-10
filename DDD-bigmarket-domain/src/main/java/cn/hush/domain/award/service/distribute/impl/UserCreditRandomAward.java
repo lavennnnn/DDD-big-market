@@ -5,7 +5,7 @@ import cn.hush.domain.award.model.entity.DistributeAwardEntity;
 import cn.hush.domain.award.model.entity.UserAwardRecordEntity;
 import cn.hush.domain.award.model.entity.UserCreditAwardEntity;
 import cn.hush.domain.award.model.vo.AwardStateVO;
-import cn.hush.domain.award.repository.IAwardRepository;
+import cn.hush.domain.award.adapter.repository.IAwardRepository;
 import cn.hush.domain.award.service.distribute.IDistributeAward;
 import cn.hush.types.common.Constants;
 import org.apache.commons.lang3.StringUtils;

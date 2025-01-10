@@ -1,20 +1,31 @@
 package cn.hush.trigger.http;
 
-import cn.hush.adapter.repository.IESUserRaffleOrderRepository;
+
 import cn.hush.api.IErpOperateService;
 import cn.hush.api.dto.ESUserRaffleOrderResponseDTO;
+import cn.hush.api.dto.EmployeeLoginRequestDTO;
+import cn.hush.api.dto.EmployeeLoginResponseDTO;
 import cn.hush.api.response.Response;
-import cn.hush.model.valobj.ESUserRaffleOrderVO;
+import cn.hush.domain.employee.model.entity.EmployEntity;
+import cn.hush.domain.employee.repository.IEmployeeRepository;
+import cn.hush.domain.employee.service.IEmployeeService;
+import cn.hush.infrastructure.jwt.IJwtService;
+import cn.hush.infrastructure.jwt.JwtService;
+import cn.hush.querys.adapter.repository.IESUserRaffleOrderRepository;
+import cn.hush.querys.model.valobj.ESUserRaffleOrderVO;
+import cn.hush.types.common.Constants;
 import cn.hush.types.enums.ResponseCode;
+import cn.hush.types.exception.AppException;
+import cn.hush.types.utils.BaseContext;
+import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.common.utils.JsonUtils;
 import org.apache.dubbo.config.annotation.DubboService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -31,6 +42,12 @@ public class ErpOperatorController implements IErpOperateService {
 
     @Resource
     private IESUserRaffleOrderRepository userRaffleOrderRepository;
+    @Resource
+    private IEmployeeService employeeService;
+    @Resource
+    private IJwtService jwtService;
+
+
 
     /**
      * 查询运营数据，用户抽奖单列表
@@ -72,5 +89,60 @@ public class ErpOperatorController implements IErpOperateService {
         }
 
     }
+
+    @Override
+    @RequestMapping(value = "login", method = RequestMethod.POST)
+    public Response<EmployeeLoginResponseDTO> employeeLogin (@RequestBody EmployeeLoginRequestDTO employeeLoginRequestDTO) {
+        try {
+            log.info("员工登录：{}", employeeLoginRequestDTO);
+            String username = employeeLoginRequestDTO.getUsername();
+            String password = employeeLoginRequestDTO.getPassword();
+
+            EmployEntity employEntity = EmployEntity.builder()
+                    .username(username)
+                    .password(password)
+                    .build();
+
+            EmployEntity employ = employeeService.login(employEntity);
+
+            //登录成功后，生成jwt令牌
+            String token = jwtService.buildEmpToken(employ.getId());
+            EmployeeLoginResponseDTO result = EmployeeLoginResponseDTO.builder()
+                    .id(employ.getId())
+                    .userName(employ.getUsername())
+                    .name(employ.getName())
+                    .token(token)
+                    .type(employ.getType())
+                    .loginStatus(1)
+                    .build();
+
+            log.info("登录响应信息为:{}", JSON.toJSONString(result) );
+
+            return Response.<EmployeeLoginResponseDTO>builder()
+                    .info(ResponseCode.SUCCESS.getInfo())
+                    .code(ResponseCode.SUCCESS.getCode())
+                    .data(result)
+                    .build();
+
+        }catch (Exception e) {
+            log.error("登录失败，出现异常：" ,e );
+            return Response.<EmployeeLoginResponseDTO>builder()
+                    .code(ResponseCode.UN_ERROR.getCode())
+                    .info(ResponseCode.UN_ERROR.getInfo())
+                    .data(EmployeeLoginResponseDTO.builder()
+                            .id(null)
+                            .userName(null)
+                            .name(null)
+                            .token(null)
+                            .type(null)
+                            .loginStatus(0)
+                            .build())
+                    .build();
+        }
+
+    }
+
+
+
 
 }
