@@ -42,7 +42,7 @@ public class SkuProductResponseDTO implements Serializable {
     /**
      * 商品金额【积分】
      */
-    private BigDecimal productAmount;
+    private BigDecimal productPriceAmount;
 
     /**
      * 活动商品数量

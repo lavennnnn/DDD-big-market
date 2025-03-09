@@ -69,6 +69,7 @@ public class OLogNAlgorithm extends AbstractAlgorithm {
         }
     }
 
+    // 多线程查找
     private Integer threadSearch(int randomNum, Map<Map<String, Integer>, Integer> table) {
 
         List<CompletableFuture<Map.Entry<Map<String, Integer>, Integer>>> futures = table.

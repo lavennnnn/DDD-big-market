@@ -82,19 +82,20 @@ public abstract class AbstractStrategyArmoryDispatch implements IStrategyArmory,
 
         String minStr = String.valueOf(min);
         
-        //小数点前
+        //获取小数点前＞零的数位
         String beginVal = minStr.substring(0, minStr.indexOf("."));
         int beginLength = 0;
         if (Double.parseDouble(beginVal) > 0) {
             beginLength = minStr.substring(0, minStr.indexOf(".")).length();
         }
 
-        //小数点后
+        //小数点后数位
         String endVal = minStr.substring(minStr.indexOf(".") + 1);
         int endLength = 0;
         if (Double.parseDouble(endVal) > 0) {
             endLength = minStr.substring(minStr.indexOf(".") + 1).length();
         }
+        //Math.pow(x, y) 返回 x 的 y 次幂
         return Math.pow(10, beginLength + endLength);
     }
 
@@ -143,7 +144,7 @@ public abstract class AbstractStrategyArmoryDispatch implements IStrategyArmory,
     @Override
     public Boolean subtractAwardStock(Long strategyId, Integer awardId, Date endDateTime) {
         String cacheKey = Constants.RedisKey.STRATEGY_AWARD_COUNT_KEY + strategyId + Constants.UNDERLINE + awardId;
-        return repository.subtractAwardStock(cacheKey);
+        return repository.subtractAwardStock(cacheKey, endDateTime);
     }
 
     /**

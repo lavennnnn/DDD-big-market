@@ -8,6 +8,7 @@ import cn.hush.domain.activity.service.IRaffleActivityAccountQuotaService;
 import cn.hush.domain.activity.service.IRaffleActivityPartakeService;
 import cn.hush.domain.activity.service.armory.IActivityArmory;
 import cn.hush.domain.activity.service.product.RaffleActivitySkuProductService;
+import cn.hush.domain.auth.service.IAuthService;
 import cn.hush.domain.award.model.entity.UserAwardRecordEntity;
 import cn.hush.domain.award.model.vo.AwardStateVO;
 import cn.hush.domain.award.service.IAwardService;
@@ -77,6 +78,9 @@ public class  RaffleActivityController implements IRaffleActivityService {
     private CreditAdjustService creditAdjustService;
     @Resource
     private RaffleActivitySkuProductService raffleActivitySkuProductService;
+    @Resource
+    private IAuthService authService;
+
 
     // dcc 统一配置中心动态配置降级开关
     @DCCValue("degradeSwitch:open")
@@ -139,10 +143,10 @@ public class  RaffleActivityController implements IRaffleActivityService {
      */
     @RateLimiterAccessInterceptor(key = "userId", fallbackMethod = "drawRateLimiterError", permitsPerSecond = 1.0d, blackListCount = 1)
     @RequestMapping(value = "draw", method = RequestMethod.POST)
-    /*@HystrixCommand(commandProperties = {
+    @HystrixCommand(commandProperties = {
             @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "150")
     }, fallbackMethod = "drawHystrixError"
-    )*/
+    )
     @Override
     public Response<ActivityDrawResponseDTO> draw(@RequestBody ActivityDrawRequestDTO request) {
         try {
@@ -332,6 +336,37 @@ public class  RaffleActivityController implements IRaffleActivityService {
 
     }
 
+    @Override
+    @RequestMapping(value = "query_user_activity_account_by_token", method = RequestMethod.POST)
+    public Response<UserActivityAccountResponseDTO> queryUserActivityAccount(@RequestHeader("Authorization")String token,
+                                                                             @RequestBody  UserActivityAccountRequestDTO request) {
+        try {
+            //1. 校验
+            boolean success = authService.checkToken(token);
+            if (!success) {
+                return Response.<UserActivityAccountResponseDTO>builder()
+                        .code(ResponseCode.Login.TOKEN_ERROR.getCode())
+                        .info(ResponseCode.Login.TOKEN_ERROR.getInfo())
+                        .build();
+            }
+
+            // 2.token解析
+            String openid = authService.openid(token);
+            assert null != openid;
+            log.info("执行判断签到开始 - 解析用户ID userId:{}", openid);
+            request.setUserId(openid);
+
+            // 3. 执行签到
+            return queryUserActivityAccount(request);
+        } catch (Exception e) {
+            log.error("执行判断签到失败", e);
+            return Response.<UserActivityAccountResponseDTO>builder()
+                    .code(ResponseCode.UN_ERROR.getCode())
+                    .info(ResponseCode.UN_ERROR.getInfo())
+                    .build();
+        }
+    }
+
     @RequestMapping(value = "query_sku_product_list_by_activity_id", method = RequestMethod.POST)
     @Override
     public Response<List<SkuProductResponseDTO>> querySkuProductListByActivityId(Long activityId) {
@@ -355,7 +390,7 @@ public class  RaffleActivityController implements IRaffleActivityService {
                 skuProductResponseDTO.setSku(skuProductEntity.getSku());
                 skuProductResponseDTO.setActivityCountId(skuProductEntity.getActivityCountId());
                 skuProductResponseDTO.setActivityCount(activityCount);
-                skuProductResponseDTO.setProductAmount(skuProductEntity.getProductPriceAmount());
+                skuProductResponseDTO.setProductPriceAmount(skuProductEntity.getProductPriceAmount());
                 skuProductResponseDTO.setStockCount(skuProductEntity.getStockCount());
                 skuProductResponseDTO.setStockCountSurplus(skuProductEntity.getStockCountSurplus());
 

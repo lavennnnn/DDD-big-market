@@ -42,5 +42,16 @@ public enum ResponseCode {
     private String code;
     private String info;
 
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Getter
+    public enum Login {
+        TOKEN_ERROR("0003", "登录权限拦截"),
+
+        ;
+
+        private String code;
+        private String info;
+    }
 
 }

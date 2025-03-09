@@ -20,7 +20,7 @@ import java.util.List;
 @Slf4j
 public class O1Algorithm extends AbstractAlgorithm {
 
-
+    // rateRange 是根据最小奖品概率转化出来的最大整数 【0.01 对应 100 个格子】
     @Override
     public void armoryAlgorithm(String key, List<StrategyAwardEntity> strategyAwardEntities,
                                 BigDecimal rateRange) {

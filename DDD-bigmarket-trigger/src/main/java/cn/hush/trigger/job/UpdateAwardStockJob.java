@@ -46,15 +46,19 @@ public class UpdateAwardStockJob {
             isLocked = lock.tryLock(3, 0, TimeUnit.SECONDS);
             if (!isLocked) return;
 
+            // 查询已开启的活动中所有的【策略id 和 活动id】
             List<StrategyAwardStockKeyVO> strategyAwardStockKeyVOS = raffleAward.queryOpenActivityStrategyAwardList();
             if (null == strategyAwardStockKeyVOS) return;
 
             for (StrategyAwardStockKeyVO strategyAwardStockKeyVO : strategyAwardStockKeyVOS) {
+                // 线程池
                 executor.execute(() -> {
                     try {
+                        // 根据目前的开放活动中的策略id 和 活动id获取延迟队列中的 StrategyAwardStockKeyVO
                         StrategyAwardStockKeyVO queueStrategyAwardStockKeyVO = raffleStock.takeQueueValue(strategyAwardStockKeyVO.getStrategyId(), strategyAwardStockKeyVO.getAwardId());
                         if (null == queueStrategyAwardStockKeyVO) return;
                         log.info("定时任务，更新奖品消耗库存 strategyId:{} awardId:{}", queueStrategyAwardStockKeyVO.getStrategyId(), queueStrategyAwardStockKeyVO.getAwardId());
+                        // 库存 - 1
                         raffleStock.updateStrategyAwardStock(queueStrategyAwardStockKeyVO.getStrategyId(), queueStrategyAwardStockKeyVO.getAwardId());
                     }catch (InterruptedException e){
                         log.error("定时任务，更新奖品消耗库存失败 strategyId:{} awardId:{}", strategyAwardStockKeyVO.getStrategyId(), strategyAwardStockKeyVO.getAwardId());

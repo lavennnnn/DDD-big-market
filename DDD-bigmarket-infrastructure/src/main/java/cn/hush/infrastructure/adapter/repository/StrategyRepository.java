@@ -285,7 +285,9 @@ public class StrategyRepository implements IStrategyRepository {
 
     @Override
     public void awardStockConsumeSendQueue(StrategyAwardStockKeyVO strategyAwardStockKeyVO) {
-        String cacheKey = Constants.RedisKey.STRATEGY_AWARD_COUNT_QUEUE_KEY;
+        String cacheKey = Constants.RedisKey.STRATEGY_AWARD_COUNT_QUERY_KEY
+                + Constants.UNDERLINE + strategyAwardStockKeyVO.getStrategyId()
+                + Constants.UNDERLINE + strategyAwardStockKeyVO.getAwardId();
         RBlockingQueue<StrategyAwardStockKeyVO> blockingQueue = redisService.getBlockingQueue(cacheKey);
         RDelayedQueue<StrategyAwardStockKeyVO> delayedQueue = redisService.getDelayedQueue(blockingQueue);
         delayedQueue.offer(strategyAwardStockKeyVO, 3, TimeUnit.SECONDS);
@@ -454,8 +456,13 @@ public class StrategyRepository implements IStrategyRepository {
         return ruleWeightVOS;
     }
 
+    /**
+     *
+     * @return 已开启的活动中所有的【策略id 和 活动id】
+     */
     @Override
     public List<StrategyAwardStockKeyVO> queryOpenActivityStrategyAwardList() {
+        // 查询已开启的活动中的 StrategyAwardPO
         List<StrategyAwardPO> strategyAwards = strategyAwardDao.queryOpenActivityStrategyAwardList();
         if (null == strategyAwards || strategyAwards.isEmpty()) return null;
 
